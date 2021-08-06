@@ -20,10 +20,10 @@
                         <h4 class="page-title">@lang('idioma.gral_op_par'): <i> {{ $datos->codigo }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/productos') }}">@lang('idioma.product_titulo')</a>
+                                <a href="{{ route('products') }}">Products</a>
                             </li>
                             <li class="active">
                                  @lang('idioma.gral_viendo'):  {{ $datos->codigo }}
@@ -135,15 +135,15 @@
                     <div class="card-box">
                         <h4 class="m-t-0 header-title"><b></b></h4>
                         <div class="row">
-                            <a href="{{ url('/productos') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                            <a href="{{ route('products') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
                             @if(Session::get("rol_id"))
                                 @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->producto_e == 1)
-                                    <a href="{{ url('/editar_producto',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                    <a href="{{ route('product.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
                                 @endif
 
                                 @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->producto_b == 1)
-                                    <a href="{{ url('/borrar_producto',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                    <a href="{{ route('product.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
                                 @endif
                             @endif
                         </div>

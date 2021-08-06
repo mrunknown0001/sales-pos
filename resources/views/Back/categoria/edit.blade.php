@@ -17,10 +17,10 @@
                         <h4 class="page-title">@lang('idioma.gral_actuali'): <i> {{ $datos->nombre }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/categorias') }}">@lang('idioma.categ_titulo')</a>
+                                <a href="{{ route('categories') }}">Categories</a>
                             </li>
                             <li class="active">
                               @lang('idioma.gral_actuali'): {{ $datos->nombre }}
@@ -51,7 +51,7 @@
 			                            </div>
 			                        </div>
 			                      <div class="box-footer">
-			                        <a href="{!! action('CategoriaController@show', $datos->id) !!}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+			                        <a href="{{ route('category.show', $datos->id) }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 			                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
 			                      </div>
 			                    </form>

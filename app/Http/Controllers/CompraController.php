@@ -39,7 +39,7 @@ class CompraController extends Controller
     //Mostra listado de ventas
     public function index_pendientes()
     {   
-        $datos     = Posproceso::where('tipo_proceso','=','Purchase')->where('status','=',1)->orderBy('created_at', 'desc')->get();
+        $datos     = Posproceso::where('tipo_proceso','=','Transfer')->where('status','=',1)->orderBy('created_at', 'desc')->get();
         $sistema   = Configuracion::where('id', '=', 1)->firstOrFail();
         return view('Back.compra.index_pendientes', compact('sistema','datos'));
     }
@@ -47,7 +47,7 @@ class CompraController extends Controller
     //Mostra listado de ventas
     public function index_rechazadas()
     {   
-        $datos     = Posproceso::where('tipo_proceso','=','Purchase')->where('status','=',0)->orderBy('created_at', 'desc')->get();
+        $datos     = Posproceso::where('tipo_proceso','=','Transfer')->where('status','=',0)->orderBy('created_at', 'desc')->get();
         $sistema   = Configuracion::where('id', '=', 1)->firstOrFail();
         return view('Back.compra.index_rechazadas', compact('sistema','datos'));
     }
@@ -55,7 +55,7 @@ class CompraController extends Controller
     //Mostra listado de ventas
     public function index_aprobadas()
     {   
-        $datos     = Posproceso::where('tipo_proceso','=','Purchase')->where('status','=',2)->orderBy('created_at', 'desc')->get();
+        $datos     = Posproceso::where('tipo_proceso','=','Transfer')->where('status','=',2)->orderBy('created_at', 'desc')->get();
         $sistema   = Configuracion::where('id', '=', 1)->firstOrFail();
         return view('Back.compra.index_aprobadas', compact('sistema','datos'));
     }
@@ -133,7 +133,7 @@ class CompraController extends Controller
 
         //Verificar cantidad ingresada contra la cantidad stock
         $lista_productos_temporal = Temporales::where('usuario_id','=',\Session::get("usuario_id"))
-                                               ->where('tipo_proceso','=','Purchase')
+                                               ->where('tipo_proceso','=','Transfer')
                                                ->get();
 
         //Calcular cantidad de registros
@@ -250,7 +250,7 @@ class CompraController extends Controller
             try {
 
 
-                $datos  = Temporales::whereProductoId($producto_id)->whereUsuarioId(\Session::get("usuario_id"))->whereTipoProceso('Purchase')->firstOrFail();
+                $datos  = Temporales::whereProductoId($producto_id)->whereUsuarioId(\Session::get("usuario_id"))->whereTipoProceso('Transfer')->firstOrFail();
                 
                 //Actualizar cantidad
                 $datos->cantidad = $cantidad+$datos->cantidad;
@@ -267,7 +267,7 @@ class CompraController extends Controller
                         'tributo_id'     => $tributo_id,
                         'cantidad'       => $cantidad,
                         'usuario_id'     => \Session::get("usuario_id"),
-                        'tipo_proceso'   => 'Purchase'
+                        'tipo_proceso'   => 'Transfer'
 
                     ));
                     $datos->save();
@@ -288,7 +288,7 @@ class CompraController extends Controller
         $subtotal_general_sf = 0;
 
         //Datos de usuario en Temporales
-        $datos = Temporales::where('usuario_id','=',$usuario_id)->where('tipo_proceso','=','Purchase')->get();
+        $datos = Temporales::where('usuario_id','=',$usuario_id)->where('tipo_proceso','=','Transfer')->get();
 
         //Sumar todos los subtotales de los productos de este usuario
         foreach ($datos as $key => $d) {
@@ -353,7 +353,7 @@ class CompraController extends Controller
         try{
 
             //Datos de usuario en Temporales
-            $datos = Temporales::where('usuario_id','=',$request->get('usuario_id'))->where('tipo_proceso','=','Purchase')->get();
+            $datos = Temporales::where('usuario_id','=',$request->get('usuario_id'))->where('tipo_proceso','=','Transfer')->get();
 
             //Sumar todos los subtotales de los productos de este usuario
             foreach ($datos as $key => $d) {
@@ -407,14 +407,14 @@ class CompraController extends Controller
                     'registros_totales' => $regis_totales,
                     'comentario'        => $comentario,
                     // 'tipo_proceso'      => 'compra'
-                    'tipo_proceso'      => 'Purchase'
+                    'tipo_proceso'      => 'Transfer'
 
                 ));
 
                 $datos_posproceso->save();
 
                 //Registrar detalles del proceso
-                $datos_temporales = Temporales::where('usuario_id','=',$usuario_id)->where('tipo_proceso','=','Purchase')->get();
+                $datos_temporales = Temporales::where('usuario_id','=',$usuario_id)->where('tipo_proceso','=','Transfer')->get();
 
                 foreach ($datos_temporales as $key => $d) {
 
@@ -445,7 +445,7 @@ class CompraController extends Controller
                 }//cierre foreach
 
                     //Eliminar registros de la tabla temporal para el usuario que ha procesado
-                    $eliminar_temporal = Temporales::whereUsuarioId($usuario_id)->whereTipoProceso('Purchase');
+                    $eliminar_temporal = Temporales::whereUsuarioId($usuario_id)->whereTipoProceso('Transfer');
                     $eliminar_temporal->delete();
 
                 return "procesada";
@@ -469,7 +469,7 @@ class CompraController extends Controller
         try{
 
             //Eliminar registros de la tabla temporal para el usuario
-            $eliminar_temporal = Temporales::whereUsuarioId($usuario_id)->whereTipoProceso('Purchase');
+            $eliminar_temporal = Temporales::whereUsuarioId($usuario_id)->whereTipoProceso('Transfer');
             $eliminar_temporal->delete();
 
             return "vacia";
@@ -489,7 +489,7 @@ class CompraController extends Controller
     public function pdf_pendientes()
     {        
 
-        $datos    = Posproceso::where('tipo_proceso','=','Purchase')->where('status','=',1)->orderBy('created_at', 'desc')->get(); 
+        $datos    = Posproceso::where('tipo_proceso','=','Transfer')->where('status','=',1)->orderBy('created_at', 'desc')->get(); 
         $sistema  = Configuracion::where('id', '=', 1)->firstOrFail();
 
         $pdf = PDF::loadView('Back.pdf.compras.lista_pendientes', compact('datos', 'sistema'));
@@ -500,7 +500,7 @@ class CompraController extends Controller
     public function pdf_rechazadas()
     {        
 
-        $datos    = Posproceso::where('tipo_proceso','=','Purchase')->where('status','=',0)->orderBy('created_at', 'desc')->get(); 
+        $datos    = Posproceso::where('tipo_proceso','=','Transfer')->where('status','=',0)->orderBy('created_at', 'desc')->get(); 
         $sistema  = Configuracion::where('id', '=', 1)->firstOrFail();
 
         $pdf = PDF::loadView('Back.pdf.compras.lista_rechazadas', compact('datos', 'sistema'));
@@ -511,7 +511,7 @@ class CompraController extends Controller
     public function pdf_aprobadas()
     {        
 
-        $datos    = Posproceso::where('tipo_proceso','=','Purchase')->where('status','=',2)->orderBy('created_at', 'desc')->get(); 
+        $datos    = Posproceso::where('tipo_proceso','=','Transfer')->where('status','=',2)->orderBy('created_at', 'desc')->get(); 
         $sistema  = Configuracion::where('id', '=', 1)->firstOrFail();
 
         $pdf = PDF::loadView('Back.pdf.compras.lista_aprobadas', compact('datos', 'sistema'));
@@ -522,7 +522,7 @@ class CompraController extends Controller
     {        
 
 
-        $datos    = Posproceso::where('tipo_proceso','=','Purchase')->where('id','=',$id)->firstOrFail();
+        $datos    = Posproceso::where('tipo_proceso','=','Transfer')->where('id','=',$id)->firstOrFail();
         $detalles = DetalleProceso::where('proceso_id', '=', $datos->id)->get(); 
         $sistema  = Configuracion::where('id', '=', 1)->firstOrFail();
 
@@ -554,13 +554,13 @@ class CompraController extends Controller
 
         $headers = array(
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=Pending purchases.csv",
+            "Content-Disposition" => "attachment; filename=Pending Transfers.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
         );
     
-        $reviews = Posproceso::where("tipo_proceso","=","Purchase")->where("status","=",1)->orderBy('created_at', 'desc')->get();
+        $reviews = Posproceso::where("tipo_proceso","=","Transfer")->where("status","=",1)->orderBy('created_at', 'desc')->get();
         $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
         $columns = array("#","Code","Registered by","Customers", "Subtotal (Tax free)", "Taxes", "Total (Tax included)","Discount"."(%)", "Discounted amount"." ($sistema->moneda)","PAID OUT"." ($sistema->moneda)","Quantity","Type of payment", "Date","Commentary");
     
@@ -611,13 +611,13 @@ class CompraController extends Controller
 
         $headers = array(
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=Purchases rejected.csv",
+            "Content-Disposition" => "attachment; filename=Transfers rejected.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
         );
     
-        $reviews = Posproceso::where("tipo_proceso","=","Purchase")->where("status","=",0)->orderBy('created_at', 'desc')->get();
+        $reviews = Posproceso::where("tipo_proceso","=","Transfer")->where("status","=",0)->orderBy('created_at', 'desc')->get();
         $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
         $columns = array("#","Code","Registered by","Customers", "Subtotal (Tax free)", "Taxes", "Total (Tax included)","Discount"."(%)", "Discounted amount"." ($sistema->moneda)","PAID OUT"." ($sistema->moneda)","Quantity","Type of payment", "Date","Commentary","Reason for rejection");
     
@@ -668,13 +668,13 @@ class CompraController extends Controller
 
         $headers = array(
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=Purchases Approved.csv",
+            "Content-Disposition" => "attachment; filename=Transfers Approved.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
         );
     
-        $reviews = Posproceso::where("tipo_proceso","=","Purchase")->where("status","=",2)->orderBy('created_at', 'desc')->get();
+        $reviews = Posproceso::where("tipo_proceso","=","Transfer")->where("status","=",2)->orderBy('created_at', 'desc')->get();
         $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
         $columns = array("#","Code","Registered by","Customers", "Subtotal (Tax free)", "Taxes", "Total (Tax included)","Discount"."(%)", "Discounted amount"." ($sistema->moneda)","PAID OUT"." ($sistema->moneda)","Quantity","Type of payment", "Date","Commentary");
 

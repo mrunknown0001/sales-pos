@@ -196,7 +196,7 @@
                                     <label for="descripcionProducto">@lang('idioma.product_descrip') (@lang('idioma.gral_opcional'))</label>
                                     <textarea name="descripcion" rows="10" class="form-control" placeholder="Descripción del producto">{{$datos->descripcion}}</textarea>
                                 </div>
-                                <a href="{{ url('/show_producto',$datos->id) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </a>
+                                <a href="{{ route('product.show',$datos->id) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </a>
                                 <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
                             </div>
                         </div>

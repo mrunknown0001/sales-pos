@@ -15,7 +15,7 @@
                         <h4 class="page-title">@lang('idioma.nav_dash')</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{url('/dash')}}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{route('dash')}}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.nav_dash')
@@ -30,19 +30,19 @@
             <div class="row">
 
                 <!--CLIENTES REGISTRADOS--> 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="card-box widget-box-two widget-two-brown">
                         <i class="fa fa-user widget-two-icon"></i>
                         <div class="wigdet-two-content">
-                            <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="@lang('idioma.dash_clientes_r')">@lang('idioma.nav_clientes')</p>
+                            <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="@lang('idioma.dash_clientes_r')">Customers</p>
                             <h2><span data-plugin="counterup">{{$clientes_existencia}} </span></h2>
-                            <p class="text-muted m-0">@lang('idioma.dash_clientes_r')</p>
+                            <p class="text-muted m-0">Registered Customers</p>
                         </div>
                     </div>
                 </div>
 
                 <!--PROVEEDORES REGISTRADOS--> 
-                <div class="col-lg-4 col-md-6">
+                {{-- <div class="col-lg-4 col-md-6">
                     <div class="card-box widget-box-two widget-two-danger">
                         <i class="fa fa-user widget-two-icon"></i>
                         <div class="wigdet-two-content">
@@ -51,16 +51,16 @@
                             <p class="text-muted m-0">@lang('idioma.dash_provee_r')</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!--USUARIOS-->                
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="card-box widget-box-two widget-two-primary">
                         <i class="fa fa-users widget-two-icon"></i>
                         <div class="wigdet-two-content">
-                            <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="@lang('idioma.dash_users_r')">@lang('idioma.dash_users_r')</p>
+                            <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="@lang('idioma.dash_users_r')">Users</p>
                             <h2><span data-plugin="counterup">{{$usuarios_existencia}}</span></h2>
-                            <p class="text-muted m-0">@lang('idioma.dash_users_r')</p>
+                            <p class="text-muted m-0">Registered Users</p>
                         </div>
                     </div>
                 </div><!-- end col -->
@@ -155,7 +155,7 @@
             <div class="row">
                 
                 <!--ULTIMAS COMPRAS-->
-                <div class="col-lg-6">
+                {{-- <div class="col-lg-6">
                     <div class="card-box">
                         <h4 class="header-title m-t-0 m-b-30">@lang('idioma.dash_ult_comp')</h4>
                         <div class="table-responsive">
@@ -188,13 +188,13 @@
                                 </tbody>
                             </table>
 
-                        </div> <!-- table-responsive -->
-                    </div> <!-- end card -->
-                </div>
+                        </div> 
+                    </div> 
+                </div> --}}
                 <!-- end col -->
 
                 <!--ULTIMAS VENTAS-->
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="card-box">
                         <h4 class="header-title m-t-0 m-b-30">@lang('idioma.dash_ult_vent')</h4>
                         <div class="table-responsive">

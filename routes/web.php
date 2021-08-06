@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dash', 'DashController@dash')->name('dash');
 
 	// CONFIGURACION
-	Route::prefix('configuracion')->group(function () {
+	Route::prefix('configuration')->group(function () {
 
 	    // ROLES
 	    Route::get('/roles', 'RolController@index')->name('roles');
@@ -67,8 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 		});
 
 	    // Users
-	    Route::get('/usuario', 'UsuarioController@index')->name('users');
-    	Route::prefix('usuario')->group(function () {
+	    Route::get('/users', 'UsuarioController@index')->name('users');
+    	Route::prefix('users')->group(function () {
 			// crear
 			Route::get('/nuevo-usuario', 'UsuarioController@create')->name('user.new');
 			// guardar
@@ -87,8 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/status_inactivar/{id?}', 'UsuarioController@status_inactivar');
 		});
 
-	    // PERMISOS
-	    Route::get('/permisos', 'PermisoController@index');
+	    // PERMISSION
+	    Route::get('/permissions', 'PermisoController@index')->name('permissions');
 	    Route::prefix('permiso')->group(function () {
 			// ver
 			Route::get('/show_permiso/{id}', 'PermisoController@show');
@@ -96,8 +96,8 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::post('/show_permiso/{id}', 'PermisoController@update');
 		});
 
-	    // TRIBUTOS
-	    Route::get('/tributos', 'TributoController@index');
+	    // TAXES
+	    Route::get('/taxes', 'TributoController@index')->name('taxes');
 	    Route::prefix('tributo')->group(function () {
 			// crear
 			Route::get('/nuevo-tributo', 'TributoController@create')->name('tax.new');
@@ -114,53 +114,53 @@ Route::group(['middleware' => 'auth'], function () {
 		});
 
 
-	    // SISTEMA
-	    Route::get('/configuracion', 'ConfiguracionController@edit')->name('config.edit');
-	    Route::post('/configuracion', 'ConfiguracionController@update')->name('config.post.update');
+	    // SYSTEM
+	    Route::get('/configuration', 'ConfiguracionController@edit')->name('config.edit');
+	    Route::post('/configuration', 'ConfiguracionController@update')->name('config.post.update');
 
 
 	});
 
 
 	//========================CATEGORIES MODULE=========================//
-	Route::get('/categorias', 'CategoriaController@index')->name('categories');
-	Route::get('/nueva-categoria', 'CategoriaController@create')->name('category.new');
+	Route::get('/categories', 'CategoriaController@index')->name('categories');
+	Route::get('/category/new', 'CategoriaController@create')->name('category.new');
 	Route::post('/nueva-categoria', 'CategoriaController@store')->name('category.post.new');
-	Route::get('/show_categoria/{id?}', 'CategoriaController@show')->name('category.show');
-	Route::get('/editar_categoria/{id?}', 'CategoriaController@edit')->name('category.edit');
-	Route::post('/editar_categoria/{id?}', 'CategoriaController@update')->name('category.post.update');
-	Route::get('/borrar_categoria/{id?}', 'CategoriaController@destroy')->name('category.destroy');
+	Route::get('/category/show/{id?}', 'CategoriaController@show')->name('category.show');
+	Route::get('/category/edit/{id?}', 'CategoriaController@edit')->name('category.edit');
+	Route::post('/category/edit/{id?}', 'CategoriaController@update')->name('category.post.update');
+	Route::get('/category/destroy/{id?}', 'CategoriaController@destroy')->name('category.destroy');
 
 
 
 	//========================SUB-CATEGORY MODULES=========================//
-	Route::get('/subcategorias', 'SubCategoriaController@index')->name('subcat');
-	Route::get('/nueva-subcategoria', 'SubCategoriaController@create')->name('subcat.new');
-	Route::post('/nueva-subcategoria', 'SubCategoriaController@store')->name('subcat.post.new');
-	Route::get('/show_subcategoria/{id?}', 'SubCategoriaController@show')->name('subcat.show');
-	Route::get('/editar_subcategoria/{id?}', 'SubCategoriaController@edit')->name('subcat.edit');
-	Route::post('/editar_subcategoria/{id?}', 'SubCategoriaController@update')->name('subcat.post.update');
-	Route::get('/borrar_subcategoria/{id?}', 'SubCategoriaController@destroy')->name('subcat.destroy');
+	Route::get('/sub-categories', 'SubCategoriaController@index')->name('subcat');
+	Route::get('/sub-category/new', 'SubCategoriaController@create')->name('subcat.new');
+	Route::post('/sub-category/new', 'SubCategoriaController@store')->name('subcat.post.new');
+	Route::get('/sub-category/show/{id?}', 'SubCategoriaController@show')->name('subcat.show');
+	Route::get('/sub-category/edit/{id?}', 'SubCategoriaController@edit')->name('subcat.edit');
+	Route::post('/sub-category/edit//{id?}', 'SubCategoriaController@update')->name('subcat.post.update');
+	Route::get('/sub-category/destroy/{id?}', 'SubCategoriaController@destroy')->name('subcat.destroy');
 
 
 	//========================SALES MODULE=========================//
-	Route::get('/ventas_pendientes', 'VentaController@index_pendientes')->name('sales.pending');
-	Route::get('/ventas_rechazadas', 'VentaController@index_rechazadas')->name('sales.reject');
-	Route::get('/ventas_aprobadas', 'VentaController@index_aprobadas')->name('sales.approved');
-	Route::post('/aprobar_venta', 'VentaController@update_aprobar_status')->name('sales.post.aprprove');
-	Route::post('/rechazar_venta', 'VentaController@update_rechazar_status')->name('sales.post.reject');
+	Route::get('/sales/pending', 'VentaController@index_pendientes')->name('sales.pending');
+	Route::get('/sales/reject', 'VentaController@index_rechazadas')->name('sales.reject');
+	Route::get('/sales/approved', 'VentaController@index_aprobadas')->name('sales.approved');
+	Route::post('/sales/approved', 'VentaController@update_aprobar_status')->name('sales.post.aprprove');
+	Route::post('/sales/reject', 'VentaController@update_rechazar_status')->name('sales.post.reject');
 	Route::get('/sales', 'VentaController@create')->name('sales');
 
 	//========================PRODUCT MODULES=========================//
 	Route::get('/products', 'ProductoController@index')->name('products');
-	Route::get('/nuevo-producto', 'ProductoController@create')->name('product.new');
-	Route::post('/nuevo-producto', 'ProductoController@store')->name('product.post.new');
-	Route::get('/show_producto/{id?}', 'ProductoController@show')->name('product.show');
-	Route::get('/editar_producto/{id?}', 'ProductoController@edit')->name('product.edit');
-	Route::post('/editar_producto/{id?}', 'ProductoController@update')->name('product.post.update');
-	Route::get('/borrar_producto/{id?}', 'ProductoController@destroy')->name('product.destroy');
-	Route::post('/cargar_subcategoria', 'ProductoController@cargar_subcategoria')->name('product.category.load');//REGISTRAR PRODUCTO
-	Route::post('/cargar_subcategoria2', 'ProductoController@cargar_subcategoria2')->name('product.subcat.load');//EDITAR 
+	Route::get('/product/new', 'ProductoController@create')->name('product.new');
+	Route::post('/product/new', 'ProductoController@store')->name('product.post.new');
+	Route::get('/product/show/{id?}', 'ProductoController@show')->name('product.show');
+	Route::get('/product/edit/{id?}', 'ProductoController@edit')->name('product.edit');
+	Route::post('/product/edit/{id?}', 'ProductoController@update')->name('product.post.update');
+	Route::get('/product/destroy/{id?}', 'ProductoController@destroy')->name('product.destroy');
+	Route::post('/cargar_subcategoria', 'ProductoController@cargar_subcategoria')->name('product.subcat.load');//REGISTRAR PRODUCTO
+	Route::post('/cargar_subcategoria2', 'ProductoController@cargar_subcategoria2')->name('product.subcat.load2');//EDITAR 
 
 	//========================KARDEX===========================//
 	Route::get('/kardex', 'KardexController@index')->name('kardex');
@@ -169,28 +169,28 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/compras_pendientes', 'CompraController@index_pendientes');
 	Route::get('/compras_rechazadas', 'CompraController@index_rechazadas');
 	Route::get('/compras_aprobadas', 'CompraController@index_aprobadas');
-	Route::get('/purchase', 'CompraController@create')->name('purchase');
+	Route::get('/transfer', 'CompraController@create')->name('purchase');
 	Route::post('/aprobar_compra', 'CompraController@update_aprobar_status');
 	Route::post('/rechazar_compra', 'CompraController@update_rechazar_status');
 
 
 	//========================CLIENT MODULES=========================//
-	Route::get('/clientes', 'ClienteController@index')->name('clients');
-	Route::get('/nuevo-cliente', 'ClienteController@create')->name('client.new');
-	Route::post('/nuevo-cliente', 'ClienteController@store')->name('client.post.new');
-	Route::get('/show_cliente/{id?}', 'ClienteController@show')->name('client.show');
-	Route::get('/editar_cliente/{id?}', 'ClienteController@edit')->name('client.edit');
-	Route::post('/editar_cliente/{id?}', 'ClienteController@update')->name('client.post.edit');
-	Route::get('/borrar_cliente/{id?}', 'ClienteController@destroy')->name('client.destroy');
+	Route::get('/clients', 'ClienteController@index')->name('clients');
+	Route::get('/client/new', 'ClienteController@create')->name('client.new');
+	Route::post('/client/new', 'ClienteController@store')->name('client.post.new');
+	Route::get('/client/show/{id?}', 'ClienteController@show')->name('client.show');
+	Route::get('/client/edit/{id?}', 'ClienteController@edit')->name('client.edit');
+	Route::post('/client/edit/{id?}', 'ClienteController@update')->name('client.post.edit');
+	Route::get('/client/destroy/{id?}', 'ClienteController@destroy')->name('client.destroy');
 
 	//=========================PROVIDERS MODULE========================//
 	Route::get('/proveedores', 'ProveedorController@index')->name('providers');
 	Route::get('/nuevo-proveedor', 'ProveedorController@create')->name('provider.new');
 	Route::post('/nuevo-proveedor', 'ProveedorController@store')->name('provider.post.new');
-	Route::get('/show_proveedor/{id?}', 'ProveedorController@show')->middleware('auth');
-	Route::get('/editar_proveedor/{id?}', 'ProveedorController@edit')->middleware('auth');
-	Route::post('/editar_proveedor/{id?}', 'ProveedorController@update')->middleware('auth');
-	Route::get('/borrar_proveedor/{id?}', 'ProveedorController@destroy')->middleware('auth');
+	Route::get('/show_proveedor/{id?}', 'ProveedorController@show');
+	Route::get('/editar_proveedor/{id?}', 'ProveedorController@edit');
+	Route::post('/editar_proveedor/{id?}', 'ProveedorController@update');
+	Route::get('/borrar_proveedor/{id?}', 'ProveedorController@destroy');
 
 });
 
@@ -198,13 +198,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 //========================MODULO:GASTOS=========================//
-Route::get('/gastos', 'GastoController@index')->middleware('auth');
-Route::get('/nuevo-gasto', 'GastoController@create')->middleware('auth');
-Route::post('/nuevo-gasto', 'GastoController@store')->middleware('auth');
-Route::get('/show_gasto/{id?}', 'GastoController@show')->middleware('auth');
-Route::get('/borrar_gasto/{id?}', 'GastoController@destroy')->middleware('auth');
-Route::get('/editar_gasto/{id?}', 'GastoController@edit')->middleware('auth');
-Route::post('/editar_gasto/{id?}', 'GastoController@update')->middleware('auth');
+// Route::get('/gastos', 'GastoController@index')->middleware('auth');
+// Route::get('/nuevo-gasto', 'GastoController@create')->middleware('auth');
+// Route::post('/nuevo-gasto', 'GastoController@store')->middleware('auth');
+// Route::get('/show_gasto/{id?}', 'GastoController@show')->middleware('auth');
+// Route::get('/borrar_gasto/{id?}', 'GastoController@destroy')->middleware('auth');
+// Route::get('/editar_gasto/{id?}', 'GastoController@edit')->middleware('auth');
+// Route::post('/editar_gasto/{id?}', 'GastoController@update')->middleware('auth');
 
 
 
@@ -234,9 +234,9 @@ Route::get('/compra_procesar_compra', 'CompraController@pos_procesar')->middlewa
 Route::get('/compra_vaciar_lista_principal', 'CompraController@pos_vaciar_lista_principal')->middleware('auth');
 
 //========================IMPRESIONES PDF=========================//
-Route::get('/pdf_prductos', 'ProductoController@pdf')->middleware('auth');
-Route::get('/csv_un_prducto/{id?}', 'ProductoController@un_producto_pdf')->middleware('auth');
-Route::get('/pdf_clientes', 'ClienteController@pdf')->middleware('auth');
+Route::get('/pdf_products', 'ProductoController@pdf')->middleware('auth')->name('products.pdf');
+Route::get('/pdf_product/{id?}', 'ProductoController@un_producto_pdf')->middleware('auth')->name('product.pdf');
+Route::get('/pdf_clients', 'ClienteController@pdf')->middleware('auth')->name('clients.pdf');
 Route::get('/pdf_proveedores', 'ProveedorController@pdf')->middleware('auth');
 Route::get('/pdf_usuarios', 'UsuarioController@pdf')->middleware('auth');
 Route::get('/pdf_compras', 'CompraController@pdf')->middleware('auth');
@@ -246,13 +246,13 @@ Route::get('/pdf_ventas_aprobadas', 'VentaController@pdf_aprobadas')->middleware
 Route::get('/pdf_compras_rechazadas', 'CompraController@pdf_rechazadas')->middleware('auth');
 Route::get('/pdf_compras_pendientes', 'CompraController@pdf_pendientes')->middleware('auth');
 Route::get('/pdf_compras_aprobadas', 'CompraController@pdf_aprobadas')->middleware('auth');
-Route::get('/pdf_ventas_factura/{id?}', 'VentaController@pdf_factura')->middleware('auth');
+Route::get('/pdf_sales_download/{id?}', 'VentaController@pdf_factura')->middleware('auth')->name('sales.pdf.download');
 Route::get('/pdf_compras_factura/{id?}', 'CompraController@pdf_factura')->middleware('auth');
 Route::get('/pdf_gastos', 'GastoController@pdf')->middleware('auth');
 Route::get('/pdf_kardex', 'KardexController@pdf')->middleware('auth');
 
 //========================IMPRESIONES CSV=========================//
-Route::get('/csv_prductos', 'ProductoController@csv')->middleware('auth');
+Route::get('/csv_prducts', 'ProductoController@csv')->middleware('auth')->name('products.csv');
 Route::get('/csv_ventas_pendientes', 'VentaController@csv_pendientes')->middleware('auth');
 Route::get('/csv_ventas_rechazadas', 'VentaController@csv_rechazadas')->middleware('auth');
 Route::get('/csv_ventas_aprobadas', 'VentaController@csv_aprobadas')->middleware('auth');
@@ -262,11 +262,14 @@ Route::get('/csv_compras_aprobadas', 'CompraController@csv_aprobadas')->middlewa
 Route::get('/csv_compras', 'CompraController@csv')->middleware('auth');
 Route::get('/csv_gastos', 'GastoController@csv')->middleware('auth');
 Route::get('/csv_kardex', 'KardexController@csv')->middleware('auth');
-Route::get('/csv_clientes', 'ClienteController@csv')->middleware('auth');
+Route::get('/csv_clients', 'ClienteController@csv')->middleware('auth')->name('clients.csv');
 Route::get('/csv_proveedores', 'ProveedorController@csv')->middleware('auth');
 
 //========================REPORTES DE VENTAS=========================//
-Route::post('/modal_reporte_ventas_filtrar', 'ReporteController@modal_reporte_ventas_filtrar')->middleware('auth');
+Route::post('/sales-report-filter', 'ReporteController@modal_reporte_ventas_filtrar')->middleware('auth')->name('sales.report.filter');
+Route::get('/sales-report-filter', function () {
+	return redirect()->route('dash');
+});
 Route::get('/pdf_reporte_ventas/{desde?}/{hasta?}/{status?}', 'ReporteController@pdf_reporte_ventas')->middleware('auth');
 Route::get('/csv_reporte_ventas/{desde?}/{hasta?}/{status?}', 'ReporteController@csv_reporte_ventas')->middleware('auth');
 Route::get('/csv_reporte_compras/{desde?}/{hasta?}/{status?}', 'ReporteController@csv_reporte_compras')->middleware('auth');

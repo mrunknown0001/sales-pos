@@ -22,7 +22,7 @@
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/subcategorias') }}">@lang('idioma.subcateg_titulo')</a>
+                                <a href="{{ route('subcat') }}">@lang('idioma.subcateg_titulo')</a>
                             </li>
                             <li class="active">
                               @lang('idioma.gral_viendo'): {{ $datos->nombre }}
@@ -57,15 +57,15 @@
                                     <label for="nombreSubCategoria">@lang('idioma.gral_nombre')</label>
                                     <input type="text" value="{{ $datos->nombre }}" class="form-control" readonly></input>
                                 </div>
-                                <a href="{{ url('/subcategorias') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                <a href="{{ route('subcat') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
                                 @if(Session::get("rol_id"))
                                     @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->subcatego_e == 1)
-                                        <a href="{{ url('/editar_subcategoria',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                        <a href="{{ route('subcat.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
                                     @endif
 
                                     @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->subcatego_b == 1)
-                                        <a href="{{ url('/borrar_subcategoria',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                        <a href="{{ route('subcat.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
                                     @endif
                                 @endif
                             </div>

@@ -159,7 +159,7 @@ class DatabaseSeeder extends Seeder
             'id'        => 1,
             'nombre'    => "1",
             // 'tipo'      => "PORCENTAJE",
-            'tipo'      => "PORCENTAJE",
+            'tipo'      => "Percentage",
             'monto'     => "12",
         ]);
 

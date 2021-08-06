@@ -17,10 +17,10 @@
                         <h4 class="page-title">@lang('idioma.gral_actuali'): <i> {{ $datos->cedula }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/clientes') }}">@lang('idioma.nav_clientes')</a>
+                                <a href="{{ route('clients') }}">@lang('idioma.nav_clientes')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_actuali') {{ $datos->cedula }}
@@ -99,7 +99,7 @@
                                        </div>
 			                        </div>
 			                      <div class="box-footer">
-			                        <a href="{{ url('/show_cliente',$datos->id) }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+			                        <a href="{{ route('client.show',$datos->id) }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 			                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
 			                      </div>
 			                    </form>

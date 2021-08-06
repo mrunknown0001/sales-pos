@@ -1,5 +1,5 @@
 @extends('Back.master')
-@section('title',  __('idioma.compra_pendi_titu'))
+@section('title',  'Pending Transfer')
 @section('active-compras', 'active subdrop')
 @section('active-compras-pendientes', 'active')
 @section('content')
@@ -12,13 +12,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">@lang('idioma.compra_pendi_titu')</h4>
+                        <h4 class="page-title">Pending Transfer</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
-                                @lang('idioma.compra_pendi_titu')
+                                Pending Transfer
                             </li>
                         </ol>
                         <div class="clearfix"></div>
@@ -37,7 +37,7 @@
                             <h3 class="box-title"><a href="{{url('/csv_compras_pendientes')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i>{{" CSV "}}</a></h3>
                         @endif
 
-                        <h4 class="m-t-0 header-title"><b>@lang('idioma.compra_pendi_list')</b></h4>
+                        <h4 class="m-t-0 header-title"><b>Pending Transfer List</b></h4>
                         <p class="text-muted font-13 m-b-30">
                             &nbsp;
                         </p>
@@ -50,9 +50,9 @@
                             <thead>
                             <tr>
                                 <th>{{"#"}}</th>
-                                <th>@lang('idioma.gral_codigo') @lang('idioma.gral_compra')</th>
-                                <th>@lang('idioma.gral_provee')</th>
-                                <th>{{"Total ".$sistema->moneda}}</th>
+                                <th>Code</th>
+                                <th>Supplier</th>
+                                {{-- <th>{{"Total ".$sistema->moneda}}</th> --}}
                                 <th>@lang('idioma.dash_fecha')</th>
                                 <th>@lang('idioma.gral_opcions')</th>
                             </tr>
@@ -65,7 +65,7 @@
                                    <td>{{++$key}}</td>
                                    <td class="fac_pendientes">{{ $d->codigo_proceso }}</td>
                                    <td>{{ $d->cliente->cedula }}</td>
-                                   <td>{{ number_format($d->total,2) }}</td>
+                                   {{-- <td>{{ number_format($d->total,2) }}</td> --}}
                                    <td>{{ $d->created_at }}</td>
                                    <td>
                                        <a title="@lang('idioma.gral_descargar')" href="{{url('/pdf_compras_factura',$d->id)}}" class="btn btn-primary"><i class="fa fa-file"></i></a>

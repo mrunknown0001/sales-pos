@@ -15,6 +15,9 @@ use App\Categoria;
 use App\Gasto;
 use Barryvdh\DomPDF\Facade as PDF;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SalesReportExcelReport;
+
 class ReporteController extends Controller
 {
 
@@ -99,7 +102,7 @@ class ReporteController extends Controller
 
 
                  //Calculo de impuestos
-                 if($dt->tributo->tipo == "PORCENTAJE"){
+                 if($dt->tributo->tipo == "Percentage"){
 
                     $subtotal_por_item = $cantidad_precio * ($dt->tributo->monto/100);
                     $total_impuestos  += $subtotal_por_item;
@@ -183,7 +186,7 @@ class ReporteController extends Controller
                  $total_bruto += $cantidad_precio;
 
                  //Calculo de impuestos
-                 if($dt->tributo->tipo == "PORCENTAJE"){
+                 if($dt->tributo->tipo == "Percentage"){
 
                     $subtotal_por_item = $cantidad_precio * ($dt->tributo->monto/100);
                     $total_impuestos  += $subtotal_por_item;
@@ -201,7 +204,7 @@ class ReporteController extends Controller
 
         $pdf = PDF::loadView('Back.reporte.ventas.pdf_reporte_venta', compact('sistema','datos','gran_total','total_impuestos','registros_total','desde','hasta','total_sd', 'total_descuentos', 'str_status', 'total_bruto'));
         
-        return $pdf->download('sell_report_'.$desde.'_to_'.$hasta.'.pdf');
+        return $pdf->download('Sales Report '.$desde.' - '.$hasta.'.pdf');
         
     }
 
@@ -253,6 +256,10 @@ class ReporteController extends Controller
         $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
         $columns = array("#","Code","Registered by","Customer", "Subtotal (tax free)", "Taxes", "Total (with tax)","Discount (%)", "Discounted amount","NET TO PAY","Products", "Type of payment", "Date", "Status", "Commentary");
     
+        // return $reviews;
+        $export = new SalesReportExcelReport($reviews->all());
+        return Excel::download($export, 'Sales Report ' . $desde . '-' . $hasta . '.xlsx');
+
         $callback = function() use ($reviews, $columns)
         {
             $file = fopen('php://output', 'w');
@@ -305,6 +312,14 @@ class ReporteController extends Controller
         };
         return Response::stream($callback, 200, $headers);
 
+    }
+
+
+
+
+    public function export(Excel $excel, SalesReportExcelReport $report)
+    {
+        return $excel->download($report, 'Sales-Report.xlxs');
     }
 
 
@@ -392,7 +407,7 @@ class ReporteController extends Controller
                  $total_bruto += $cantidad_precio;
 
                  //Calculo de impuestos
-                 if($dt->tributo->tipo == "PORCENTAJE"){
+                 if($dt->tributo->tipo == "Percentage"){
 
                     $subtotal_por_item = $cantidad_precio * ($dt->tributo->monto/100);
                     $total_impuestos  += $subtotal_por_item;
@@ -475,7 +490,7 @@ class ReporteController extends Controller
                  $total_bruto += $cantidad_precio;
 
                  //Calculo de impuestos
-                 if($dt->tributo->tipo == "PORCENTAJE"){
+                 if($dt->tributo->tipo == "Percentage"){
 
                     $subtotal_por_item = $cantidad_precio * ($dt->tributo->monto/100);
                     $total_impuestos  += $subtotal_por_item;

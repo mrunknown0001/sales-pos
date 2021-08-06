@@ -231,7 +231,7 @@
                                         @endif
                                       </td>
                                   </tr> --}}
-                                  <tr>
+                                  {{-- <tr>
                                       <th scope="row">{{" KARDEX "}}</th>
                                       <td colspan="4">
                                         @if($permisos->kardex_i == 0)
@@ -242,7 +242,7 @@
                                           <label for="switch17" data-on-label="@lang('idioma.gral_yes')" data-off-label="@lang('idioma.gral_no')"></label>
                                         @endif
                                       </td>
-                                  </tr>
+                                  </tr> --}}
                                   <tr>
                                       <th scope="row">@lang('idioma.perm_fil_ven')</th>
                                       <td>
@@ -264,7 +264,7 @@
                                         @endif
                                       </td>
                                   </tr>
-                                  <tr>
+                                  {{-- <tr>
                                       <th scope="row">@lang('idioma.perm_fil_com')</th>
                                       <td>
                                         @if($permisos->compra_i == 0)
@@ -284,7 +284,7 @@
                                             <label for="switch21" data-on-label="@lang('idioma.gral_yes')" data-off-label="@lang('idioma.gral_no')"></label>
                                           @endif
                                       </td>
-                                  </tr>
+                                  </tr> --}}
                                   <tr>
                                       <th scope="row">@lang('idioma.perm_fil_per')</th>
                                       <td colspan="3">

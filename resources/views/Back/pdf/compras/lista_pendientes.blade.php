@@ -58,19 +58,20 @@ tbody td {
 </style>
 
 <!--Titulo-->
-<div class="titulo"><h3>@lang('idioma.compra_pendi_list')</h3></div>
+<div class="titulo"><h3>Pending Transfer List</h3></div>
 <table>
   <thead>
     <tr>
-        <th>Cod.</th>
-        <th>@lang('idioma.gral_cliente')</th>
-        <th>@lang('idioma.gral_br_cant')</th>
-        <th>Subt.</small></th>
-        <th>@lang('idioma.gral_abr_imp')</small></th>
-        <th>Total</th>
-        <th>@lang('idioma.gral_abr_cant') ({{"%"}})</th>
-        <th>@lang('idioma.gral_a_pagar') ({{$sistema->moneda}})</th>
-        <th>@lang('idioma.dash_fecha')</th>
+        <th>Code</th>
+        {{-- <th>@lang('idioma.gral_cliente')</th> --}}
+        <th>Supplier</th>
+        <th>Qty.</th>
+        {{-- <th>Subt.</small></th> --}}
+        {{-- <th>@lang('idioma.gral_abr_imp')</small></th> --}}
+        {{-- <th>Total</th> --}}
+        {{-- <th>@lang('idioma.gral_abr_cant') ({{"%"}})</th> --}}
+        {{-- <th>@lang('idioma.gral_a_pagar') ({{$sistema->moneda}})</th> --}}
+        <th>Date</th>
     </tr>                            
   </thead>
   <tbody>
@@ -108,11 +109,11 @@ tbody td {
             <td><b>{{ $d->codigo_proceso }}</b></td>
             <td><b>{{ $d->cliente->cedula }}</b></td>
             <td>{{ $d->items_totales }}</td>
-            <td>{{ number_format($total_sin_impuestos,2) }}</td>
-            <td>{{ number_format($total_impuesto,2) }}</td>
-            <td>{{ number_format($d->subtotal,2) }}</td>
-            <td>{{ $d->descuento }}</td>
-            <td>{{ number_format($d->total,2) }}</td>
+            {{-- <td>{{ number_format($total_sin_impuestos,2) }}</td> --}}
+            {{-- <td>{{ number_format($total_impuesto,2) }}</td> --}}
+            {{-- <td>{{ number_format($d->subtotal,2) }}</td> --}}
+            {{-- <td>{{ $d->descuento }}</td> --}}
+            {{-- <td>{{ number_format($d->total,2) }}</td> --}}
             <td>{{ date('Y-m-d', strtotime($d->created_at)) }}</td>
         </tr>
         @endforeach

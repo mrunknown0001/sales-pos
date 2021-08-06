@@ -15,10 +15,10 @@
                         <h4 class="page-title">@lang('idioma.rep_ven_tit') </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/clientes') }}">@lang('idioma.rep_ven_tit')</a>
+                                <a href="{{ route('clients') }}">@lang('idioma.rep_ven_tit')</a>
                             </li>
                         <div class="clearfix"></div>
                     </div>
@@ -55,7 +55,7 @@
                                     </td>
                                     
                                     <td>
-                                       @lang('idioma.rep_ven_cliente')
+                                       Customer
                                     </td>
 
                                     <td>
@@ -89,7 +89,7 @@
                                             </td>
 
                                             <td>
-                                                {{$d->cliente->cedula}}
+                                                {{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}
                                             </td>
 
                                             <td>

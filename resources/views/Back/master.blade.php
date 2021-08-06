@@ -4,7 +4,7 @@ $permisos     = \DB::table('permisos')->where('rol_id', Session::get("rol_id"))-
 $img_usuario  = \DB::table('users')->where('id', Session::get("usuario_id"))->first();//IMAGEN DE USUARIO
 $sistema      = \DB::table('configuracion')->where('id', 1)->first();//CONFIGURACION DEL SISTEMA
 $u_pendientes = \DB::table('users')->where('status', 2)->count();//CANTIDAD DE USUARIOS PENDIENTES
-$f_c_pen =      \DB::table('posprocesos')->where('status', 1)->where('tipo_proceso', 'Purchase')->count();//C.PENDIENTES
+// $f_c_pen =      \DB::table('posprocesos')->where('status', 1)->where('tipo_proceso', 'Transfer')->count();
 $f_v_pen =      \DB::table('posprocesos')->where('status', 1)->where('tipo_proceso', 'Sales')->count();//C.PENDIENTES
 $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
 
@@ -170,8 +170,8 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
           $( function() {
             $( "#modal_reporte_venta_inicio, #modal_reporte_venta_final, #modal_reporte_compra_inicio, #modal_reporte_compra_final, #modal_reporte_gasto_inicio, #modal_reporte_gasto_final, #fecha_gasto" ).datepicker({
                 dateFormat: "yy-mm-dd",
-                dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+                // dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+                // monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
                 
 
             });

@@ -15,7 +15,7 @@
                         <h4 class="page-title">@lang('idioma.categ_titulo')</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.categ_titulo')
@@ -33,7 +33,7 @@
 
                         @if(Session::get("rol_id"))
                             @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->catego_r == 1)
-                                <h3 class="box-title"><a href="{{url ('/nueva-categoria')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nueva') </a></h3>
+                                <h3 class="box-title"><a href="{{ route('category.new')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nueva') </a></h3>
                             @endif
                         @endif
 
@@ -58,7 +58,7 @@
                             @foreach($datos as $key => $d)
                                 <tr>
                                    <td>{{++$key}}</td>
-                                   <td><a href="{{ url('/show_categoria', $d->id) }}">{{ $d->nombre }}</a></td>
+                                   <td><a href="{{ route('category.show', $d->id) }}">{{ $d->nombre }}</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -105,11 +105,11 @@
                             <td class="title">
                                  @if($sistema->logo != "")
                                       <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded="true">
-                                          <img src="{{ url('/storage/img_sistema/'.$sistema->logo) }}" alt="user-img" class="img-circle user-img" style="width:200px; height:150px;">
+                                          {{-- <img src="{{ url('/storage/img_sistema/'.$sistema->logo) }}" alt="user-img" class="img-circle user-img" style="width:200px; height:150px;"> --}}
                                       </a>
                                   @else
                                       <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded="true">
-                                          <img src="{{ url('/storage/img_sistema/default_logo.jpg') }}" alt="user-img" class="img-circle user-img">
+                                          {{-- <img src="{{ url('/storage/img_sistema/default_logo.jpg') }}" alt="user-img" class="img-circle user-img"> --}}
                                       </a>
                                   @endif
                             </td>

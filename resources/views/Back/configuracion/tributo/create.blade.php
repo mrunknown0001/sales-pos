@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label for="tipo">@lang('idioma.gral_tipo')</label>
                                         <select name="tipo" class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}">
-                                            <option value="PORCENTAJE">@lang('idioma.tax_porcen') (%)</option>
+                                            <option value="Percentage">Percentage (%)</option>
                                         </select>
                                       @if($errors->first('tipo'))
                                        <div class="alert alert-danger">{{ $errors->first('tipo') }}</div>

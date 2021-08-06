@@ -409,7 +409,8 @@ class VentaController extends Controller
         $comentario     = $request->get('comentario');
         $items_totales  = $request->get('items_totales');
         $regis_totales  = $request->get('regis_totales');
-        $status         = 1;// Pending
+        // $status         = 1;// Pending
+        $status         = 2;// Approvd
 
         try{
         

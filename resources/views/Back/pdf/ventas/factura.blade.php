@@ -147,7 +147,7 @@
                             
                             <td style="font-size: 9pt;">
                                 <label for=""><b>@lang('idioma.gral_info'):</b></label><br>
-                                @lang('idioma.gral_cliente'): {{ $datos->cliente->cedula }}<br>
+                                @lang('idioma.gral_cliente'): {{ \App\Http\Controllers\GeneralController::getClientName($datos->cliente->cedula) }}<br>
                                 @lang('idioma.gral_correo'): {{ $datos->cliente->correo }}<br>
                             </td>
                         </tr>
@@ -252,11 +252,11 @@
             <tr class="total">
                 @if($datos->comentario)
 
-                    <td style="width:260px;font-size: 9pt;"><br><strong>@lang('idioma.kx_comentario'):</strong> {{$datos->comentario}}</td>
+                    <td style="width:260px;font-size: 9pt;"><br><strong>Comment:</strong> {{$datos->comentario}}</td>
 
                 @else
 
-                    <td style="width:260px;font-size: 9pt;"><br><strong>@lang('idioma.kx_comentario'):</strong>Sin comentario</td>
+                    <td style="width:260px;font-size: 9pt;"><br><strong>Comment:</strong>N/A</td>
 
                 @endif
                 <td colspan="5">

@@ -60,8 +60,8 @@
                             @foreach($datos as $key => $d)
                                 <tr>
                                    <td>{{++$key}}</td>
-                                   <td><a href="{{ url('/show_subcategoria', $d->id) }}">{{ $d->nombre }}</a></td>
-                                    <td><a href="{{ url('/show_subcategoria', $d->id) }}">{{ $d->categoria->nombre }}</a></td>
+                                   <td><a href="{{ route('subcat.show', $d->id) }}">{{ $d->nombre }}</a></td>
+                                    <td><a href="{{ url('subcat.show', $d->id) }}">{{ $d->categoria->nombre }}</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

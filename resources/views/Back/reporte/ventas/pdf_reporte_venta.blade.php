@@ -121,11 +121,11 @@
                         <td class="title">
                              @if($sistema->logo)
                                   <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded="true">
-                                      <img src="{{ url('/storage/img_sistema/'.$sistema->imagen) }}" alt="user-img" class="img-circle user-img">
+                                      {{-- <img src="{{ url('/storage/img_sistema/'.$sistema->imagen) }}" alt="user-img" class="img-circle user-img"> --}}
                                   </a>
                               @else
                                   <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded="true">
-                                      <img src="{{ url('/storage/img_sistema/default_logo.jpg') }}" alt="user-img" class="img-circle user-img">
+                                      {{-- <img src="{{ url('/storage/img_sistema/default_logo.jpg') }}" alt="user-img" class="img-circle user-img"> --}}
                                   </a>
                               @endif
                         </td>
@@ -187,7 +187,7 @@
                 </td>
 
                 <td>
-                    {{$d->cliente->cedula}}
+                    {{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}
                 </td>
 
                 <td>

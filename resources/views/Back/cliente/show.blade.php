@@ -21,10 +21,10 @@
                         <h4 class="page-title">@lang('idioma.gral_op_par'): <i> {{ $datos->cedula }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/clientes') }}">@lang('idioma.nav_clientes')</a>
+                                <a href="{{ route('clients') }}">@lang('idioma.nav_clientes')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_viendo'):  {{ $datos->cedula }}
@@ -96,11 +96,11 @@
                                     <label for="direccionCliente">@lang('idioma.gral_direcci')</label>
                                     <textarea class="form-control" readonly>{{ $datos->direccion }}</textarea>
                                 </div>
-                                <a href="{{ url('/clientes') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                <a href="{{ route('clients') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
-                                <a href="{{ url('/editar_cliente',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                <a href="{{ route('client.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> Edit </button></a>
 
-                                <a href="{{ url('/borrar_cliente',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                <a href="{{ route('client.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete </button></a>
                             </div>
                         </div>
                     </div>

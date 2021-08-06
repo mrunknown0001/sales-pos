@@ -15,7 +15,7 @@
                         <h4 class="page-title">@lang('idioma.vent_aprob_titu')</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.vent_aprob_titu')
@@ -34,7 +34,7 @@
 
                         @if(Session::get("rol_id"))
                                 <h3 class="box-title"><a href="{{url('/pdf_ventas_aprobadas')}}" class="btn btn-danger pull-right"><i class="fa fa-file-pdf-o"></i>{{" PDF "}}</a></h3>
-                                <h3 class="box-title"><a href="{{url('/csv_ventas_aprobadas')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i>{{" CSV "}}</a></h3>
+                                {{-- <h3 class="box-title"><a href="{{url('/csv_ventas_aprobadas')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i>{{" CSV "}}</a></h3> --}}
                         @endif
 
                         <h4 class="m-t-0 header-title"><b>@lang('idioma.vent_aprob_list')</b></h4>
@@ -50,7 +50,7 @@
                             <thead>
                             <tr>
                                 <th>{{"#"}}</th>
-                                <th>{{"Cod"}}</th>
+                                <th>{{"Code"}}</th>
                                 <th>@lang('idioma.gral_cliente')</th>
                                 <th>{{"Total ".$sistema->moneda}}</th>
                                 <th>@lang('idioma.dash_fecha')</th>
@@ -64,11 +64,11 @@
                                 <tr>
                                    <td>{{++$key}}</td>
                                    <td class="fac_aprobadas">{{ $d->codigo_proceso }}</td>
-                                   <td>{{ $d->cliente->cedula }}</td>
+                                   <td>{{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}</td>
                                    <td>{{ number_format($d->total,2) }}</td>
                                    <td>{{ $d->created_at }}</td>
                                    <td>
-                                       <a title="@lang('idioma.gral_descargar')" href="{{url('/pdf_ventas_factura',$d->id)}}" class="btn btn-primary"><i class="fa fa-file"></i></a>
+                                       <a title="@lang('idioma.gral_descargar')" href="{{route('sales.pdf.download',$d->id)}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"></i></a>
                                        
                                     </td>
                                 </tr>

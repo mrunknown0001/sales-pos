@@ -37,7 +37,8 @@
 
                                 <div class="m-t-20 col-md-12 col-xs-12">
                                     <label for="cliente">Choose a Client</label>
-                                    <select class="form-control" id="cliente">
+                                    {{-- <select class="form-control" id="cliente"> --}}
+                                    <select class="selectpicker" name="cliente" id="cliente" data-show-subtext="true" data-live-search="true" required>
                                        @foreach($datos['clientes'] as $c)
 
                                             @if($c->empresa == "")
