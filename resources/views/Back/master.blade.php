@@ -35,11 +35,11 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
         <!--Jquery UI-->
         <link rel="stylesheet" href="{{ asset('/Back/assets/css/jquery-ui.css') }}">
         <!-- Plugins css-->
-        <link href="{{ asset('/Back/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/Back/assets/plugins/multiselect/css/multi-select.css') }}"  rel="stylesheet" type="text/css" />
-        <link href="{{ asset('/Back/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('/Back/assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/Back/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" />
+        {{-- <link href="{{ asset('/Back/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}" rel="stylesheet" /> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/multiselect/css/multi-select.css') }}"  rel="stylesheet" type="text/css" /> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" /> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" /> --}}
 
         <!-- App css -->
         <link href="{{ asset('/Back/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -53,20 +53,18 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
 
         <!-- DataTables -->
         <link href="{{ asset('/Back/assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('/Back/assets/plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css"/> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> --}}
+        {{-- <link href="{{ asset('/Back/assets/plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css"/> --}}
 
-        <script src="{{ asset('/Back/assets/js/modernizr.min.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/js/modernizr.min.js') }}"></script> --}}
 
-        <!--Estilos Custom-->
+        <!--Used in Sales Reports-->
         <link href="{{ asset('/Back/assets/css/estilos.css') }}" rel="stylesheet" type="text/css" />
-
-        <!--Estilos Factura y Reportes-->
         <link href="{{ asset('/Back/assets/css/estilos_factura.css') }}" rel="stylesheet" type="text/css" />
 
     </head>
@@ -90,21 +88,21 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
         <script src="{{ asset('/Back/assets/js/detect.js') }}"></script>
         <script src="{{ asset('/Back/assets/js/fastclick.js') }}"></script>
         <script src="{{ asset('/Back/assets/js/jquery.blockUI.js') }}"></script>
-        <script src="{{ asset('/Back/assets/js/waves.js') }}"></script>
-        <script src="{{ asset('/Back/assets/js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ asset('/Back/assets/js/jquery.scrollTo.min.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/js/waves.js') }}"></script> --}}
+        <script src="{{ asset('/Back/assets/js/jquery.slimscroll.js') }}"></script> {{-- Side menu Scroller --}}
+        {{-- <script src="{{ asset('/Back/assets/js/jquery.scrollTo.min.js') }}"></script> --}}
         <script src="{{ asset('/Back/assets/plugins/switchery/switchery.min.js') }}"></script>
 
         <!-- Counter js  -->
-        <script src=".{{ asset('/Back/assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
-        <script src=".{{ asset('/Back/assets/plugins/counterup/jquery.counterup.min.js') }}"></script>
+        {{-- <script src=".{{ asset('/Back/assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script> --}}
+        {{-- <script src=".{{ asset('/Back/assets/plugins/counterup/jquery.counterup.min.js') }}"></script> --}}
 
         <!--Morris Chart-->
-        <script src="{{ asset('/Back/assets/plugins/morris/morris.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/raphael/raphael-min.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/plugins/morris/morris.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/raphael/raphael-min.js') }}"></script> --}}
 
         <!-- Dashboard init -->
-        <script src="{{ asset('/Back/assets/pages/jquery.dashboard.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/pages/jquery.dashboard.js') }}"></script> --}}
 
         <!-- App js -->
         <script src="{{ asset('/Back/assets/js/jquery.core.js') }}"></script>
@@ -113,34 +111,34 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
         <script src="{{ asset('/Back/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
 
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/jszip.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/pdfmake.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/vfs_fonts.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/buttons.print.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.colVis.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.buttons.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/jszip.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/pdfmake.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/vfs_fonts.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/buttons.html5.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/buttons.print.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.responsive.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.scroller.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.colVis.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script> --}}
 
         <!--Plugins extras-->
 
-        <script src="{{ asset('/Back/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/multiselect/js/jquery.multi-select.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/jquery-quicksearch/jquery.quicksearch.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/select2/js/select2.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script>
-        <script src="{{ asset('/Back/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/multiselect/js/jquery.multi-select.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/jquery-quicksearch/jquery.quicksearch.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/select2/js/select2.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/bootstrap-select/js/bootstrap-select.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('/Back/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script> --}}
 
         <!-- init -->
-        <script src="{{ asset('/Back/assets/pages/jquery.datatables.init.js') }}"></script>
+        {{-- <script src="{{ asset('/Back/assets/pages/jquery.datatables.init.js') }}"></script> --}}
         
         <!--Datepicker-->
         <script type="text/javascript" src="{{ asset('/Back/assets/js/jquery-ui.js') }}"></script>
