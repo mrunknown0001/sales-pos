@@ -948,7 +948,7 @@
                                     var datos = d.split("|");
                                     
                                     //Simbolo del triburo
-                                    if(datos[7] == "PORCENTAJE"){
+                                    if(datos[7] == "Percentage"){
                                         simbolo = "%";
                                     }else{
                                         simbolo = "bsf";

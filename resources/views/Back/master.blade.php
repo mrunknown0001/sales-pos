@@ -50,7 +50,7 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
         <link href="{{ asset('/Back/assets/css/menu.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('/Back/assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="{{ asset('/Back/assets/plugins/switchery/switchery.min.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <!-- DataTables -->
         <link href="{{ asset('/Back/assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
         {{-- <link href="{{ asset('/Back/assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> --}}
