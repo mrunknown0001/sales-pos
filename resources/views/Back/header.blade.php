@@ -105,8 +105,8 @@
                 @endif
 
 
-                <li class="">
-                    <a href="{{ route('transfers') }}" class="waves-effect "><i class="fa fa-exchange"></i><span>Transfers<span></a>
+                <li class="@yield('active-transfer')">
+                    <a href="{{ route('transfers') }}" class="waves-effect @yield('active-transfer')"><i class="fa fa-exchange"></i><span>Transfers<span></a>
                 </li>
 
                 {{--GASTOS--}}

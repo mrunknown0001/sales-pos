@@ -216,6 +216,10 @@ Route::group(['middleware' => 'auth'], function () {
 	// TRANSFERS
 	Route::get('transfers', 'TransferController@index')->name('transfers');
 
+	// Transfer Received
+	Route::get('/transfer/receive', 'TransferController@receive')->name('transfer.receive');
+	Route::post('/transfer/receive', 'TransferController@store')->name('transfer.store');
+
 });
 
 

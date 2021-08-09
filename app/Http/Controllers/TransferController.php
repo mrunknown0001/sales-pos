@@ -6,6 +6,10 @@ use App\Transfer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Configuracion;
+use App\Producto;
+use App\Location;
+
 class TransferController extends Controller
 {
     /**
@@ -15,8 +19,22 @@ class TransferController extends Controller
      */
     public function index()
     {
-        //
+        $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
+        $datos = Transfer::all();
+        return view('Back.transfer.index', compact('datos', 'sistema'));
     }
+
+
+
+    // Receive
+    public function receive()
+    {
+        $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
+        $products = Producto::where('status', 1)->get();
+        $locations = Location::where('active', 1)->get();
+        return view('Back.transfer.receive', compact('sistema', 'products', 'locations'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +54,29 @@ class TransferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'reference_id' => 'required',
+            'location' => 'required',
+            'product' => 'required',
+            'quantity' => 'required',
+            'date' => 'required'
+        ]);
+
+        $transfer = new Transfer();
+        $transfer->reference_id = $request->reference_id;
+        $transfer->location_id = $request->location;
+        $transfer->product_id = $request->product;
+        $transfer->quantity = $request->quantity;
+        $transfer->date = date('Y-m-d', strtotime($request->date));
+        $transfer->remarks = $request->remarks;
+
+        $product = Producto::findorfail($request->product);
+        $product->cantidad += $request->quantity;
+        $product->save();
+
+        if($transfer->save()) {
+            return redirect()->back()->with('status', 'Transfer Successful');
+        }
     }
 
     /**
