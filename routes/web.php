@@ -195,13 +195,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	//========================CLIENT MODULES=========================//
-	Route::get('/clients', 'ClienteController@index')->name('clients');
-	Route::get('/client/new', 'ClienteController@create')->name('client.new');
-	Route::post('/client/new', 'ClienteController@store')->name('client.post.new');
-	Route::get('/client/show/{id?}', 'ClienteController@show')->name('client.show');
-	Route::get('/client/edit/{id?}', 'ClienteController@edit')->name('client.edit');
-	Route::post('/client/edit/{id?}', 'ClienteController@update')->name('client.post.edit');
-	Route::get('/client/destroy/{id?}', 'ClienteController@destroy')->name('client.destroy');
+	Route::get('/customer', 'ClienteController@index')->name('clients');
+	Route::get('/customer/new', 'ClienteController@create')->name('client.new');
+	Route::post('/customer/new', 'ClienteController@store')->name('client.post.new');
+	Route::get('/customer/show/{id?}', 'ClienteController@show')->name('client.show');
+	Route::get('/customer/edit/{id?}', 'ClienteController@edit')->name('client.edit');
+	Route::post('/customer/edit/{id?}', 'ClienteController@update')->name('client.post.edit');
+	Route::get('/customer/destroy/{id?}', 'ClienteController@destroy')->name('client.destroy');
 
 	//=========================PROVIDERS MODULE========================//
 	// Route::get('/proveedores', 'ProveedorController@index')->name('providers');
