@@ -34,7 +34,7 @@
 
                         @if(Session::get("rol_id"))
                             @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->subcatego_r == 1)
-                                <h3 class="box-title"><a href="{{url ('/nueva-subcategoria')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nueva') </a></h3>
+                                <h3 class="box-title"><a href="{{route('subcat.new')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nueva') </a></h3>
                             @endif
                         @endif
 
@@ -61,7 +61,7 @@
                                 <tr>
                                    <td>{{++$key}}</td>
                                    <td><a href="{{ route('subcat.show', $d->id) }}">{{ $d->nombre }}</a></td>
-                                    <td><a href="{{ url('subcat.show', $d->id) }}">{{ $d->categoria->nombre }}</a></td>
+                                    <td><a href="{{ route('subcat.show', $d->id) }}">{{ $d->categoria->nombre }}</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

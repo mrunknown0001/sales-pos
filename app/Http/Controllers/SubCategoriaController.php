@@ -63,7 +63,7 @@ class SubCategoriaController extends Controller
 
         $datos->save();
 
-        return redirect('/subcategorias')->with('status', __('idioma.alert_registro'));
+        return redirect()->back()->with('status', __('idioma.alert_registro'));
     }
 
     /**
@@ -137,7 +137,7 @@ class SubCategoriaController extends Controller
             $datos = SubCategoria::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect('/subcategorias')->with('status',  __('idioma.alert_borrar'));
+            return redirect()->route('subcat')->with('status',  __('idioma.alert_borrar'));
 
         }
     }

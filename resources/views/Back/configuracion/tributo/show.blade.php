@@ -19,10 +19,10 @@
                         <h4 class="page-title">@lang('idioma.gral_op_par'): <i> {{ $datos->nombre }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/tributos') }}">@lang('idioma.nav_sys_tribu')</a>
+                                <a href="{{ route('taxes') }}">@lang('idioma.nav_sys_tribu')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_op_par'): {{$datos->nombre }}
@@ -66,11 +66,11 @@
                                     <input type="text" value="{{ $datos->monto }}" class="form-control" readonly>
                                 </div>
 
-                                <a href="{{ url('/configuracion/tributos') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                <a href="{{ route('taxes') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
-                                <a href="{{ url('/configuracion/tributo/editar-tributo',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                <a href="{{ route('tax.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
 
-                                <a href="{{ url('/configuracion/tributo/destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                <a href="{{ route('tax.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
                                 
                             </div>
                         </div>

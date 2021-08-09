@@ -80,7 +80,7 @@ class ClienteController extends Controller {
 
         $datos->save();
 
-        return redirect('/clientes')->with('status', __('idioma.alert_registro'));
+        return redirect()->back()->with('status', __('idioma.alert_registro'));
     }
 
     /**
@@ -165,7 +165,7 @@ class ClienteController extends Controller {
             $datos = Cliente::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect("/clientes")->with('status', __('idioma.alert_borrar'));
+            return redirect()->back()->with('status', __('idioma.alert_borrar'));
 
         }
     }

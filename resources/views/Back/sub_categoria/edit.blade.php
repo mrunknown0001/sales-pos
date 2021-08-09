@@ -37,7 +37,8 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                               <form class="form-horizontal" method="POST">
+                               <form action="{{ route('category.post.update', ['id' => 
+                               $datos->id]) }}" class="form-horizontal" method="POST" autocomplete="off">
 			                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 			                        <div class="box-body">
                                         <div class="form-group">
@@ -68,7 +69,7 @@
 			                        </div>
 			                      <div class="box-footer">
 			                        <a href="{!! action('SubCategoriaController@show', $datos->id) !!}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> Cancel </button></a>
-			                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> Delete </button>
+			                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> Save </button>
 			                      </div>
 			                    </form>
                             </div>

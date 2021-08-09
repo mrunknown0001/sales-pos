@@ -18,10 +18,10 @@
                         <h4 class="page-title">@lang('idioma.gral_nuevo')</i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/configuracion/tributos') }}">@lang('idioma.nav_sys_tribu')</a>
+                                <a href="{{ route('taxes') }}">@lang('idioma.nav_sys_tribu')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_nuevo')
@@ -72,7 +72,7 @@
                                        <div class="alert alert-danger">{{ $errors->first('monto') }}</div>
                                       @endif
                                     </div>
-                                     <a href="{{ url('/configuracion/tributos') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                     <a href="{{ route('taxes') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
                                     <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
                                 </form>
                             </div>

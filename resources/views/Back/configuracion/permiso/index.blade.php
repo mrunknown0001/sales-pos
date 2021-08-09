@@ -14,7 +14,7 @@
                         <h4 class="page-title">@lang('idioma.perm_titulo')</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                              <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                              <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
                               @lang('idioma.nav_sys_per')
@@ -50,8 +50,8 @@
 	                            @foreach($permisos as $key => $p)
 
                                 <tr>
-                                  <td><a href="{{url('/configuracion/permiso/show_permiso',$p->id)}}">{{ ++$key }}</a></td>
-                                  <td><a href="{{url('/configuracion/permiso/show_permiso',$p->id)}}">{{ $p->rol->nombre }}</a></td>
+                                  <td><a href="{{ route('permission.show',$p->id)}}">{{ ++$key }}</a></td>
+                                  <td><a href="{{ route('permission.show',$p->id)}}">{{ $p->rol->nombre }}</a></td>
                                 </tr>
 
                               @endforeach

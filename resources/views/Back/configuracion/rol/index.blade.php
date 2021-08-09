@@ -15,7 +15,7 @@
                         <h4 class="page-title">@lang('idioma.nav_sys_roles')</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.nav_sys_roles')
@@ -33,7 +33,7 @@
                     <div class="card-box table-responsive">
 
                         @if(Session::get("rol_id"))
-                            <h3 class="box-title"><a href="{{url ('configuracion/roles/nuevo-rol')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nuevo') </a></h3>
+                            <h3 class="box-title"><a href="{{ route('role.new') }}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nuevo') </a></h3>
                         @endif
 
                         <h4 class="m-t-0 header-title"><b>@lang('idioma.rol_list')</b></h4>
@@ -58,7 +58,7 @@
                             @foreach($rols as $key => $rol)
                                 <tr>
                                    <td>{{++$key}}</td>
-                                   <td><a href="{!! action('RolController@show', $rol->id) !!}">{{ $rol->nombre }}</a></td>
+                                   <td><a href="{{ route('role.show', $rol->id) }}">{{ $rol->nombre }}</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

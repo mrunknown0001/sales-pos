@@ -32,7 +32,7 @@
                     
                     <div class="card-box table-responsive">
 
-                        <h3 class="box-title"><a href="{{url ('configuracion/tributo/nuevo-tributo')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nuevo') </a></h3>
+                        <h3 class="box-title"><a href="{{route('tax.new')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> @lang('idioma.gral_nuevo') </a></h3>
 
                         <h4 class="m-t-0 header-title"><b>@lang('idioma.tax_list')</b></h4>
                         <p class="text-muted font-13 m-b-30">

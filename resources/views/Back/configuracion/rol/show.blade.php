@@ -21,10 +21,10 @@
                         <h4 class="page-title">@lang('idioma.gral_op_par'): <i> {{ $rol->nombre }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/roles') }}">@lang('idioma.nav_sys_roles')</a>
+                                <a href="{{ route('roles') }}">@lang('idioma.nav_sys_roles')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_viendo'):  {{ $rol->nombre }}
@@ -50,10 +50,10 @@
                                     <label for="nombreempresa">@lang('idioma.gral_nombre')</label>
                                     <input type="text" value="{{ $rol->nombre }}" class="form-control" readonly></input>
                                 </div>
-                                <a href="{{ url('/configuracion/roles') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                <a href="{{ route('roles') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
-                                <a href="{{ url('/configuracion/roles/editar-rol',$rol->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
-                                <a href="{{ url('/configuracion/roles/destroy',$rol->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                <a href="{{ route('role.edit',$rol->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                <a href="{{ route('role.destroy',$rol->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
                             </div>
                         </div>
                     </div>

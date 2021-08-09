@@ -54,7 +54,7 @@
                                             </span>
                                         </a>
                                     </h2>
-                                    <h4 class="text-uppercase font-bold text-white m-b-0">{{$configuracion->nombre_empresa}}</h4>
+                                    <h4 class="text-uppercase font-bold text-white m-b-0">{{$configuracion->nombre_empresa}} - {{ $configuracion->branch }}</h4>
                                 </div>
                                 <div class="account-content">
                                     @if (session('status'))

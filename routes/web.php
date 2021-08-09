@@ -53,15 +53,15 @@ Route::group(['middleware' => 'auth'], function () {
 	    Route::get('/roles', 'RolController@index')->name('roles');
 	    Route::prefix('roles')->group(function () {
 			// crear
-			Route::get('/nuevo-rol', 'RolController@create')->name('role.new');
+			Route::get('/new', 'RolController@create')->name('role.new');
 			// guardar
-			Route::post('/nuevo-rol', 'RolController@store')->name('role.post.new');
+			Route::post('/new', 'RolController@store')->name('role.post.new');
 			// mostrar
 			Route::get('{id?}', 'RolController@show')->name('role.show');
 			// edit
-			Route::get('/editar-rol/{id?}', 'RolController@edit')->name('role.edit');
+			Route::get('/edit/{id?}', 'RolController@edit')->name('role.edit');
 			// update
-			Route::post('/editar-rol/{id?}', 'RolController@update')->name('role.post.update');
+			Route::post('/edit/{id?}', 'RolController@update')->name('role.post.update');
 			// destroy
 			Route::get('/destroy/{id}', 'RolController@destroy')->name('role.destroy');
 		});
@@ -70,45 +70,45 @@ Route::group(['middleware' => 'auth'], function () {
 	    Route::get('/users', 'UsuarioController@index')->name('users');
     	Route::prefix('users')->group(function () {
 			// crear
-			Route::get('/nuevo-usuario', 'UsuarioController@create')->name('user.new');
+			Route::get('/user/new', 'UsuarioController@create')->name('user.new');
 			// guardar
-			Route::post('/nuevo-usuario', 'UsuarioController@store')->name('user.post.new');
+			Route::post('/user/new', 'UsuarioController@store')->name('user.post.new');
 			// mostrar
 			Route::get('{id?}', 'UsuarioController@show')->name('user.show');
 			// edit
-			Route::get('/editar-usuario/{id?}', 'UsuarioController@edit')->name('user.edit');
+			Route::get('/user/edit/{id?}', 'UsuarioController@edit')->name('user.edit');
 			// update
-			Route::post('/editar-usuario/{id?}', 'UsuarioController@update')->name('user.post.update');
+			Route::post('/user/edit/{id?}', 'UsuarioController@update')->name('user.post.update');
 			// destroy
 			Route::get('/destroy/{id?}', 'UsuarioController@destroy')->name('user.destroy');
 			// status
-			Route::get('/status_activar/{id?}', 'UsuarioController@status_activar');
+			Route::get('/activate/{id?}', 'UsuarioController@status_activar')->name('user.activate');
 			// status
-			Route::get('/status_inactivar/{id?}', 'UsuarioController@status_inactivar');
+			Route::get('/deactivate/{id?}', 'UsuarioController@status_inactivar')->name('user.deactivate');
 		});
 
 	    // PERMISSION
 	    Route::get('/permissions', 'PermisoController@index')->name('permissions');
-	    Route::prefix('permiso')->group(function () {
+	    Route::prefix('permission')->group(function () {
 			// ver
-			Route::get('/show_permiso/{id}', 'PermisoController@show');
+			Route::get('/show/{id}', 'PermisoController@show')->name('permission.show');
 			// update
-			Route::post('/show_permiso/{id}', 'PermisoController@update');
+			Route::post('/show/{id}', 'PermisoController@update')->name('permission.update');
 		});
 
 	    // TAXES
 	    Route::get('/taxes', 'TributoController@index')->name('taxes');
-	    Route::prefix('tributo')->group(function () {
+	    Route::prefix('tax')->group(function () {
 			// crear
-			Route::get('/nuevo-tributo', 'TributoController@create')->name('tax.new');
+			Route::get('/new', 'TributoController@create')->name('tax.new');
 			// guardar
-			Route::post('/nuevo-tributo', 'TributoController@store')->name('tax.post.new');
+			Route::post('/new', 'TributoController@store')->name('tax.post.new');
 			// mostrar
 			Route::get('{id?}', 'TributoController@show')->name('tax.show');
 			// edit
-			Route::get('/editar-tributo/{id?}', 'TributoController@edit')->name('tax.edit');
+			Route::get('/edit/{id?}', 'TributoController@edit')->name('tax.edit');
 			// update
-			Route::post('/editar-tributo/{id?}', 'TributoController@update')->name('tax.post.update');
+			Route::post('/edit/{id?}', 'TributoController@update')->name('tax.post.update');
 			// destroy
 			Route::get('/destroy/{id}', 'TributoController@destroy')->name('tax.destroy');
 		});
@@ -119,13 +119,33 @@ Route::group(['middleware' => 'auth'], function () {
 	    Route::post('/configuration', 'ConfiguracionController@update')->name('config.post.update');
 
 
+	    // Location
+	    Route::group(['prefix' => 'location'], function () {
+	    	// Index
+	    	Route::get('/', 'LocationController@index')->name('locations');
+	    	// Create
+	    	Route::get('/create', 'LocationController@create')->name('location.create');
+	    	Route::post('/create', 'LocationController@store')->name('location.post.create');
+
+	    	// Show
+	    	Route::get('/show/{id}', 'LocationController@show')->name('location.show');
+
+	    	// Edit
+	    	Route::get('/edit/{id}', 'LocationController@edit')->name('location.edit');
+	    	Route::post('/edit/{id}', 'LocationController@update')->name('location.update');
+
+	    	// Destroy/Delete
+	    	Route::get('/destroy/{id}', 'LocationController@destroy')->name('location.destroy');
+	    });
+
+
 	});
 
 
 	//========================CATEGORIES MODULE=========================//
 	Route::get('/categories', 'CategoriaController@index')->name('categories');
 	Route::get('/category/new', 'CategoriaController@create')->name('category.new');
-	Route::post('/nueva-categoria', 'CategoriaController@store')->name('category.post.new');
+	Route::post('/category/new', 'CategoriaController@store')->name('category.post.new');
 	Route::get('/category/show/{id?}', 'CategoriaController@show')->name('category.show');
 	Route::get('/category/edit/{id?}', 'CategoriaController@edit')->name('category.edit');
 	Route::post('/category/edit/{id?}', 'CategoriaController@update')->name('category.post.update');
@@ -163,15 +183,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/cargar_subcategoria2', 'ProductoController@cargar_subcategoria2')->name('product.subcat.load2');//EDITAR 
 
 	//========================KARDEX===========================//
-	Route::get('/kardex', 'KardexController@index')->name('kardex');
+	// Route::get('/kardex', 'KardexController@index')->name('kardex');
 
 	//========================PURCHASE MODULE=========================//
-	Route::get('/compras_pendientes', 'CompraController@index_pendientes');
-	Route::get('/compras_rechazadas', 'CompraController@index_rechazadas');
-	Route::get('/compras_aprobadas', 'CompraController@index_aprobadas');
-	Route::get('/transfer', 'CompraController@create')->name('purchase');
-	Route::post('/aprobar_compra', 'CompraController@update_aprobar_status');
-	Route::post('/rechazar_compra', 'CompraController@update_rechazar_status');
+	// Route::get('/compras_pendientes', 'CompraController@index_pendientes');
+	// Route::get('/compras_rechazadas', 'CompraController@index_rechazadas');
+	// Route::get('/compras_aprobadas', 'CompraController@index_aprobadas');
+	// Route::get('/transfer', 'CompraController@create')->name('purchase');
+	// Route::post('/aprobar_compra', 'CompraController@update_aprobar_status');
+	// Route::post('/rechazar_compra', 'CompraController@update_rechazar_status');
 
 
 	//========================CLIENT MODULES=========================//
@@ -184,13 +204,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/client/destroy/{id?}', 'ClienteController@destroy')->name('client.destroy');
 
 	//=========================PROVIDERS MODULE========================//
-	Route::get('/proveedores', 'ProveedorController@index')->name('providers');
-	Route::get('/nuevo-proveedor', 'ProveedorController@create')->name('provider.new');
-	Route::post('/nuevo-proveedor', 'ProveedorController@store')->name('provider.post.new');
-	Route::get('/show_proveedor/{id?}', 'ProveedorController@show');
-	Route::get('/editar_proveedor/{id?}', 'ProveedorController@edit');
-	Route::post('/editar_proveedor/{id?}', 'ProveedorController@update');
-	Route::get('/borrar_proveedor/{id?}', 'ProveedorController@destroy');
+	// Route::get('/proveedores', 'ProveedorController@index')->name('providers');
+	// Route::get('/nuevo-proveedor', 'ProveedorController@create')->name('provider.new');
+	// Route::post('/nuevo-proveedor', 'ProveedorController@store')->name('provider.post.new');
+	// Route::get('/show_proveedor/{id?}', 'ProveedorController@show');
+	// Route::get('/editar_proveedor/{id?}', 'ProveedorController@edit');
+	// Route::post('/editar_proveedor/{id?}', 'ProveedorController@update');
+	// Route::get('/borrar_proveedor/{id?}', 'ProveedorController@destroy');
+
+
+	// TRANSFERS
+	Route::get('transfers', 'TransferController@index')->name('transfers');
 
 });
 
@@ -223,47 +247,47 @@ Route::get('/venta_vaciar_lista_principal', 'VentaController@pos_vaciar_lista_pr
 
 
 //========================API POST COMPRA=========================//
-Route::get('/compra_cargar_lista_productos', 'CompraController@pos_cargar_lista_productos')->middleware('auth');
-Route::get('/compra_buscar_productos', 'CompraController@pos_buscar_productos')->middleware('auth');
-Route::get('/compra_insertar_producto_temporal', 'CompraController@pos_insertar_producto_temporal')->middleware('auth');
-Route::get('/compra_cargar_lista_productos_temporal', 'CompraController@pos_cargar_lista_productos_temporal')->middleware('auth');
-Route::get('/compra_eliminar_producto_temporal', 'CompraController@pos_eliminar_producto_temporal')->middleware('auth');
-Route::get('/compra_descuento', 'CompraController@pos_descuento')->middleware('auth');
-Route::get('/compra_total', 'CompraController@pos_total')->middleware('auth');
-Route::get('/compra_procesar_compra', 'CompraController@pos_procesar')->middleware('auth');
-Route::get('/compra_vaciar_lista_principal', 'CompraController@pos_vaciar_lista_principal')->middleware('auth');
+// Route::get('/compra_cargar_lista_productos', 'CompraController@pos_cargar_lista_productos')->middleware('auth');
+// Route::get('/compra_buscar_productos', 'CompraController@pos_buscar_productos')->middleware('auth');
+// Route::get('/compra_insertar_producto_temporal', 'CompraController@pos_insertar_producto_temporal')->middleware('auth');
+// Route::get('/compra_cargar_lista_productos_temporal', 'CompraController@pos_cargar_lista_productos_temporal')->middleware('auth');
+// Route::get('/compra_eliminar_producto_temporal', 'CompraController@pos_eliminar_producto_temporal')->middleware('auth');
+// Route::get('/compra_descuento', 'CompraController@pos_descuento')->middleware('auth');
+// Route::get('/compra_total', 'CompraController@pos_total')->middleware('auth');
+// Route::get('/compra_procesar_compra', 'CompraController@pos_procesar')->middleware('auth');
+// Route::get('/compra_vaciar_lista_principal', 'CompraController@pos_vaciar_lista_principal')->middleware('auth');
 
 //========================IMPRESIONES PDF=========================//
 Route::get('/pdf_products', 'ProductoController@pdf')->middleware('auth')->name('products.pdf');
 Route::get('/pdf_product/{id?}', 'ProductoController@un_producto_pdf')->middleware('auth')->name('product.pdf');
 Route::get('/pdf_clients', 'ClienteController@pdf')->middleware('auth')->name('clients.pdf');
-Route::get('/pdf_proveedores', 'ProveedorController@pdf')->middleware('auth');
+// Route::get('/pdf_proveedores', 'ProveedorController@pdf')->middleware('auth');
 Route::get('/pdf_usuarios', 'UsuarioController@pdf')->middleware('auth');
 Route::get('/pdf_compras', 'CompraController@pdf')->middleware('auth');
 Route::get('/pdf_ventas_rechazadas', 'VentaController@pdf_rechazadas')->middleware('auth');
 Route::get('/pdf_ventas_pendientes', 'VentaController@pdf_pendientes')->middleware('auth');
 Route::get('/pdf_ventas_aprobadas', 'VentaController@pdf_aprobadas')->middleware('auth');
-Route::get('/pdf_compras_rechazadas', 'CompraController@pdf_rechazadas')->middleware('auth');
-Route::get('/pdf_compras_pendientes', 'CompraController@pdf_pendientes')->middleware('auth');
-Route::get('/pdf_compras_aprobadas', 'CompraController@pdf_aprobadas')->middleware('auth');
+// Route::get('/pdf_compras_rechazadas', 'CompraController@pdf_rechazadas')->middleware('auth');
+// Route::get('/pdf_compras_pendientes', 'CompraController@pdf_pendientes')->middleware('auth');
+// Route::get('/pdf_compras_aprobadas', 'CompraController@pdf_aprobadas')->middleware('auth');
 Route::get('/pdf_sales_download/{id?}', 'VentaController@pdf_factura')->middleware('auth')->name('sales.pdf.download');
-Route::get('/pdf_compras_factura/{id?}', 'CompraController@pdf_factura')->middleware('auth');
-Route::get('/pdf_gastos', 'GastoController@pdf')->middleware('auth');
-Route::get('/pdf_kardex', 'KardexController@pdf')->middleware('auth');
+// Route::get('/pdf_compras_factura/{id?}', 'CompraController@pdf_factura')->middleware('auth');
+// Route::get('/pdf_gastos', 'GastoController@pdf')->middleware('auth');
+// Route::get('/pdf_kardex', 'KardexController@pdf')->middleware('auth');
 
 //========================IMPRESIONES CSV=========================//
 Route::get('/csv_prducts', 'ProductoController@csv')->middleware('auth')->name('products.csv');
 Route::get('/csv_ventas_pendientes', 'VentaController@csv_pendientes')->middleware('auth');
 Route::get('/csv_ventas_rechazadas', 'VentaController@csv_rechazadas')->middleware('auth');
 Route::get('/csv_ventas_aprobadas', 'VentaController@csv_aprobadas')->middleware('auth');
-Route::get('/csv_compras_pendientes', 'CompraController@csv_pendientes')->middleware('auth');
-Route::get('/csv_compras_rechazadas', 'CompraController@csv_rechazadas')->middleware('auth');
-Route::get('/csv_compras_aprobadas', 'CompraController@csv_aprobadas')->middleware('auth');
-Route::get('/csv_compras', 'CompraController@csv')->middleware('auth');
-Route::get('/csv_gastos', 'GastoController@csv')->middleware('auth');
-Route::get('/csv_kardex', 'KardexController@csv')->middleware('auth');
+// Route::get('/csv_compras_pendientes', 'CompraController@csv_pendientes')->middleware('auth');
+// Route::get('/csv_compras_rechazadas', 'CompraController@csv_rechazadas')->middleware('auth');
+// Route::get('/csv_compras_aprobadas', 'CompraController@csv_aprobadas')->middleware('auth');
+// Route::get('/csv_compras', 'CompraController@csv')->middleware('auth');
+// Route::get('/csv_gastos', 'GastoController@csv')->middleware('auth');
+// Route::get('/csv_kardex', 'KardexController@csv')->middleware('auth');
 Route::get('/csv_clients', 'ClienteController@csv')->middleware('auth')->name('clients.csv');
-Route::get('/csv_proveedores', 'ProveedorController@csv')->middleware('auth');
+// Route::get('/csv_proveedores', 'ProveedorController@csv')->middleware('auth');
 
 //========================REPORTES DE VENTAS=========================//
 Route::post('/sales-report-filter', 'ReporteController@modal_reporte_ventas_filtrar')->middleware('auth')->name('sales.report.filter');
@@ -272,13 +296,13 @@ Route::get('/sales-report-filter', function () {
 });
 Route::get('/pdf_reporte_ventas/{desde?}/{hasta?}/{status?}', 'ReporteController@pdf_reporte_ventas')->middleware('auth');
 Route::get('/csv_reporte_ventas/{desde?}/{hasta?}/{status?}', 'ReporteController@csv_reporte_ventas')->middleware('auth');
-Route::get('/csv_reporte_compras/{desde?}/{hasta?}/{status?}', 'ReporteController@csv_reporte_compras')->middleware('auth');
-Route::get('/csv_reporte_gastos/{desde?}/{hasta?}', 'ReporteController@csv_reporte_gastos')->middleware('auth');
+// Route::get('/csv_reporte_compras/{desde?}/{hasta?}/{status?}', 'ReporteController@csv_reporte_compras')->middleware('auth');
+// Route::get('/csv_reporte_gastos/{desde?}/{hasta?}', 'ReporteController@csv_reporte_gastos')->middleware('auth');
 
 //========================REPORTES DE COMPRAS=========================//
-Route::post('/modal_reporte_compras_filtrar', 'ReporteController@modal_reporte_compras_filtrar')->middleware('auth');
-Route::get('/pdf_reporte_compras/{desde?}/{hasta?}/{status?}', 'ReporteController@pdf_reporte_compras')->middleware('auth');
+// Route::post('/modal_reporte_compras_filtrar', 'ReporteController@modal_reporte_compras_filtrar')->middleware('auth');
+// Route::get('/pdf_reporte_compras/{desde?}/{hasta?}/{status?}', 'ReporteController@pdf_reporte_compras')->middleware('auth');
 
 //========================REPORTES DE GASTOS=========================//
-Route::post('/modal_reporte_gastos_filtrar', 'ReporteController@modal_reporte_gastos_filtrar')->middleware('auth');
-Route::get('/pdf_reporte_gastos/{desde?}/{hasta?}', 'ReporteController@pdf_reporte_gastos')->middleware('auth');
+// Route::post('/modal_reporte_gastos_filtrar', 'ReporteController@modal_reporte_gastos_filtrar')->middleware('auth');
+// Route::get('/pdf_reporte_gastos/{desde?}/{hasta?}', 'ReporteController@pdf_reporte_gastos')->middleware('auth');

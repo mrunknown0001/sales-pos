@@ -60,7 +60,8 @@ class CategoriaController extends Controller
 
         $datos->save();
 
-        return redirect('/categorias')->with('status', __('idioma.alert_registro'));
+        return redirect()->back()->with('status', 'Category Added');
+        // return redirect()->route('category.new')->with('status', __('Category Added'));
 
     }
 
@@ -130,7 +131,7 @@ class CategoriaController extends Controller
             $datos = Categoria::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect('/categorias')->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('categories')->with('status', __('idioma.alert_borrar'));
 
         }
     }

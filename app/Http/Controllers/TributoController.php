@@ -67,7 +67,7 @@ class TributoController extends Controller {
 
         $datos->save();
 
-        return redirect('/configuracion/tributos')->with('status',  __('idioma.alert_registro'));
+        return redirect()->back()->with('status',  __('idioma.alert_registro'));
     }
 
     /**

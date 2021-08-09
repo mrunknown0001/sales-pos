@@ -18,10 +18,10 @@
                   <h4 class="page-title">@lang('idioma.perm_permi_de'): <i> {{$permisos->rol->nombre}} </i> </h4>
                   <ol class="breadcrumb p-0 m-0">
                       <li>
-                          <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                          <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                       </li>
                       <li>
-                          <a href="{{ url('/permsisos') }}">@lang('idioma.nav_sys_per')</a>
+                          <a href="{{ route('permissions') }}">@lang('idioma.nav_sys_per')</a>
                       </li>
                       <li class="active">
                         @lang('idioma.perm_permi_de'): {{ $permisos->rol->nombre }}

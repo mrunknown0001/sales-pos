@@ -108,7 +108,7 @@ class ProductoController extends Controller {
 
         $datos->save();
 
-        return redirect('/productos')->with('status', __('idioma.alert_registro'));
+        return redirect()->back()->with('status', __('idioma.alert_registro'));
     }
 
     /**

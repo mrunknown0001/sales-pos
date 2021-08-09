@@ -20,7 +20,7 @@
                                 <a href="{{url('/')}}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/usuarios') }}">@lang('idioma.nav_sys_usu')</a>
+                                <a href="{{ route('users') }}">@lang('idioma.nav_sys_usu')</a>
                             </li>
                             <li class="active">
 											@lang('idioma.gral_actuali') {{ $datos->nombre }}

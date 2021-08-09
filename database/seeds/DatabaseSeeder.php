@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
        DB::table('configuracion')->insert([
             'id'                       => 1,
             'nombre_empresa'           => "EGG STORE",
+            'branch' => 'BUROT',
             'slogan'                   => "Inventory, POS & Stock Control",
             'codigo_empresa'           => "1",
             'telefono'                 => "000000000",

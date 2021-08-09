@@ -18,10 +18,10 @@
                         <h4 class="page-title">@lang('idioma.gral_nueva')</i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/clientes') }}">@lang('idioma.nav_clientes')</a>
+                                <a href="{{ route('clients') }}">@lang('idioma.nav_clientes')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_nueva')
@@ -43,7 +43,7 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
-                                <form method="POST">
+                                <form method="POST" autocomplete="off">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <div class="form-group">
                                         <label for="nombreCliente">@lang('idioma.gral_nombre')</label>
@@ -92,7 +92,7 @@
                                         <label for="direccionCliente">@lang('idioma.gral_direcci') (@lang('idioma.pos_opcional'))</label>
                                         <textarea name="direccion" class="form-control" id="direccion" name="direccion" >{{old('direccion')}}</textarea>
                                     </div>
-                                     <a href="{{ url('/clientes') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                     <a href="{{ route('clients') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
                                     <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
                                 </form>
                             </div>

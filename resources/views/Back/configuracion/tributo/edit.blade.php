@@ -17,10 +17,10 @@
                         <h4 class="page-title">@lang('idioma.gral_actuali'): <i> {{ $datos->nombre }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/tributos') }}">@lang('idioma.nav_sys_tribu')</a>
+                                <a href="{{ route('taxes') }}">@lang('idioma.nav_sys_tribu')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_actuali'): {{ $datos->nombre }}
@@ -80,7 +80,7 @@
                                     </div>
 			                        </div>
 			                      <div class="box-footer">
-			                        <a href="{{ url('/configuracion/tributo',$datos->id) }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+			                        <a href="{{ route('tax.show',$datos->id) }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 			                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
 			                      </div>
 			                    </form>

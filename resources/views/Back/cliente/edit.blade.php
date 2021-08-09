@@ -42,7 +42,7 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
-                               <form class="form-horizontal" method="POST">
+                               <form class="form-horizontal" method="POST" autocomplete="off">
 			                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 			                        <div class="box-body">
                                        <div class="form-group">

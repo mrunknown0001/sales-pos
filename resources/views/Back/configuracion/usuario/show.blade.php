@@ -23,7 +23,7 @@
                                 <a href="{{url('/')}}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/usuarios') }}">@lang('idioma.nav_sys_usu')</a>
+                                <a href="{{ route('users') }}">@lang('idioma.nav_sys_usu')</a>
                             </li>
                             <li class="active">
                                 @lang('idioma.gral_viendo'):  {{ $datos->nombre }}
@@ -110,9 +110,9 @@
                                     <textarea class="form-control" readonly style="resize: none;">{{ $datos->direccion }}</textarea>
                                 </div>
 
-                                <a href="{{ url('/configuracion/usuario') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                <a href="{{ route('users') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
-                                <a href="{{ url('/configuracion/usuario/editar-usuario',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                <a href="{{ route('user.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> Edit </button></a>
 
                                 <!--OPCIONES DE STATUS-->
 
@@ -127,16 +127,16 @@
                                             </div>
                                             <div class="modal-body text-center">
                                                 @if($datos->status == 1)
-                                                    <a href="{{ url('/configuracion/usuario/status_inactivar',$datos->id) }}"><button type="submit" class="btn btn-danger"> @lang('idioma.usr_desacti') <i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                                                    <a href="{{ route('user.deactivate',$datos->id) }}"><button type="submit" class="btn btn-danger"> Deactivate <i class="glyphicon glyphicon-thumbs-down"></i></button></a>
                                                 @else
-                                                    <a href="{{ url('/configuracion/usuario/status_activar',$datos->id) }}"><button type="submit" class="btn btn-success"> @lang('idioma.usr_activar')  <i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                                                    <a href="{{ route('user.activate',$datos->id) }}"><button type="submit" class="btn btn-success"> Activate  <i class="glyphicon glyphicon-thumbs-up"></i></button></a>
                                                 @endif  
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
 
-                                <a href="{{ url('/configuracion/usuario/destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                <a href="{{ route('user.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
 
                             </div>
                         </div>

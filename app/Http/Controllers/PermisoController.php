@@ -175,7 +175,7 @@ class PermisoController extends Controller
             //GUARDAR
             $update->save();
 
-            return redirect("/configuracion/permiso/show_permiso/$id")->with('status', __('idioma.alert_actua'));
+            return redirect()->back()->with('status', __('idioma.alert_actua'));
             
     }
     /**

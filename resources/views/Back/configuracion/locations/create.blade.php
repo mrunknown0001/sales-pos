@@ -1,7 +1,7 @@
 @extends('Back.master')
-@section('title', __('idioma.gral_nueva'))
-@section('active-clasificacion', 'active')<!--ACTIVE DROP-->
-@section('active-clasificacion-subcategoria', 'active')<!--ACTIVE LINK-->
+@section('title', 'Add Location')
+@section('active-configuracion', 'active')
+@section('active-configuracion-locations', 'active')
 @section('content')
 
  <!-- ============================================================== -->
@@ -14,27 +14,31 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title"> @lang('idioma.gral_nueva') </i> </h4>
+                        <h4 class="page-title">ADD</i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ route('subcat') }}">@lang('idioma.subcateg_titulo')</a>
+                                <a href="{{ route('locations') }}">Locations</a>
                             </li>
                             <li class="active">
-                             @lang('idioma.gral_nueva')
+                                ADD
                             </li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
-
             <!-- end row -->
+
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card-box">
+                        <h4 class="m-t-0 header-title"><b></b></h4>
+                        <p class="text-muted m-b-30 font-13">
+                          
+                        </p>
                         <div class="row">
                             <div class="col-md-12">
                                 @if (session('status'))
@@ -45,33 +49,20 @@
                                 <form method="POST">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <div class="form-group">
-                                        <label for="nombreCategoria">@lang('idioma.categ_titulo')</label>
-                                        <select name="categoria" class="form-control {{ ($errors->first('categoria')) ? 'error' : '' }}">
-                                          @if($datos_2)
-
-                                            <option value="">@lang('idioma.gral_select')</option>
-                                            @foreach($datos_2 as $d)
-                                            <option value="{{$d->id}}">{{$d->nombre}}</option>
-                                            @endforeach
-
-                                          @else
-                                             <option value="">@lang('idioma.gral_no_data')</option>
-                                          @endif
-                                        </select>
-
-                                        @if($errors->first('categoria'))
-                                          <div class="alert alert-danger">{{ $errors->first('categoria') }}</div>
+                                        <label for="location_name">Location Name</label>
+                                        <input type="text" class="form-control {{ ($errors->first('location_name')) ? 'error' : '' }}" id="location_name" maxlength="100" name="location_name" />
+                                        @if($errors->first('location_name'))
+                                          <div class="alert alert-danger">{{ $errors->first('location_name') }}</div>
                                         @endif
-                                        
                                     </div>
                                     <div class="form-group">
-                                        <label for="nombreSubcategoria">@lang('idioma.gral_nombre')</label>
-                                        <input type="text" maxlength="30" class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}" id="nombre" name="nombre" value="{{old('nombre')}}" />
-                                        @if($errors->first('nombre'))
-                                          <div class="alert alert-danger">{{ $errors->first('nombre') }}</div>
+                                        <label for="location_code">Location Code</label>
+                                        <input type="text" class="form-control {{ ($errors->first('location_code')) ? 'error' : '' }}" id="location_code" maxlength="100" name="location_code" />
+                                        @if($errors->first('location_code'))
+                                          <div class="alert alert-danger">{{ $errors->first('location_code') }}</div>
                                         @endif
                                     </div>
-                                     <a href="{{route('subcat')}}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                     <a href="{{ route('locations') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
                                     <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
                                 </form>
                             </div>

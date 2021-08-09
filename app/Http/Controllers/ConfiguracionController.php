@@ -81,8 +81,9 @@ class ConfiguracionController extends Controller
         $tributo         = $configuracion->tributo;//Activo e Inactivo
         $r_u_login       = $configuracion->registro_usuario_login;
         $r_c_login       = $configuracion->recuperar_clave_login;
+        $branch          = $configuracion->branch;   
 
-        return view('Back.configuracion.configuracion.edit', compact('nombre_empresa','slogan','codigo_empresa','logo','r_u_login','r_c_login','sistema','telefono','correo','moneda','tributo'));
+        return view('Back.configuracion.configuracion.edit', compact('nombre_empresa','slogan','codigo_empresa','logo','r_u_login','r_c_login','sistema','telefono','correo','moneda','tributo', 'branch'));
    
 
     }
@@ -156,7 +157,7 @@ class ConfiguracionController extends Controller
         $update->idioma                 = $_POST['idioma'];
         $update->save();
 
-        return redirect("configuracion/configuracion")->with('status', __('idioma.alert_actua'));
+        return redirect()->route('config.edit')->with('status', __('idioma.alert_actua'));
     }
 
     /**

@@ -127,7 +127,7 @@ class UsuarioController extends Controller {
 
             $datos->save();
 
-            return redirect('/configuracion/usuario')->with('status', __('idioma.alert_registro'));
+            return redirect()->back()->with('status', __('idioma.alert_registro'));
     }
 
 
@@ -253,7 +253,7 @@ class UsuarioController extends Controller {
             $datos->rol_id     = $request->get('rol');
             $datos->save();
 
-            return redirect('/configuracion/usuario')->with('status', __('idioma.alert_actua'));
+            return redirect()->back()->with('status', __('idioma.alert_actua'));
 
         } else {
 
@@ -268,7 +268,7 @@ class UsuarioController extends Controller {
             $datos->password   = bcrypt($request->get('clave'));
             $datos->save();
 
-            return redirect('/configuracion/usuario')->with('status', __('idioma.alert_actua'));
+            return redirect()->back()->with('status', __('idioma.alert_actua'));
 
         }
 
@@ -283,7 +283,7 @@ class UsuarioController extends Controller {
         $status        = 1;
         $datos->status = $status;
         $datos->save();
-        return redirect('/configuracion/usuario')->with('status', __('idioma.alert_actua'));
+        return redirect()->back()->with('status', __('idioma.alert_actua'));
 
 
     }
@@ -295,7 +295,7 @@ class UsuarioController extends Controller {
         $datos->status = $status;
         $datos->save();
 
-        return redirect('/configuracion/usuario')->with('status', __('idioma.alert_actua'));
+        return redirect()->back()->with('status', __('idioma.alert_actua'));
 
     }
 

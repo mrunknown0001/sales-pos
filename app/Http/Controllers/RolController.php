@@ -91,7 +91,7 @@ class RolController extends Controller {
 
             $permiso->save();
         }
-        return redirect('/configuracion/roles')->with('status', __('idioma.alert_registro'));
+        return redirect()->route('roles')->with('status', __('idioma.alert_registro'));
     }
 
     /**
@@ -136,7 +136,7 @@ class RolController extends Controller {
         $rol->nombre = $nombre;
         $rol->save();
 
-        return redirect('/configuracion/roles/')->with('status', __('idioma.alert_actua'));
+        return redirect()->route('roles')->with('status', __('idioma.alert_actua'));
     }
 
     /**
@@ -154,7 +154,7 @@ class RolController extends Controller {
 
         if($clientes_existencia > 0){
 
-            return redirect("/configuracion/roles/$id")->with('error', __('idioma.alert_ya_uso'));
+            return redirect()->route('role.show', ['id' => $id])->with('error', __('idioma.alert_ya_uso'));
            
         }else{
             
@@ -168,7 +168,7 @@ class RolController extends Controller {
             $rol = Rol::whereId($id)->firstOrFail();
             $rol->delete();
 
-            return redirect('/configuracion/roles')->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('roles')->with('status', __('idioma.alert_borrar'));
 
         }
     }

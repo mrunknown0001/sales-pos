@@ -40,8 +40,8 @@
                         <li>
                             <h5>{{Session::get("nombre")}}</h5>
                         </li>
-                        <li><a href="{{ url('/configuracion/usuario/editar-usuario',$usuario_id ) }}"><i class="ti-user m-r-5"></i> @lang('idioma.mi_perfil') </a></li>
-                        <li><a href="{{ url('/salir') }}"><i class="ti-power-off m-r-5"></i> @lang('idioma.salir') </a></li>
+                        <li><a href="{{ route('user.show',$usuario_id ) }}"><i class="ti-user m-r-5"></i> @lang('idioma.mi_perfil') </a></li>
+                        <li><a href="{{ route('logout') }}"><i class="ti-power-off m-r-5"></i> @lang('idioma.salir') </a></li>
                     </ul>
                 </li>
 
@@ -103,7 +103,12 @@
                     </li>
                     @endif
                 @endif
-                
+
+
+                <li class="">
+                    <a href="{{ route('transfers') }}" class="waves-effect "><i class="fa fa-exchange"></i><span>Transfers<span></a>
+                </li>
+
                 {{--GASTOS--}}
                 {{-- @if(Session::get("rol_id"))
                     @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->gasto_i == 1)
@@ -312,6 +317,8 @@
                                 <li class="@yield('active-configuracion-permisos')"><a href="{{ route('permissions') }}">Permissions</a></li>
                                 <li class="@yield('active-configuracion-tributos')"><a href="{{ route('taxes') }}">Taxes</a></li>
                                 <li class="@yield('active-configuracion-roles')"><a href="{{ route('roles') }}">Roles</a></li>
+                                <li class="@yield('active-configuracion-locations')"><a href="{{ route('locations') }}">Locations</a></li>
+
                                 <li class="@yield('active-configuracion-usuarios')">
                                     <a href="{{ route('users') }}">
                                             Users

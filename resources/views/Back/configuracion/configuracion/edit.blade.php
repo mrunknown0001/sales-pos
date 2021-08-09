@@ -17,7 +17,7 @@
                         <h4 class="page-title">@lang('idioma.nav_sys_config')</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="{{ url('/dash') }}">{{$sistema->nombre_empresa}}</a>
+                                <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
                               @lang('idioma.nav_sys_config')
@@ -80,6 +80,15 @@
                                       <input type="text"  class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}" maxlength="100" value="{{ $nombre_empresa }}" id="nombreempresa" name="nombre"/>
                                        @if($errors->first('nombre'))
                                           <div class="alert alert-danger">{{ $errors->first('nombre') }}</div>
+                                       @endif
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-md-4 control-label">Branch</label>
+                                  <div class="col-md-8">
+                                      <input type="text"  class="form-control {{ ($errors->first('branch')) ? 'error' : '' }}" maxlength="100" value="{{ $branch }}" id="branch" name="branch"/>
+                                       @if($errors->first('branch'))
+                                          <div class="alert alert-danger">{{ $errors->first('branch') }}</div>
                                        @endif
                                   </div>
                               </div>

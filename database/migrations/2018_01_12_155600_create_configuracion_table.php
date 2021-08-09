@@ -16,6 +16,7 @@ class CreateConfiguracionTable extends Migration
         Schema::create('configuracion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre_empresa',100);
+            $table->string('branch', 100);
             $table->string('slogan',100);
             $table->string('codigo_empresa',30);
             $table->string('telefono',15);
