@@ -452,7 +452,7 @@
 
                                     @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->producto_r == 1)
 
-                                        $('#tabla_productos_pos tbody').append('<tr><td colspan="5"><div class="no_encontrados col-md-12"> @lang("idioma.pos_no_exis_r") <a href="{{url ('/nuevo-producto')}}" class="btn btn-primary"><i class="mdi mdi-plus"></i>@lang("idioma.gral_registrar")</a></div></td></tr>');
+                                        $('#tabla_productos_pos tbody').append('<tr><td colspan="5"><div class="no_encontrados col-md-12"> @lang("idioma.pos_no_exis_r") <a href="{{ route('product.new') }}" class="btn btn-primary"><i class="mdi mdi-plus"></i>@lang("idioma.gral_registrar")</a></div></td></tr>');
 
                                     @else
 
