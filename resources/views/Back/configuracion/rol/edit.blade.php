@@ -42,7 +42,7 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
-                               <form class="form-horizontal" method="POST">
+                               <form class="form-horizontal" method="POST" autocomplete="off">
 			                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 			                        <div class="box-body">
 			                            <div class="form-group">
@@ -56,7 +56,7 @@
 			                            </div>
 			                        </div>
 			                      <div class="box-footer">
-			                        <a href="{{ url('/configuracion/roles') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+			                        <a href="{{ route('role.show', $rol->id) }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 			                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
 			                      </div>
 			                    </form>

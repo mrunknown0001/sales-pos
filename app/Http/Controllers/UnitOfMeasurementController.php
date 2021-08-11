@@ -29,7 +29,8 @@ class UnitOfMeasurementController extends Controller
      */
     public function create()
     {
-        //
+        $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
+        return view('Back.configuracion.uom.create', compact('sistema'));
     }
 
     /**
@@ -40,7 +41,21 @@ class UnitOfMeasurementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'code' => 'required|unique:unit_of_measurements'
+        ]);
+
+        $uom = new UnitOfMeasurement();
+        $uom->uom = $request->name;
+        $uom->code = $request->code;
+        $uom->description = $request->description;
+
+        if($uom->save()) {
+            return redirect()->back()->with('status', 'Unit of Measurement Created!');
+        }
+
+        return 'Error';
     }
 
     /**
@@ -49,9 +64,11 @@ class UnitOfMeasurementController extends Controller
      * @param  \App\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      */
-    public function show(UnitOfMeasurement $unitOfMeasurement)
+    public function show($id)
     {
-        //
+        $uom = UnitOfMeasurement::findorfail($id);
+        $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
+        return view('Back.configuracion.uom.show', compact('uom', 'sistema'));
     }
 
     /**
@@ -60,9 +77,12 @@ class UnitOfMeasurementController extends Controller
      * @param  \App\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      */
-    public function edit(UnitOfMeasurement $unitOfMeasurement)
+    public function edit($id)
     {
-        //
+        $uom = UnitOfMeasurement::findorfail($id);
+        $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
+        return view('Back.configuracion.uom.edit', compact('uom', 'sistema'));
+
     }
 
     /**
@@ -72,9 +92,29 @@ class UnitOfMeasurementController extends Controller
      * @param  \App\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UnitOfMeasurement $unitOfMeasurement)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $uom = UnitOfMeasurement::findorfail($id);
+
+        if($uom->code != $request->code) {
+            $request->validate([
+                'code' => 'required|unique:unit_of_measurements'
+            ]);
+        }
+
+        $uom->uom = $request->name;
+        $uom->code = $request->code;
+        $uom->description = $request->description;
+
+        if($uom->save()) {
+            return redirect()->back()->with('status', 'Unit of Measurement Updated!');
+        }
+
+        return 'Error';
     }
 
     /**
@@ -83,8 +123,14 @@ class UnitOfMeasurementController extends Controller
      * @param  \App\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UnitOfMeasurement $unitOfMeasurement)
+    public function destroy($id)
     {
-        //
+        $uom = UnitOfMeasurement::findorfail($id);
+        $uom->active = 0;
+        if($uom->delete()) {
+            return redirect()->route('uom')->with('status', 'Unit of Measurement Deleted!');
+        }
+
+        return 'Error';
     }
 }

@@ -46,7 +46,7 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
-                                <form method="POST">
+                                <form method="POST" autocomplete="off">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <div class="form-group">
                                         <label for="nombrerol">@lang('idioma.gral_nombre')</label>

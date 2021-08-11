@@ -95,6 +95,18 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
+                                        <label for="uom">UOM<span class="required">*</span></label>
+                                        <select name="uom" class="form-control {{ ($errors->first('uom')) ? 'error' : '' }}" id="uom">
+                                            <option value="">Select UOM</option>
+                                            @foreach($uom as $u)
+                                                <option value="{{$u->id}}">{{$u->uom}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->first('uom'))
+                                          <div class="alert alert-danger">{{ $errors->first('uom') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
                                         <label for="cantidadProducto">Quantity<span class="required">*</span></label>
                                         <input type="text" value="{{old('cantidad')}}" class="form-control {{ ($errors->first('cantidad')) ? 'error' : '' }}" id="cantidad" maxlength="6" name="cantidad" onkeypress="return valida(event)"/>
                                         @if($errors->first('cantidad'))
@@ -135,7 +147,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="descripcionProducto">@lang('idioma.product_descrip') (@lang('idioma.gral_opcional'))</label>
-                                        <textarea name="descripcion" class="form-control">{{old('descripcion')}}</textarea>
+                                        <textarea name="descripcion" class="form-control">Description</textarea>
                                     </div>
 
                                      <a href="{{ route('products') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>

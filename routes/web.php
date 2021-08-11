@@ -142,6 +142,18 @@ Route::group(['middleware' => 'auth'], function () {
 	    Route::group(['prefix' => 'uom'], function () {
 	    	Route::get('/', 'UnitOfMeasurementController@index')->name('uom');
 	    	// Add
+	    	Route::get('/new', 'UnitOfMeasurementController@create')->name('uom.new');
+	    	Route::post('/new', 'UnitOfMeasurementController@store')->name('uom.store');
+
+	    	// Show
+	    	Route::get('/show/{id}', 'UnitOfMeasurementController@show')->name('uom.show');
+
+	    	// Edit
+	    	Route::get('/edit/{id}', 'UnitOfMeasurementController@edit')->name('uom.edit');
+	    	Route::post('/edit/{id}', 'UnitOfMeasurementController@update')->name('uom.update');
+
+	    	// Destroy
+	    	Route::get('/destroy/{id}', 'UnitOfMeasurementController@destroy')->name('uom.destroy');
 	    	
 	    });
 

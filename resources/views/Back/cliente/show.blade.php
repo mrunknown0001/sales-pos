@@ -1,5 +1,5 @@
 @extends('Back.master')
-@section('title', __('idioma.gral_viendo').": ".$datos->cedula )
+@section('title', __('idioma.gral_viendo').": ".$datos->nombre . ' ' . $datos->apellido )
 @section('active-personas', 'active')<!--ACTIVE DROP-->
 @section('active-personas-clientes', 'active')<!--ACTIVE LINK-->
 @section('content')
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">@lang('idioma.gral_op_par'): <i> {{ $datos->cedula }} </i> </h4>
+                        <h4 class="page-title">@lang('idioma.gral_op_par'): <i> {{ $datos->nombre . ' ' . $datos->apellido }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
@@ -100,7 +100,8 @@
 
                                 <a href="{{ route('client.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> Edit </button></a>
 
-                                <a href="{{ route('client.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete </button></a>
+                                {{-- <a href="{{ route('client.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete </button></a> --}}
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clientDeleteModal"><i class="fa fa-trash"></i> Delete </button>
                             </div>
                         </div>
                     </div>
@@ -110,4 +111,22 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+
+<div class="modal fade" id="clientDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title text-center" id="ModalLongTitle"><span class="required">Delete Customer</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
+      </div>
+      <div class="modal-body text-center">
+        <a href="{{ route('client.destroy',$datos->id) }}" class="btn btn-danger btn-lg">Click to Delete!</a>
+      </div>
+      {{-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> --}}
+    </div>
+  </div>
+</div>
 @endsection

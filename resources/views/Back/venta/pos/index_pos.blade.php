@@ -205,11 +205,12 @@
                             <table id="tabla_productos_pos" class="display" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>@lang('idioma.pos_codigo')</th>
-                                        <th>@lang('idioma.pos_nombre')</th>
-                                        <th>@lang('idioma.pos_cnt')</th>
-                                        <th>@lang('idioma.pos_pre') U.({{$sistema->moneda}})</th>
-                                        <th>@lang('idioma.pos_agregar')</th>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>Stock</th>
+                                        <th>Qty.</th>
+                                        <th>Price U.({{$sistema->moneda}})</th>
+                                        <th>Add</th>
                                     </tr>
                                 </thead>
                                 <tbody>

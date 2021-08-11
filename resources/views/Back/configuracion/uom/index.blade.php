@@ -1,5 +1,5 @@
 @extends('Back.master')
-@section('title', 'Locations')
+@section('title', 'Unit of Measurements')
 @section('active-configuracion', 'active subdrop')
 @section('active-configuracion-uom', 'active')
 @section('content')
@@ -37,7 +37,7 @@
                     
                     <div class="card-box table-responsive">
                         @if(Session::get("rol_id"))
-                            <h3 class="box-title"><a href="" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> ADD </a></h3>
+                            <h3 class="box-title"><a href="{{ route('uom.new') }}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> ADD </a></h3>
                             <!--<h3 class="box-title"><a href="{{url('/pdf_usuarios')}}" class="btn btn-default pull-right"><i class="mdi mdi-download"></i>{{"PDF"}}</a></h3>-->
                         @endif
 
@@ -62,9 +62,9 @@
                             <tbody>
                                 @foreach($datos as $key => $dato)
                                     <tr>
-                                        <td><a href="">{{ ++$key }}</a></td>
-                                        <td><a href="">{{ $dato->uom }}</a></td>
-                                        <td><a href="">{{ $dato->code }}</a></td>
+                                        <td><a href="{{ route('uom.show', $dato->id) }}">{{ ++$key }}</a></td>
+                                        <td><a href="{{ route('uom.show', $dato->id) }}">{{ $dato->uom }}</a></td>
+                                        <td><a href="{{ route('uom.show', $dato->id) }}">{{ $dato->code }}</a></td>
                                     
                                     </tr>
                                 @endforeach

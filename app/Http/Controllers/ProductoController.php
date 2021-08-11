@@ -13,6 +13,7 @@ use App\Categoria;
 use App\SubCategoria;
 use App\Tributo;
 use App\DetalleProceso;
+use App\UnitOfMeasurement as UOM;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class ProductoController extends Controller {
@@ -47,7 +48,8 @@ class ProductoController extends Controller {
         $datos2  =  Tributo::all();
         $datos3 = Subcategoria::all();
         $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
-        return view('Back.producto.create', compact('sistema','datos','datos2','datos3'));
+        $uom = UOM::where('active', 1)->get();
+        return view('Back.producto.create', compact('sistema','datos','datos2','datos3', 'uom'));
 
     }
 
@@ -69,7 +71,17 @@ class ProductoController extends Controller {
         $tributo         = $request->get('tributo');
         $descripcion     = $request->get('descripcion');
         $status          = $request->get('status');
+        $uom             = $request->get('uom');
         $slug            = uniqid();    
+
+        $prod = Producto::where('categoria_id', $categoria)
+                        ->where('subcategoria_id', $sub_categoria)
+                        ->where('unit_of_measurement_id', $uom)
+                        ->first();
+
+        if(!empty($prod)) {
+            return redirect()->route('product.show', $prod->id)->with('info', 'Product Exist! If you need to edit the quantity click Edit button on the bottom part of the page');
+        }
 
          //CARGA DE IMAGEN
          if($request->hasFile('file') ){ 
@@ -103,7 +115,8 @@ class ProductoController extends Controller {
             'tributo_id'       => $tributo,
             'descripcion'      => $descripcion,
             'status'           => $status,
-            'imagen'           => $imagen
+            'imagen'           => $imagen,
+            'unit_of_measurement_id'              => $uom,
         ));
 
         $datos->save();
@@ -137,7 +150,8 @@ class ProductoController extends Controller {
         $datos3  =  Tributo::where('id','!=',$datos->tributo_id)->get();
         $datos4  =  SubCategoria::where('categoria_id','=',$datos->categoria_id)->get();
         $sistema =  Configuracion::where('id', '=', 1)->firstOrFail();
-        return view('Back.producto.edit', compact('datos','datos2','datos3','datos4','sistema'));
+        $uom = UOM::where('active', 1)->get();
+        return view('Back.producto.edit', compact('datos','datos2','datos3','datos4','sistema', 'uom'));
     }
 
     /**
@@ -162,6 +176,7 @@ class ProductoController extends Controller {
         $tributo         = $request->get('tributo');
         $descripcion     = $request->get('descripcion');
         $status          = $request->get('status');
+        $uom             = $request->get('uom');
         $slug            = uniqid();
 
         //SUBCATEGORIA DINAMICA
@@ -209,6 +224,7 @@ class ProductoController extends Controller {
         $datos->descripcion       = $descripcion;
         $datos->imagen            = $imagen;
         $datos->status            = $status;
+        $datos->unit_of_measurement_id               = $uom;
         $datos->save();
 
         return redirect()->action('ProductoController@show', $datos->id)->with('status', __('idioma.alert_actua'));

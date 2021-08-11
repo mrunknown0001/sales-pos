@@ -160,7 +160,7 @@
 				                            </div>
 				                        </div>
 				                      <div class="box-footer">
-				                        <a class="btn btn-default" href="{{ url('/configuracion/usuario') }}"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </a>
+				                        <a class="btn btn-default" href="{{ route('user.show', $datos->id) }}"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </a>
 				                        <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
 				                      </div>
 				                    </form>

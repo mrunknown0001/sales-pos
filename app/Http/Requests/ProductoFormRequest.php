@@ -33,6 +33,7 @@ class ProductoFormRequest extends FormRequest
             'precio_costo'   => "required|numeric",
             'precio_publico' => "required|numeric",
             'tributo'        => "required",
+            'uom'            => 'required'
         ];
     }
 }

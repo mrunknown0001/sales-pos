@@ -1,5 +1,5 @@
 @extends('Back.master')
-@section('title', __('idioma.gral_actuali').": ".$datos->cedula )
+@section('title', __('idioma.gral_actuali').": ".$datos->nombre . ' ' . $datos->apellido )
 @section('active-personas', 'active')<!--ACTIVE DROP-->
 @section('active-personas-clientes', 'active')<!--ACTIVE LINK-->
 @section('content')
@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">@lang('idioma.gral_actuali'): <i> {{ $datos->cedula }} </i> </h4>
+                        <h4 class="page-title">@lang('idioma.gral_actuali'): <i> {{ $datos->nombre . ' ' . $datos->apellido }} </i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>

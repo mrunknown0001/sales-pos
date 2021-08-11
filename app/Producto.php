@@ -8,7 +8,7 @@ class Producto extends Model {
     //
     protected $table = "productos";
 
-    protected $fillable = ['id', 'nombre', 'codigo', 'categoria_id', 'subcategoria_id', 'cantidad', 'descripcion', 'precio_costo', 'precio_publico', 'tributo_id', 'status', 'imagen'];
+    protected $fillable = ['id', 'nombre', 'codigo', 'categoria_id', 'subcategoria_id', 'cantidad', 'descripcion', 'precio_costo', 'precio_publico', 'tributo_id', 'status', 'imagen', 'unit_of_measurement_id'];
 
     public function categoria() {
 
@@ -38,6 +38,12 @@ class Producto extends Model {
 
         return $this->hasMany('App\Temporales');
 
+    }
+
+
+    public function uom()
+    {
+        return $this->belongsTo('App\UnitOfMeasurement', 'unit_of_measurement_id');
     }
 
 

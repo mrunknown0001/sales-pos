@@ -53,7 +53,8 @@
                                 <a href="{{ route('roles') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
 
                                 <a href="{{ route('role.edit',$rol->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
-                                <a href="{{ route('role.destroy',$rol->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                {{-- <a href="{{ route('role.destroy',$rol->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a> --}}
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#roleDeleteModal"><i class="fa fa-trash"></i> Delete </button>
                             </div>
                         </div>
                     </div>
@@ -63,4 +64,21 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+<div class="modal fade" id="roleDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title text-center" id="ModalLongTitle"><span class="required">Delete Role</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
+      </div>
+      <div class="modal-body text-center">
+        <a href="{{ route('role.destroy',$rol->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
+      </div>
+      {{-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> --}}
+    </div>
+  </div>
+</div>
 @endsection

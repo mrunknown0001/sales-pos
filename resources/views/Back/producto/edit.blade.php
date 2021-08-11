@@ -155,6 +155,18 @@
                                     </select>
 
                                 </div>
+                                <div class="form-group">
+                                    <label for="uom">UOM<span class="required">*</span></label>
+                                    <select name="uom" class="form-control {{ ($errors->first('uom')) ? 'error' : '' }}" id="uom">
+                                        <option value="">Select UOM</option>
+                                        @foreach($uom as $u)
+                                            <option value="{{$u->id}}" {{ $datos->unit_of_measurement_id == $u->id ? 'selected' : '' }}>{{$u->uom}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->first('uom'))
+                                      <div class="alert alert-danger">{{ $errors->first('uom') }}</div>
+                                    @endif
+                                </div>
                                <div class="form-group">
                                     <label for="cantidadProducto">Quantity<span class="required">*</span></label>
                                     <input name="cantidad" type="text" value="{{ $datos->cantidad }}" class="form-control {{ ($errors->first('cantidad')) ? 'error' : '' }}" onkeypress="return valida(event)">
@@ -194,7 +206,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcionProducto">Description (@lang('idioma.gral_opcional'))</label>
-                                    <textarea name="descripcion" rows="10" class="form-control" placeholder="Descripción del producto">{{$datos->descripcion}}</textarea>
+                                    <textarea name="descripcion" rows="10" class="form-control" placeholder="Description">{{$datos->descripcion}}</textarea>
                                 </div>
                                 <a href="{{ route('product.show',$datos->id) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </a>
                                 <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>

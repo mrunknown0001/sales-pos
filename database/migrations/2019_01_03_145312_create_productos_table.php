@@ -18,7 +18,8 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->string('codigo',30)->unique();;
             $table->integer('categoria_id')->unsigned()->nullable();
-            $table->integer('subcategoria_id')->unsigned()->nullable();          
+            $table->integer('subcategoria_id')->unsigned()->nullable();    
+            $table->bigInteger('unit_of_measurement_id')->nullable();      
             $table->integer('cantidad');
             $table->longtext('descripcion')->nullable();
             $table->double('precio_costo',30,2)->nullable();

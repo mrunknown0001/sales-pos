@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
             'idioma'                   => "en",
             'correo'                   => "eggstore@bfcgroup.org",
             'moneda'                   => "PHP",
-            'tributo'                  => "ACTIVO", //Activo e Inactivo
-            'recuperar_clave_login'    => "on",
-            'registro_usuario_login'   => "on",
+            'tributo'                  => "Inactivo", //Activo e Inactivo
+            'recuperar_clave_login'    => "off",
+            'registro_usuario_login'   => "off",
         ]);
 
         DB::table('roles')->insert([
@@ -157,11 +157,20 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('tributos')->insert([
-            'id'        => 1,
-            'nombre'    => "1",
-            // 'tipo'      => "PORCENTAJE",
-            'tipo'      => "Percentage",
-            'monto'     => "12",
+            [
+                'id'        => 1,
+                'nombre'    => "Tax Free",
+                // 'tipo'      => "PORCENTAJE",
+                'tipo'      => "Percentage",
+                'monto'     => "0",
+            ],
+            // [
+            //     'id'        => 2,
+            //     'nombre'    => "12 Percent Tax",
+            //     // 'tipo'      => "PORCENTAJE",
+            //     'tipo'      => "Percentage",
+            //     'monto'     => "12",
+            // ]
         ]);
 
     }

@@ -20,7 +20,7 @@
                                 <a href="{{url('/')}}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/configuracion/usuario') }}">@lang('idioma.nav_sys_usu')</a>
+                                <a href="{{ route('users') }}">@lang('idioma.nav_sys_usu')</a>
                             </li>
                             <li class="active">
 											@lang('idioma.gral_nuevo')
@@ -43,7 +43,7 @@
 	                    {{session('error')}}
 	                </div>
 	            @endif
-                <form class="form-horizontal" method="POST"  enctype="multipart/form-data">
+                <form class="form-horizontal" method="POST"  enctype="multipart/form-data" autocomplete="off">
 		            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 	                <div class="col-sm-4">
 		                    <div class="card-box">
@@ -72,7 +72,7 @@
 		                            <div class="col-md-12">
 				                            <div class="box-body">
 				                                <div class="form-group">
-				                                    <label for="nombre" class="col-sm-2 control-label">@lang('idioma.gral_nombre')</label>
+				                                    <label for="nombre" class="col-sm-2 control-label">First Name</label>
 				                                    <div class="col-sm-10">
 				                                        <input type="text" autocomplete="off" class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}" id="nombre" name="nombre" maxlength="30" value="{{old('nombre')}}" />
                                                     @if($errors->first('nombre'))
@@ -90,7 +90,7 @@
 				                                    </div>
 				                                </div>
 				                                <div class="form-group">
-				                                    <label for="cedula" class="col-sm-2 control-label">@lang('idioma.cliente_cr')</label>
+				                                    <label for="cedula" class="col-sm-2 control-label">Identification</label>
 				                                    <div class="col-sm-10">
 		                                              <input class="form-control {{ ($errors->first('cedula')) ? 'error' : '' }}" maxlength="10" type="text" id="cedula" name="cedula" value="{{old('cedula')}}" onkeypress="return valida(event)">
                                                     @if($errors->first('cedula'))

@@ -1,7 +1,7 @@
 @extends('Back.master')
-@section('title', 'Add Location')
+@section('title', 'Add Unit of Measurement')
 @section('active-configuracion', 'active')
-@section('active-configuracion-locations', 'active')
+@section('active-configuracion-uom', 'active')
 @section('content')
 
  <!-- ============================================================== -->
@@ -20,7 +20,7 @@
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ route('locations') }}">Locations</a>
+                                <a href="{{ route('uom') }}">UoM</a>
                             </li>
                             <li class="active">
                                 ADD
@@ -49,20 +49,27 @@
                                 <form method="POST" autocomplete="off">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <div class="form-group">
-                                        <label for="location_name">Location Name</label>
-                                        <input type="text" class="form-control {{ ($errors->first('location_name')) ? 'error' : '' }}" id="location_name" maxlength="100" name="location_name" />
-                                        @if($errors->first('location_name'))
-                                          <div class="alert alert-danger">{{ $errors->first('location_name') }}</div>
+                                        <label for="name"> Name</label>
+                                        <input type="text" class="form-control {{ ($errors->first('name')) ? 'error' : '' }}" id="name" maxlength="100" name="name" />
+                                        @if($errors->first('name'))
+                                          <div class="alert alert-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="location_code">Location Code</label>
-                                        <input type="text" class="form-control {{ ($errors->first('location_code')) ? 'error' : '' }}" id="location_code" maxlength="100" name="location_code" />
-                                        @if($errors->first('location_code'))
-                                          <div class="alert alert-danger">{{ $errors->first('location_code') }}</div>
+                                        <label for="code">Code</label>
+                                        <input type="text" class="form-control {{ ($errors->first('code')) ? 'error' : '' }}" id="code" maxlength="100" name="code" />
+                                        @if($errors->first('code'))
+                                          <div class="alert alert-danger">{{ $errors->first('code') }}</div>
                                         @endif
                                     </div>
-                                     <a href="{{ route('locations') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input type="text" class="form-control {{ ($errors->first('description')) ? 'error' : '' }}" id="description" maxlength="100" name="description" />
+                                        @if($errors->first('description'))
+                                          <div class="alert alert-danger">{{ $errors->first('description') }}</div>
+                                        @endif
+                                    </div>
+                                     <a href="{{ route('uom') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
                                     <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
                                 </form>
                             </div>

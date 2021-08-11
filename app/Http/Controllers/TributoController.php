@@ -132,7 +132,7 @@ class TributoController extends Controller {
 
         if($dato_consulta > 0){
 
-            return redirect("/configuracion/tributo/$id")->with('error', __('idioma.alert_ya_uso'));
+            return redirect()->route('taxes')->with('error', __('idioma.alert_ya_uso'));
            
         }else{
                         
@@ -140,7 +140,7 @@ class TributoController extends Controller {
             $datos = Tributo::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect('/configuracion/tributos')->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('taxes')->with('status', __('idioma.alert_borrar'));
 
         }
     }

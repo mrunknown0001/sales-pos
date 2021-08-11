@@ -1,7 +1,7 @@
 @extends('Back.master')
-@section('title', 'Location')
+@section('title', 'Unit of Measurement')
 @section('active-configuracion', 'active')
-@section('active-configuracion-locations', 'active')
+@section('active-configuracion-uom', 'active')
 @section('content')
 
  <!-- ============================================================== -->
@@ -20,7 +20,7 @@
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ route('locations') }}">Locations</a>
+                                <a href="{{ route('uom') }}">UoM</a>
                             </li>
                             <li class="active">
                                 Show
@@ -48,23 +48,23 @@
                                 @endif
                                 <form>
                                     <div class="form-group">
-                                        <label for="location_name">Location Name</label>
-                                        <input type="text" class="form-control {{ ($errors->first('location_name')) ? 'error' : '' }}" id="location_name" maxlength="100" value="{{ $location->location_name }}" readonly="" name="location_name" />
-                                        @if($errors->first('location_name'))
-                                          <div class="alert alert-danger">{{ $errors->first('location_name') }}</div>
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control {{ ($errors->first('name')) ? 'error' : '' }}" id="name" maxlength="100" value="{{ $uom->uom }}" readonly="" name="name" />
+                                        @if($errors->first('name'))
+                                          <div class="alert alert-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="location_code">Location Code</label>
-                                        <input type="text" class="form-control {{ ($errors->first('location_code')) ? 'error' : '' }}" id="location_code" maxlength="100" value="{{ $location->location_code }}" readonly="readonly=""" name="location_code" />
-                                        @if($errors->first('location_code'))
-                                          <div class="alert alert-danger">{{ $errors->first('location_code') }}</div>
+                                        <label for="code">Code</label>
+                                        <input type="text" class="form-control {{ ($errors->first('code')) ? 'error' : '' }}" id="code" maxlength="100" value="{{ $uom->code }}" readonly="readonly=""" name="code" />
+                                        @if($errors->first('code'))
+                                          <div class="alert alert-danger">{{ $errors->first('code') }}</div>
                                         @endif
                                     </div>
-                                     <a href="{{ route('locations') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> Return </button></a>
+                                     <a href="{{ route('uom') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> Return </button></a>
                                     {{-- <a href="{{ route('location.destroy',$location->id) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Delete </a> --}}
-                                    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#locationDeleteModal"><i class="fa fa-trash"></i> Delete </button>
-                                    <a href="{{ route('location.edit',$location->id) }}" class="btn btn-info pull-right"><i class="fa fa-edit"></i> Edit </a>
+                                    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#uomDeleteModal"><i class="fa fa-trash"></i> Delete </button>
+                                    <a href="{{ route('uom.edit',$uom->id) }}" class="btn btn-info pull-right"><i class="fa fa-edit"></i> Edit </a>
                                 </form>
                             </div>
                         </div>
@@ -75,16 +75,16 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
-<div class="modal fade" id="locationDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="uomDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title text-center" id="ModalLongTitle"><span class="required">Delete Location</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h2 class="modal-title text-center" id="ModalLongTitle"><span class="required">Delete UoM</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button></h2>
       </div>
       <div class="modal-body text-center">
-        <a href="{{ route('location.destroy',$location->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
+        <a href="{{ route('uom.destroy',$uom->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
       </div>
       {{-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

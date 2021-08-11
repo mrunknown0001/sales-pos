@@ -78,6 +78,11 @@
                                         {{session('error')}}
                                     </div>
                                 @endif
+                                @if (session('info'))
+                                    <div class="alert alert-info">
+                                        {{session('info')}}
+                                    </div>
+                                @endif
                                  @if($datos->status == 1)
                                     <div class="form-group">
                                         <label for="nombreCliente">{{'Status'}} </label>
@@ -110,6 +115,10 @@
                                     <input type="text" value="{{ $datos->cantidad }}" class="form-control" readonly></input>
                                 </div>
                                <div class="form-group">
+                                    <label for="uom">UOM</label>
+                                    <input type="text" value="{{ $datos->uom->uom }}" class="form-control" readonly></input>
+                                </div>
+                               <div class="form-group">
                                     <label for="nombreempresa"> @lang('idioma.products_pr_cos') {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
                                     <input type="text" value="{{ number_format($datos->precio_costo,2) }}" class="form-control" readonly></input>
                                 </div>
@@ -123,7 +132,7 @@
                                 </div>
                                <div class="form-group">
                                     <label for="nombreempresa">@lang('idioma.product_descrip') (@lang('idioma.gral_opcional'))</label>
-                                    <textarea class="form-control" rows="10" readonly>{{ $datos->descripcion }}</textarea>
+                                    <textarea class="form-control" rows="10" readonly>Description</textarea>
                                 </div>
                             </div>
                         </div>

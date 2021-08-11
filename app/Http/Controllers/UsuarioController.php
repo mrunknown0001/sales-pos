@@ -319,7 +319,7 @@ class UsuarioController extends Controller {
 
         if($dato_consulta > 0){
 
-            return redirect("/configuracion/usuario/$id")->with('error', __('idioma.alert_ya_uso'));
+            return redirect()->route('user.show', $id)->with('error', __('idioma.alert_ya_uso'));
            
         }else{
                         
@@ -328,7 +328,7 @@ class UsuarioController extends Controller {
             $datos->delete();
 
 
-            return redirect('/configuracion/usuario')->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('users')->with('status', __('idioma.alert_borrar'));
 
         }
 

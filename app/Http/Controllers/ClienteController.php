@@ -165,7 +165,7 @@ class ClienteController extends Controller {
             $datos = Cliente::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect()->route('clients')->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('clients')->with('status', 'Customer Deleted');
 
         }
     }
