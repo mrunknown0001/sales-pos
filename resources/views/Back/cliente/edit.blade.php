@@ -42,47 +42,48 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
+                                <p><i>All fields with <span class="required">*</span> are required fileds.</i></p>
                                <form class="form-horizontal" method="POST" autocomplete="off">
 			                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 			                        <div class="box-body">
                                        <div class="form-group">
-                                          <label for="nombre">@lang('idioma.gral_nombre')</label>
+                                          <label for="nombre">First Name<span class="required">*</span></label>
                                           <input type="text"  class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}" value="{{ $datos->nombre }}" id="nombre" name="nombre" maxlength="30" />
                                           @if($errors->first('nombre'))
                                              <div class="alert alert-danger">{{ $errors->first('nombre') }}</div>
                                           @endif
                                        </div>
                                        <div class="form-group">
-                                          <label for="apellidoCliente">@lang('idioma.gral_apellido')</label>
+                                          <label for="apellidoCliente">Last Name<span class="required">*</span></label>
                                           <input type="text" value="{{ $datos->apellido }}" class="form-control {{ ($errors->first('apellido')) ? 'error' : '' }}" id="apellido" maxlength="30" name="apellido" />
                                           @if($errors->first('apellido'))
                                              <div class="alert alert-danger">{{ $errors->first('apellido') }}</div>
                                           @endif
                                        </div>
                                        <div class="form-group">
-                                          <label for="cedulaCliente">@lang('idioma.cliente_cr')</label>
+                                          <label for="cedulaCliente">Identification<span class="required">*</span></label>
                                           <input type="text" value="{{ $datos->cedula }}"  class="form-control {{ ($errors->first('cedula')) ? 'error' : '' }}" id="cedula" name="cedula" maxlength="10" onkeypress="return valida(event)" />
                                           @if($errors->first('cedula'))
                                              <div class="alert alert-danger">{{ $errors->first('cedula') }}</div>
                                           @endif
                                        </div>
                                        <div class="form-group">
-                                          <label for="empresaCliente">@lang('idioma.cliente_empresa') (@lang('idioma.pos_opcional'))</label>
+                                          <label for="empresaCliente">Company (@lang('idioma.pos_opcional'))</label>
                                           <input type="text" value="{{ $datos->empresa }}"  class="form-control" id="empresa" maxlength="50" name="empresa"/>
                                        </div>
                                        <div class="form-group">
-                                          <label for="correoCliente">@lang('idioma.gral_correo')</label>
+                                          <label for="correoCliente">Email<span class="required">*</span></label>
                                           <input type="text" value="{{ $datos->correo }}"  class="form-control {{ ($errors->first('correo')) ? 'error' : '' }}" id="correo" maxlength="50" name="correo" />
                                           @if($errors->first('correo'))
                                              <div class="alert alert-danger">{{ $errors->first('correo') }}</div>
                                           @endif
                                        </div>
                                        <div class="form-group">
-                                          <label for="telefonoCliente">@lang('idioma.cliente_telef') (@lang('idioma.pos_opcional'))</label>
+                                          <label for="telefonoCliente">Phone<span class="required">*</span> (@lang('idioma.pos_opcional'))</label>
                                           <input type="text" value="{{ $datos->telefono }}"  class="form-control" id="telefono" maxlength="50" name="telefono" />
                                        </div>
                                        <div class="form-group">
-                                          <label for="status">{{"Status"}}</label>
+                                          <label for="status">Status<span class="required">*</span></label>
                                           <select name="status" class="form-control">
                                              @if($datos->status == 1)
                                                    <option value="1">@lang('idioma.gral_activo')</option>

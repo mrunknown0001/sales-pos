@@ -138,6 +138,11 @@ Route::group(['middleware' => 'auth'], function () {
 	    	Route::get('/destroy/{id}', 'LocationController@destroy')->name('location.destroy');
 	    });
 
+	    // Unit of Measurement
+	    Route::group(['prefix' => 'uom'], function () {
+	    	Route::get('/', 'UnitOfMeasurementController@index')->name('uom');
+	    });
+
 
 	});
 

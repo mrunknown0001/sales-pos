@@ -27,6 +27,7 @@ class ClienteFormRequest extends FormRequest
             //
             'nombre'    => "required",
             'apellido'  => "required",
+            'telefono'  => "required",
             'cedula'    => "required|numeric|unique:clientes,cedula",
             'correo'    => "required|unique:clientes,correo|email",
         ];

@@ -30,8 +30,8 @@
                 </div>
             </div>
             <!-- end row -->
-
-        <form method="POST"  class="form-horizontal" enctype="multipart/form-data">
+        <p><i>All fields with <span class="required">*</span> are required fields.</i></p>
+        <form method="POST"  class="form-horizontal" enctype="multipart/form-data" autocomplete="off">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="row">
                  <!--IMAGEN-->
@@ -82,7 +82,7 @@
                                 @endif
                                  @if($datos->status == 1)
                                    <div class="form-group">
-                                        <label for="statusProducto">{{"Status"}}</label>
+                                        <label for="statusProducto">Status<span class="required">*</span></label>
                                         <select name="status" class="form-control">
                                             <option class="dato_previo" value="1">@lang('idioma.gral_activo')</option>
                                             <option value="0">@lang('idioma.gral_in_activo')</option>
@@ -90,7 +90,7 @@
                                     </div>
                                 @else
                                     <div class="form-group">
-                                        <label for="statusProducto">{{"Status"}} </label>
+                                        <label for="statusProducto">Status<span class="required">*</span></label>
                                         <select name="status" class="form-control">
                                             <option class="dato_previo" value="0">"@lang('idioma.gral_in_activo')</option>
                                             <option value="1">@lang('idioma.gral_in_activo')</option>
@@ -98,21 +98,21 @@
                                     </div>
                                 @endif
                                <div class="form-group">
-                                    <label for="nombreProducto">@lang('idioma.gral_nombre')</label>
+                                    <label for="nombreProducto">Name<span class="required">*</span></label>
                                     <textarea type="text" class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}" id="nombre" name="nombre"/>{{ $datos->nombre }}</textarea>
                                     @if($errors->first('nombre'))
                                        <div class="alert alert-danger">{{ $errors->first('nombre') }}</div>
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="codigoProducto">@lang('idioma.gral_codigo')</label>
+                                    <label for="codigoProducto">Code<span class="required">*</span></label>
                                     <input type="text" value="{{ $datos->codigo }}" class="form-control {{ ($errors->first('codigo')) ? 'error' : '' }}" id="codigo" maxlength="30" name="codigo"/>
                                     @if($errors->first('codigo'))
                                        <div class="alert alert-danger">{{ $errors->first('codigo') }}</div>
                                     @endif
                                 </div>
                                <div class="form-group">
-                                    <label for="categoriaProducto">@lang('idioma.categ_titulo')</label>
+                                    <label for="categoriaProducto">Category<span class="required">*</span></label>
                                     <select name="categoria" class="form-control {{ ($errors->first('categoria')) ? 'error' : '' }}" id="categoria_cargar2">
                                         <optgroup label="@lang('idioma.products_seleci')">
                                             <option class="dato_previo" value="{{$datos->categoria->id}}">{{$datos->categoria->nombre}}</option>
@@ -129,7 +129,7 @@
                                     @endif
                                 </div>
                                <div class="form-group">
-                                    <label for="subcategoriaProducto">@lang('idioma.subcateg_titulo')</label>
+                                    <label for="subcategoriaProducto">Sub Category<span class="required">*</span></label>
                                     <input type="hidden" name="subcatego_id_ajax" id="subcatego_id_ajax" value="{{$datos->subcategoria->id}}">
 
                                      <!--1. DATOS CARGA INICIAL-->
@@ -156,28 +156,28 @@
 
                                 </div>
                                <div class="form-group">
-                                    <label for="cantidadProducto">@lang('idioma.gral_cantidad')</label>
+                                    <label for="cantidadProducto">Quantity<span class="required">*</span></label>
                                     <input name="cantidad" type="text" value="{{ $datos->cantidad }}" class="form-control {{ ($errors->first('cantidad')) ? 'error' : '' }}" onkeypress="return valida(event)">
                                     @if($errors->first('cantidad'))
                                        <div class="alert alert-danger">{{ $errors->first('cantidad') }}</div>
                                     @endif
                                 </div>
                                <div class="form-group">
-                                    <label for="preciocostoProducto"> @lang('idioma.products_pr_cos') {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
+                                    <label for="preciocostoProducto"> Production Price<span class="required">*</span> {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
                                     <input type="text" name="precio_costo" value="{{ $datos->precio_costo }}" class="form-control {{ ($errors->first('precio_costo')) ? 'error' : '' }}" onkeypress="return filterFloat(event,this);">
                                     @if($errors->first('precio_costo'))
                                        <div class="alert alert-danger">{{ $errors->first('precio_costo') }}</div>
                                     @endif
                                 </div>
                                <div class="form-group">
-                                    <label for="preciopublicoProducto">@lang('idioma.products_pr_pub') {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_pub')"></i></label>
+                                    <label for="preciopublicoProducto">Public Price<span class="required">*</span> {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_pub')"></i></label>
                                     <input type="text" name="precio_publico" value="{{ $datos->precio_publico }}" class="form-control {{ ($errors->first('precio_publico')) ? 'error' : '' }}" onkeypress="return filterFloat(event,this);">
                                     @if($errors->first('precio_publico'))
                                        <div class="alert alert-danger">{{ $errors->first('precio_publico') }}</div>
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="tributoProducto">@lang('idioma.nav_sys_tribu')</label>
+                                    <label for="tributoProducto">Taxes<span class="required">*</span></label>
                                     <select name="tributo" class="form-control {{ ($errors->first('tributo')) ? 'error' : '' }}">
                                         <optgroup label="@lang('idioma.products_seleci')">
                                             <option class="dato_previo" value="{{$datos->tributo->id}}">{{$datos->tributo->nombre." | ".$datos->tributo->monto." | ".$datos->tributo->tipo}}</option>
@@ -193,7 +193,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="descripcionProducto">@lang('idioma.product_descrip') (@lang('idioma.gral_opcional'))</label>
+                                    <label for="descripcionProducto">Description (@lang('idioma.gral_opcional'))</label>
                                     <textarea name="descripcion" rows="10" class="form-control" placeholder="Descripción del producto">{{$datos->descripcion}}</textarea>
                                 </div>
                                 <a href="{{ route('product.show',$datos->id) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </a>

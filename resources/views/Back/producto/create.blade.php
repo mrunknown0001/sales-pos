@@ -47,7 +47,8 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
-                                <form method="POST"  class="form-horizontal" enctype="multipart/form-data">
+                                <p><i>All fields with <span class="required">*</span> are required fields.</i></p>
+                                <form method="POST"  class="form-horizontal" enctype="multipart/form-data" autocomplete="off">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
                                     <div class="form-group">
@@ -56,21 +57,21 @@
                                         <div id="lista_imagenes"></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nombreProducto">@lang('idioma.gral_nombre')</label>
+                                        <label for="nombreProducto">Name<span class="required">*</span></label>
                                         <textarea type="text" class="form-control {{ ($errors->first('nombre')) ? 'error' : '' }}" id="nombre" name="nombre"/>{{old('nombre')}}</textarea>
                                         @if($errors->first('nombre'))
                                           <div class="alert alert-danger">{{ $errors->first('nombre') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="codigoProducto">@lang('idioma.gral_codigo')</label>
+                                        <label for="codigoProducto">Code<span class="required">*</span></label>
                                         <input type="text" value="{{old('codigo')}}" class="form-control {{ ($errors->first('codigo')) ? 'error' : '' }}" id="codigo" maxlength="30" name="codigo"/>
                                         @if($errors->first('codigo'))
                                           <div class="alert alert-danger">{{ $errors->first('codigo') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="categoriaProducto">@lang('idioma.categ_titulo')</label>
+                                        <label for="categoriaProducto">Categories<span class="required">*</span></label>
                                         <select name="categoria" class="form-control {{ ($errors->first('categoria')) ? 'error' : '' }}" id="categoria_cargar">
                                             <option value="">@lang('idioma.gral_select')</option>
                                             @foreach($datos as $d)
@@ -82,7 +83,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="subcategoriaProducto">@lang('idioma.subcateg_titulo')</label>
+                                        <label for="subcategoriaProducto">Sub Categories<span class="required">*</span></label>
                                         <select name="sub_categoria" class="form-control {{ ($errors->first('sub_categoria')) ? 'error' : '' }}" id="subcategoria_cargar">
                                             <option value="">@lang('idioma.gral_select')</option>
                                             @foreach($datos3 as $d)
@@ -94,28 +95,28 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="cantidadProducto">@lang('idioma.gral_cantidad')</label>
+                                        <label for="cantidadProducto">Quantity<span class="required">*</span></label>
                                         <input type="text" value="{{old('cantidad')}}" class="form-control {{ ($errors->first('cantidad')) ? 'error' : '' }}" id="cantidad" maxlength="6" name="cantidad" onkeypress="return valida(event)"/>
                                         @if($errors->first('cantidad'))
                                           <div class="alert alert-danger">{{ $errors->first('cantidad') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="PrecioCostoProducto">@lang('idioma.products_pr_cos') {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
+                                        <label for="PrecioCostoProducto">Production Price<span class="required">*</span> {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
                                         <input type="text" value="{{old('precio_costo')}}" class="form-control {{ ($errors->first('precio_costo')) ? 'error' : '' }}" id="precio_costo" maxlength="10" name="precio_costo" onkeypress="return filterFloat(event,this);"/>
                                         @if($errors->first('precio_costo'))
                                           <div class="alert alert-danger">{{ $errors->first('precio_costo') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="PreciopublicoProducto">@lang('idioma.products_pr_pub') {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_pub')"></i></label>
+                                        <label for="PreciopublicoProducto">Public Price<span class="required">*</span> {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_pub')"></i></label>
                                         <input type="text" value="{{old('precio_publico')}}" class="form-control {{ ($errors->first('precio_publico')) ? 'error' : '' }}" id="precio_publico" maxlength="10" name="precio_publico" onkeypress="return filterFloat(event,this);"/>
                                         @if($errors->first('precio_publico'))
                                           <div class="alert alert-danger">{{ $errors->first('precio_publico') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="tributoProducto">@lang('idioma.nav_sys_tribu')</label>
+                                        <label for="tributoProducto">Taxes<span class="required">*</span></label>
                                         <select name="tributo" class="form-control {{ ($errors->first('tributo')) ? 'error' : '' }}">
                                              @foreach($datos2 as $d2)
                                                 <option value="{{$d2->id}}">{{$d2->nombre." | ".$d2->monto." | ".$d2->tipo}}</option>
@@ -126,7 +127,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="statusProducto">{{"Status"}}</label>
+                                        <label for="statusProducto">Status<span class="required">*</span></label>
                                         <select name="status" class="form-control">
                                             <option value="1">@lang('idioma.gral_activo')</option>
                                             <option value="0">@lang('idioma.gral_in_activo')</option>
