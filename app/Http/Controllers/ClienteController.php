@@ -157,7 +157,7 @@ class ClienteController extends Controller {
 
         if($consulta_cliente > 0){
 
-            return redirect("/show_cliente/$id")->with('error', __('idioma.alert_ya_uso'));
+            return redirect()->route('clients')->with('error', __('idioma.alert_ya_uso'));
            
         }else{
                         
@@ -165,7 +165,7 @@ class ClienteController extends Controller {
             $datos = Cliente::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect()->back()->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('clients')->with('status', __('idioma.alert_borrar'));
 
         }
     }
