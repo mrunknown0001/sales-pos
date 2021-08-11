@@ -173,5 +173,29 @@ class DatabaseSeeder extends Seeder
             // ]
         ]);
 
+
+        DB::table('unit_of_measurements')->insert([
+            [
+                'uom' => 'TRAY',
+                'code' => 'TRAY',
+                'description' => '30 pcs = 1 Tray'
+            ],
+            [
+                'uom' => 'CASE',
+                'code' => 'CASE',
+                'description' => '12 Tray = 1 Case'
+            ],
+            [
+                'uom' => 'DOZEN',
+                'code' => 'DOZEN',
+                'description' => '12 pcs = 1 Dozen'
+            ],
+            [
+                'uom' => 'Piece(s)',
+                'code' => 'PCS',
+                'description' => '1 Egg'
+            ],
+        ]);
+
     }
 }
