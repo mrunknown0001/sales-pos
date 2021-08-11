@@ -42,7 +42,7 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
-                                <form method="POST">
+                                <form method="POST" autocomplete="off">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <div class="form-group">
                                         <label for="nombreCategoria">@lang('idioma.categ_titulo')</label>

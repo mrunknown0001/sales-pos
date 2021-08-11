@@ -56,6 +56,14 @@ class SubCategoriaController extends Controller
         $nombre    = strtoupper($request->get('nombre'));
         $catego_id = $request->get('categoria');
 
+        $subcat = SubCategoria::where('nombre', $nombre)->where('categoria_id', $catego_id)->first();
+
+        if(!empty($subcat)) {
+            $request->validate([
+                'nombre' => 'required|unique:subcategorias,nombre'
+            ]);
+        }
+
         $datos = new SubCategoria(array(
             'nombre'       => $nombre,
             'categoria_id' => $catego_id,

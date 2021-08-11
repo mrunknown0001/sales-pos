@@ -24,7 +24,6 @@ class SubCategoriaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'       => 'required',
             'categoria'    => 'required',
         ];
     }
