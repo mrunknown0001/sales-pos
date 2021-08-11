@@ -52,8 +52,8 @@
                                 <th>#</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Identification</th>
-                                <th>Company</th>
+                                <th>Phone</th>
+                                <th>Email</th>
                                 <th>Status</th>
                             </tr>
                             </thead>
@@ -65,8 +65,8 @@
                                    <td>{{++$key}}</td>
                                    <td><a href="{{ route('client.show', $d->id) }}">{{ $d->nombre }}</a></td>
                                    <td><a href="{{ route('client.show', $d->id) }}">{{ $d->apellido }}</a></td>
-                                   <td><a href="{{ route('client.show', $d->id) }}">{{ $d->cedula }}</a></td>
-                                   <td><a href="{{ route('client.show', $d->id) }}">{{ $d->empresa }}</a></td>
+                                   <td><a href="{{ route('client.show', $d->id) }}">{{ $d->telefono }}</a></td>
+                                   <td><a href="{{ route('client.show', $d->id) }}">{{ $d->correo }}</a></td>
                                    @if($d->status == 1)
                                         <td><a class="status_activo_letra" href="{{ route('client.show', $d->id) }}">@lang('idioma.gral_activo')</a></td>
                                    @else
