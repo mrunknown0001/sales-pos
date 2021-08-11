@@ -69,7 +69,7 @@
                                         <label for="product">Product</label>
                                         <select name="product" id="product" class="form-control">
                                             @foreach($products as $key => $p)
-                                                <option value="{{ $p->id }}">{{ $p->nombre }}</option>
+                                                <option value="{{ $p->id }}">{{ $p->codigo . ' - ' . $p->nombre }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->first('product'))
