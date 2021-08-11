@@ -141,6 +141,8 @@ Route::group(['middleware' => 'auth'], function () {
 	    // Unit of Measurement
 	    Route::group(['prefix' => 'uom'], function () {
 	    	Route::get('/', 'UnitOfMeasurementController@index')->name('uom');
+	    	// Add
+	    	
 	    });
 
 
