@@ -52,9 +52,9 @@ class DatabaseBackUp extends Command
         // $command = "mysqldump -u " . env('DB_USERNAME') ." -p " . env('DB_PASSWORD') . " -h " . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
 
 
-        $command = "mysqldump -u " . env('ROOT_DB_USERNAME') ." -p " . env('ROOT_DB_PASSWORD') . " " . env('DB_DATABASE') . " > " . storage_path() . "/app/backup/" . $filename;
+        // $command = "mysqldump -u " . env('ROOT_DB_USERNAME') ." -p " . env('ROOT_DB_PASSWORD') . " " . env('DB_DATABASE') . " > " . storage_path() . "/app/backup/" . $filename;
         
-        // $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " > " . storage_path() . "/app/backup/" . $filename;
+        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " > " . storage_path() . "/app/backup/" . $filename;
 
         
         # Working Direct Command
