@@ -84,6 +84,7 @@
         </button></h2>
       </div>
       <div class="modal-body text-center">
+        <p>UoM to Delete: <b>{{ $uom->uom }}</b></p>
         <a href="{{ route('uom.destroy',$uom->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
       </div>
       {{-- <div class="modal-footer">

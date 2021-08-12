@@ -73,6 +73,7 @@
         </button></h2>
       </div>
       <div class="modal-body text-center">
+        <p>Role to Delete: <b>{{ $rol->nombre }}</b></p>
         <a href="{{ route('role.destroy',$rol->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
       </div>
       {{-- <div class="modal-footer">

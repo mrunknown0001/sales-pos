@@ -87,6 +87,7 @@
         </button></h2>
       </div>
       <div class="modal-body text-center">
+        <p>Sub-Category to Delete: <b>{{ $datos->nombre }}</b></p>
         <a href="{{ route('subcat.destroy',$datos->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
       </div>
       {{-- <div class="modal-footer">

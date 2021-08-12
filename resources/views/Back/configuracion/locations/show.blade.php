@@ -84,6 +84,7 @@
         </button></h2>
       </div>
       <div class="modal-body text-center">
+        <p>Location to Delete: <b>{{ $location->location_name }}</b></p>
         <a href="{{ route('location.destroy',$location->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
       </div>
       {{-- <div class="modal-footer">

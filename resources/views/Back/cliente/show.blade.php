@@ -121,6 +121,7 @@
         </button></h2>
       </div>
       <div class="modal-body text-center">
+        <p>Customer to Delete: <b>{{ $datos->nombre . ' ' . $datos->apellido}}</b></p>
         <a href="{{ route('client.destroy',$datos->id) }}" class="btn btn-danger btn-lg">Click to Delete!</a>
       </div>
       {{-- <div class="modal-footer">
