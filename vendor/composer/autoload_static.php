@@ -553,6 +553,7 @@ class ComposerStaticInit2f8622560b95b6c1a262298cb379bdf7
         'App\\Configuracion' => __DIR__ . '/../..' . '/app/Configuracion.php',
         'App\\Console\\Commands\\DatabaseBackUp' => __DIR__ . '/../..' . '/app/Console/Commands/DatabaseBackUp.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\DatabaseBackup' => __DIR__ . '/../..' . '/app/DatabaseBackup.php',
         'App\\DetalleProceso' => __DIR__ . '/../..' . '/app/DetalleProceso.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exports\\SalesReportExcelReport' => __DIR__ . '/../..' . '/app/Exports/SalesReportExcelReport.php',

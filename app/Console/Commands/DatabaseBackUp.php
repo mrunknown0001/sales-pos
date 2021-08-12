@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Carbon\Carbon;
 
 use Config;
+use App\DatabaseBackUp as DBBackup;
 
 class DatabaseBackUp extends Command
 {
@@ -40,8 +41,8 @@ class DatabaseBackUp extends Command
      */
     public function handle()
     {
-        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".gz";
-        // $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
+        $filename = "backup-" . Carbon::now()->format('Y-m-d-h-i-s') . ".gz";
+        // $filename = "backup-" . Carbon::now()->format('Y-m-d-h-i-s') . ".sql";
 
         $dbhost = Config::get('values.dbhost');
         $dbname = Config::get('values.dbname');
@@ -55,9 +56,18 @@ class DatabaseBackUp extends Command
         $returnVar = NULL;
 
         $output  = NULL;
+        if(PHP_OS_FAMILY == "Linux") {
+            exec($command, $output, $returnVar);
 
-        exec($command, $output, $returnVar);
+            $db = new DBBackup();
+            $db->filename = $filename;
+            $db->url = public_path() . "/bak/" . $filename;
+            $db->save();
 
-        $this->info("Database " . $dbname . "Successfully Backed Up!");
+            $this->info("Database " . $dbname . "Successfully Backed Up!");
+        }
+        else {
+            $this->info("Database " . $dbname . "is Unable to Backup on this OS!");
+        }
     }
 }

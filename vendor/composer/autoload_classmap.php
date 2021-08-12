@@ -11,6 +11,7 @@ return array(
     'App\\Configuracion' => $baseDir . '/app/Configuracion.php',
     'App\\Console\\Commands\\DatabaseBackUp' => $baseDir . '/app/Console/Commands/DatabaseBackUp.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\DatabaseBackup' => $baseDir . '/app/DatabaseBackup.php',
     'App\\DetalleProceso' => $baseDir . '/app/DetalleProceso.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\SalesReportExcelReport' => $baseDir . '/app/Exports/SalesReportExcelReport.php',

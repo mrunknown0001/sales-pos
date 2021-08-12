@@ -239,6 +239,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer/receive', 'TransferController@receive')->name('transfer.receive');
 	Route::post('/transfer/receive', 'TransferController@store')->name('transfer.store');
 
+
+	// Database Backups
+	Route::get('/db-backup', 'DatabaseBackupController@index')->name('db.backup');
+	// Download Database Backup
+	Route::get('/db-backup/download/{id}', 'DatabaseBackupController@download')->name('db.backup.download');
+
 });
 
 
