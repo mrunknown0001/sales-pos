@@ -67,7 +67,7 @@
                                                 <th>@lang('idioma.pos_pre') U.</th>
                                                 <th>@lang('idioma.pos_imp')</th>
                                                 <th>@lang('idioma.pos_timp')</th>
-                                                <th>@lang('idioma.pos_total')<small> (@lang('idioma.pos_con_imp')) </small></th>
+                                                <th>@lang('idioma.pos_total')</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -107,17 +107,17 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="col-md-12">
-                                    <label for="subTotal">Subtotal <small>(@lang('idioma.pos_sin_imp'))</small></label>
+                                    <label for="subTotal">Subtotal <small></small></label>
                                     <input type="text" readonly id="subtotal_general_si" name="subtotal_general_si" class="form-control" value="0.00">
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="col-md-12">
-                                    <label for="impuestosTotales">@lang('idioma.pos_total_imp')</label>
+                                    <label for="impuestosTotales">Tax</label>
                                     <input type="text" readonly="readonly" id="impuestos_totales" class="form-control" value="0.00">
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="col-md-12">
-                                    <label for="subTotal">Total <small>(@lang('idioma.pos_con_imp'))</small></label>
+                                    <label for="subTotal">Total <small></small></label>
                                     <input type="text" readonly id="subtotal_general" name="subtotal_general" class="form-control" value="0.00">
                                     <input type="hidden" id="subtotal_general_sf" name="subtotal_general_sf" class="form-control" value="0.00">
                                 </div>
@@ -279,7 +279,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="subtotal" class="control-label">Total <small>(@lang('idioma.pos_con_imp'))</small></label>
+                                        <label for="subtotal" class="control-label">Total</label>
                                         <input type="text" readonly="readonly" class="form-control" id="modal_subtotal_cf">
                                         <input type="hidden" readonly="readonly" class="form-control" id="modal_subtotal_sf">
                                     </div>

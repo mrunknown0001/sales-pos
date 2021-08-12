@@ -148,11 +148,12 @@
 
                             @if(Session::get("rol_id"))
                                 @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->producto_e == 1)
-                                    <a href="{{ route('product.edit',$datos->id) }}"><button type="submit" class="btn btn-info"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
+                                    <a href="{{ route('product.edit',$datos->id) }}"><button type="submit" class="btn btn-info pull-right"><i class="fa fa-edit"></i> @lang('idioma.gral_btn_edit') </button></a>
                                 @endif
 
                                 @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->producto_b == 1)
-                                    <a href="{{ route('product.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a>
+                                    {{-- <a href="{{ route('product.destroy',$datos->id) }}"><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> @lang('idioma.gral_btn_borr') </button></a> --}}
+                                    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#productDeleteModal"><i class="fa fa-trash"></i> Delete </button>
                                 @endif
                             @endif
                         </div>
@@ -164,4 +165,23 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+
+
+<div class="modal fade" id="productDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title text-center" id="ModalLongTitle"><span class="required">Delete Product</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
+      </div>
+      <div class="modal-body text-center">
+        <a href="{{ route('product.destroy',$datos->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
+      </div>
+      {{-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> --}}
+    </div>
+  </div>
+</div>
 @endsection

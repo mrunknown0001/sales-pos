@@ -42,8 +42,8 @@
                             <li>
                                 <h5>{{Session::get("nombre")}}</h5>
                             </li>
-                            <li><a href="{{ url('/configuracion/usuario/editar-usuario',$usuario_id ) }}"><i class="ti-user m-r-5"></i> @lang('idioma.mi_perfil') </a></li>
-                            <li><a href="{{ url('/salir') }}"><i class="ti-power-off m-r-5"></i> @lang('idioma.salir') </a></li>
+                            <li><a href="{{ route('user.show',$usuario_id ) }}"><i class="ti-user m-r-5"></i> @lang('idioma.mi_perfil') </a></li>
+                            <li><a href="{{ route('logout') }}"><i class="ti-power-off m-r-5"></i> @lang('idioma.salir') </a></li>
                         </ul>
                     </li>
                 </ul>

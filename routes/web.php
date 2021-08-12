@@ -32,7 +32,7 @@ Route::get('idioma/{locale}', function ($locale) {
 // AUTH
 Route::get('/', 'LogearController@logear')->name('login');
 Route::post('/', 'LogearController@authenticate')->name('post.login');
-Route::get('/salir', 'LogearController@logout')->name('logout');
+Route::get('/logout', 'LogearController@logout')->name('logout');
 Route::get('/register', 'LogearController@show_registrar')->name('register');
 Route::post('/registrar', 'LogearController@create_registrar')->name('post.register');
 Route::get('/reset_pass', 'LogearController@show_reset_password');

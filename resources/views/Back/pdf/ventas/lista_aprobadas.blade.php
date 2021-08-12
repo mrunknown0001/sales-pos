@@ -58,19 +58,19 @@ tbody td {
 </style>
 
 <!--Titulo-->
-<div class="titulo"><h3>@lang('idioma.vent_aprob_list')</h3></div>
+<div class="titulo"><h3>List of Approved Sales</h3></div>
 <table>
   <thead>
     <tr>
-        <th>Cod.</th>
-        <th>@lang('idioma.gral_cliente')</th>
-        <th>@lang('idioma.gral_br_cant')</th>
+        <th>Code</th>
+        <th>Customer</th>
+        <th>Qty.</th>
         <th>Subt.</small></th>
-        <th>@lang('idioma.gral_abr_imp')</small></th>
+        <th>Tax</small></th>
         <th>Total</th>
-        <th>@lang('idioma.gral_abr_cant') ({{"%"}})</th>
-        <th>@lang('idioma.gral_a_pagar') ({{$sistema->moneda}})</th>
-        <th>@lang('idioma.dash_fecha')</th>
+        <th>Disc. %</th>
+        <th>To Pay ({{$sistema->moneda}})</th>
+        <th>Date</th>
     </tr>                            
   </thead>
   <tbody>
@@ -106,7 +106,7 @@ tbody td {
             ?>
         <tr>
             <td><b>{{ $d->codigo_proceso }}</b></td>
-            <td><b>{{ $d->cliente->cedula }}</b></td>
+            <td><b>{{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}</b></td>
             <td>{{ $d->items_totales }}</td>
             <td>{{ number_format($total_sin_impuestos,2) }}</td>
             <td>{{ number_format($total_impuesto,2) }}</td>

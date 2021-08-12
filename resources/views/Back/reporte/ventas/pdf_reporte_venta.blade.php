@@ -133,7 +133,7 @@
                         <td style="text-align:left">
                            {{ $sistema->nombre_empresa}}
                            <br>
-                           {{ $sistema->codigo_empresa }}
+                           {{ $sistema->branch }}
                         </td>
                     </tr>
                     <tr>
@@ -154,7 +154,7 @@
             </td>
             
             <td>
-               @lang('idioma.rep_ven_cliente')
+               Customer
             </td>
 
             <td>
