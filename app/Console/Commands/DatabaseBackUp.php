@@ -40,35 +40,25 @@ class DatabaseBackUp extends Command
      */
     public function handle()
     {
-        // $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".gz";
-        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
+        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".gz";
+        // $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
 
         $dbhost = Config::get('values.dbhost');
         $dbname = Config::get('values.dbname');
         $rdbuser = Config::get('values.rdbuser');
         $rdbpass = Config::get('values.rdbpass');
 
-
         // $command = "mysqldump -u " . env('DB_USERNAME') ." -p " . env('DB_PASSWORD') . " -h " . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
-
-
-        // $command = "mysqldump -u " . env('ROOT_DB_USERNAME') ." -p " . env('ROOT_DB_PASSWORD') . " " . env('DB_DATABASE') . " > " . storage_path() . "/app/backup/" . $filename;
         
-        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " > " . storage_path() . "/app/backup/" . $filename;
-
-        
-        # Working Direct Command
-        // $command = "sudo mysqldump -u root -p[passwordwithnospace] pos > " . public_path() . "/bak/" . $filename;
-
-        $this->info($command);
+        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " | gzip > " . storage_path() . "/app/backup/" . $filename;
   
 
         $returnVar = NULL;
 
         $output  = NULL;
 
-  
-
         exec($command, $output, $returnVar);
+
+        $this->info("Database Successfully Backed Up!");
     }
 }
