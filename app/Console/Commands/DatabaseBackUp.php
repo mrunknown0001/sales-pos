@@ -45,20 +45,19 @@ class DatabaseBackUp extends Command
 
         $dbhost = Config::get('values.dbhost');
         $dbname = Config::get('values.dbname');
-        $rdbuser = Config::get('values.rdbuser');
-        $rdbpass = Config::get('values.rdbpass');
-
-        // $command = "mysqldump -u " . env('DB_USERNAME') ." -p " . env('DB_PASSWORD') . " -h " . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
+        $rdbuser = Config::get('values.rdbuser'); // sql root username
+        $rdbpass = Config::get('values.rdbpass'); // sql root password
         
-        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " | gzip > " . storage_path() . "/app/backup/" . $filename;
+        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " | gzip > " . storage_path() . "/app/backup/" . $filename . " sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
+        
+        // $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " > " . storage_path() . "/app/backup/" . $filename . " sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
   
-
         $returnVar = NULL;
 
         $output  = NULL;
 
         exec($command, $output, $returnVar);
 
-        $this->info("Database Successfully Backed Up!");
+        $this->info("Database " . $dbname . "Successfully Backed Up!");
     }
 }
