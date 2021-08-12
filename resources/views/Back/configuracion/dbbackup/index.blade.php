@@ -58,9 +58,9 @@
                             <tbody>
                                 @foreach($datos as $key => $dato)
                                     <tr>
-                                        <td><a href="{{ rotue('db.backup.download', $dato->id) }}">{{ ++$key }}</a></td>
-                                        <td><a href="{{ rotue('db.backup.download', $dato->id) }}">{{ $dato->filename }}</a></td>
-                                        <td><a href="{{ rotue('db.backup.download', $dato->id) }}">{{ $dato->url }}</a></td>
+                                        <td><a href="{{ route('db.backup.download', $dato->id) }}">{{ ++$key }}</a></td>
+                                        <td><a href="{{ route('db.backup.download', $dato->id) }}">{{ $dato->filename }}</a></td>
+                                        <td><a href="{{ route('db.backup.download', $dato->id) }}">{{ $dato->url }}</a></td>
                                     
                                     </tr>
                                 @endforeach
