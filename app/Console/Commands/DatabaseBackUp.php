@@ -38,13 +38,14 @@ class DatabaseBackUp extends Command
      */
     public function handle()
     {
-        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".gz";
+        // $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".gz";
+        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
 
-  
+
 
         // $command = "mysqldump -u " . env('DB_USERNAME') ." -p " . env('DB_PASSWORD') . " -h " . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
+        $command = "sudo mysqldump -u " . env('ROOT_DB_USERNAME') ." -p" . env('ROOT_DB_PASSWORD') . " " . env('DB_DATABASE') . " > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename ;
 
-        $command = "mysqldump -u " . env('DB_USERNAME') ." -p " . env('DB_PASSWORD') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
 
   
 
