@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Carbon\Carbon;
 
 use Config;
-use App\DatabaseBackUp as DBBackup;
+use App\DatabaseBackup as DBBackup;
 
 class DatabaseBackUp extends Command
 {
