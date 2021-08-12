@@ -60,7 +60,7 @@ class DatabaseBackUp extends Command
         # Working Direct Command
         // $command = "sudo mysqldump -u root -p[passwordwithnospace] pos > " . public_path() . "/bak/" . $filename;
 
-
+        $this->info($command);
   
 
         $returnVar = NULL;
@@ -69,6 +69,6 @@ class DatabaseBackUp extends Command
 
   
 
-        exec($command, $output, $returnVar);
+        // exec($command, $output, $returnVar);
     }
 }
