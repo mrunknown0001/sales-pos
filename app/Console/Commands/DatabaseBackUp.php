@@ -69,6 +69,6 @@ class DatabaseBackUp extends Command
 
   
 
-        // exec($command, $output, $returnVar);
+        exec($command, $output, $returnVar);
     }
 }
