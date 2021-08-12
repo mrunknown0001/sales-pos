@@ -244,6 +244,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/db-backup', 'DatabaseBackupController@index')->name('db.backup');
 	// Download Database Backup
 	Route::get('/db-backup/download/{id}', 'DatabaseBackupController@download')->name('db.backup.download');
+	// Run db backup
+	Route::get('/run/db-backup', 'DatabaseBackupController@run')->name('db.backup.run');
 
 });
 

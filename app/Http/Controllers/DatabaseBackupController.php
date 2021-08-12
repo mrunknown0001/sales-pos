@@ -25,4 +25,13 @@ class DatabaseBackupController extends Controller
     	$file = DatabaseBackup::findorfail($id);
     	return Response::download(public_path() . "/bak/" . $file->filename);
     }
+
+
+    // Run db backup now
+    public function run()
+    {
+    	$message = exec("php " . base_path() . "/" . "artisan database:backup");
+
+    	return redirect()->route('db.backup')->with('info', $message);
+    }
 }

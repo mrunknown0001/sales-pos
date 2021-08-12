@@ -36,6 +36,7 @@
                 <div class="col-sm-12">
                     
                     <div class="card-box table-responsive">
+                        <a href="{{ route('db.backup.run') }}" class="btn btn-primary" style="float:right;"><i class="fa fa-database"></i> Backup Now! </a>
 
                         <h4 class="m-t-0 header-title"><b>List of Database Backup</b></h4>
                         <p class="text-muted font-13 m-b-30">
@@ -44,6 +45,11 @@
                             @if (session('status'))
                                 <div class="alert alert-success">
                                     {{session('status')}}
+                                </div>
+                            @endif
+                            @if (session('info'))
+                                <div class="alert alert-info">
+                                    {{session('info')}}
                                 </div>
                             @endif
                         <table id="datatable" class="table table-striped table-bordered">
