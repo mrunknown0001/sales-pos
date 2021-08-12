@@ -45,7 +45,7 @@ class DatabaseBackUp extends Command
 
         // $command = "mysqldump -u " . env('DB_USERNAME') ." -p " . env('DB_PASSWORD') . " -h " . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
         // $command = "sudo mysqldump -u " . env('ROOT_DB_USERNAME') ." -p" . env('ROOT_DB_PASSWORD') . " -B " . env('DB_DATABASE') . " > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename ;
-        $command = "sudo mysqldump -u root -pBrookside2021 pos > " public_path() . "/bak/" . $filename;
+        $command = "sudo mysqldump -u root -pBrookside2021 pos > " . public_path() . "/bak/" . $filename;
 
 
   
