@@ -12,7 +12,7 @@ class GeneralController extends Controller
     // Get Client/Customer Name
     public static function getClientName($id)
     {
-    	$c = Cliente::where('cedula',$id)->first();
+    	$c = Cliente::where('id',$id)->first();
     	if(empty($c)) {
     		return NULL;
     	}

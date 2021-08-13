@@ -259,7 +259,7 @@ class ReporteController extends Controller
         $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
         $columns = array("#","Code","Registered by","Customer", "Subtotal (tax free)", "Taxes", "Total (with tax)","Discount (%)", "Discounted amount","NET TO PAY","Products", "Type of payment", "Date", "Status", "Commentary");
     
-        return $reviews;
+        // return $reviews;
         $export = new SalesReportExcelReport($reviews->all());
         return Excel::download($export, 'Sales Report ' . $desde . '-' . $hasta . '.xlsx');
 
