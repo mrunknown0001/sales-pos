@@ -1,5 +1,5 @@
 @extends('Back.master')
-@section('title',  __('idioma.vent_aprob_titu'))
+@section('title',  'Processed Sales')
 @section('active-ventas', 'active subdrop')
 @section('active-ventas-aprobadas', 'active')
 @section('content')
@@ -12,13 +12,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">@lang('idioma.vent_aprob_titu')</h4>
+                        <h4 class="page-title">Processed Sales</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li class="active">
-                                @lang('idioma.vent_aprob_titu')
+                                Processed Sales
                             </li>
                         </ol>
                         <div class="clearfix"></div>
@@ -37,7 +37,7 @@
                                 {{-- <h3 class="box-title"><a href="{{url('/csv_ventas_aprobadas')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i>{{" CSV "}}</a></h3> --}}
                         @endif
 
-                        <h4 class="m-t-0 header-title"><b>@lang('idioma.vent_aprob_list')</b></h4>
+                        <h4 class="m-t-0 header-title"><b>Processed Sales Lists</b></h4>
                         <p class="text-muted font-13 m-b-30">
                             &nbsp;
                         </p>

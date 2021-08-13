@@ -125,7 +125,7 @@
                                         <span style="background-color:red;color:white">@lang('idioma.vent_fac_rechaza')</span>
                                     
                                     @else
-                                        <span style="background-color:green;color:white">@lang('idioma.vent_fac_aproba')</span>
+                                        {{-- <span style="background-color:green;color:white">@lang('idioma.vent_fac_aproba')</span> --}}
                                     
                                     @endif
                                 

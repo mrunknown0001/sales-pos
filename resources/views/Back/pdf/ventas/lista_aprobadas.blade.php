@@ -58,7 +58,7 @@ tbody td {
 </style>
 
 <!--Titulo-->
-<div class="titulo"><h3>List of Approved Sales</h3></div>
+<div class="titulo"><h3>List of Processed Sales</h3></div>
 <table>
   <thead>
     <tr>

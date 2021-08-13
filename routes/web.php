@@ -185,7 +185,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//========================SALES MODULE=========================//
 	Route::get('/sales/pending', 'VentaController@index_pendientes')->name('sales.pending');
 	Route::get('/sales/reject', 'VentaController@index_rechazadas')->name('sales.reject');
-	Route::get('/sales/approved', 'VentaController@index_aprobadas')->name('sales.approved');
+	Route::get('/sales/processed', 'VentaController@index_aprobadas')->name('sales.approved');
 	Route::post('/sales/approved', 'VentaController@update_aprobar_status')->name('sales.post.aprprove');
 	Route::post('/sales/reject', 'VentaController@update_rechazar_status')->name('sales.post.reject');
 	Route::get('/sales', 'VentaController@create')->name('sales');

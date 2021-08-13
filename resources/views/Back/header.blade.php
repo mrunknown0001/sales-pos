@@ -164,7 +164,7 @@
                             <li>
                                 <a href="{{ route('sales.approved') }}" class="waves-effect @yield('active-ventas-aprobadas')">
                                 <span> 
-                                    Approved
+                                    {{-- Approved --}} Processed
                                 </span></a>
                             </li>
                             @endif
