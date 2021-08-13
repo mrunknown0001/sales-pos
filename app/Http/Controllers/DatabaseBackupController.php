@@ -23,14 +23,20 @@ class DatabaseBackupController extends Controller
     public function download($id)
     {
     	$file = DatabaseBackup::findorfail($id);
-    	return Response::download(public_path() . "/bak/" . $file->filename);
+    	try {
+    		return Response::download(public_path() . "/bak/" . $file->filename);
+    	}
+    	catch (Exception $e) {
+    		return redirect()->back()->with('info', 'Message: ' . $e);
+    	}
+    	
     }
 
 
     // Run db backup now
     public function run()
     {
-    	$message = exec("sudo php " . base_path() . "/" . "artisan database:backup");
+    	$message = exec("sudo php " . base_path() . "artisan database:backup");
 
     	return redirect()->route('db.backup')->with('info', $message);
     }
@@ -39,7 +45,7 @@ class DatabaseBackupController extends Controller
     // remove backup db
     public function remove($id)
     {
-    	$message = exec("sudo php " . base_path() . "/" . "artisan database:delete-backup " . $id);
+    	$message = exec("sudo php " . base_path() . "artisan database:delete-backup " . $id);
     	return redirect()->route('db.backup')->with('info', $message);
     }
 }
