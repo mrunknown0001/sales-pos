@@ -105,7 +105,8 @@
                                             </td>
                                             @if($d->status == 2)
                                                 <td class="status_rep_apro">
-                                                   @lang('idioma.rep_ven_md_apr')
+                                                   {{-- @lang('idioma.rep_ven_md_apr') --}}
+                                                   Processed
                                                 </td>
                                             @elseif($d->status == 1)
                                                 <td class="status_rep_pen">

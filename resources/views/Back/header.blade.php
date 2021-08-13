@@ -371,9 +371,10 @@
                                         <label for="status">@lang('idioma.rep_ven_md_sta')</label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="todas">@lang('idioma.rep_ven_md_all')</option>
-                                            <option value="1">@lang('idioma.rep_ven_md_pen')</option>
-                                            <option value="2">@lang('idioma.rep_ven_md_apr')</option>
-                                            <option value="0">@lang('idioma.rep_ven_md_rec')</option>
+                                            {{-- <option value="1">@lang('idioma.rep_ven_md_pen')</option> --}}
+                                            {{-- <option value="2">@lang('idioma.rep_ven_md_apr')</option> --}}
+                                            <option value="2">Processed</option>
+                                            {{-- <option value="0">@lang('idioma.rep_ven_md_rec')</option> --}}
                                         </select>
                                     </div>
                                     <div class="col-md-12">&nbsp;</div>

@@ -25,6 +25,7 @@ class GeneralController extends Controller
     	if($status == 1) {
     		return 	'PENDING';
     	}
-    	return 'APPROVED';
+        // return 'APPROVED';
+        return 'PROCESSED';
     } 
 }

@@ -55,6 +55,7 @@
                                 <th>Stock</th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Sub-Category</th>
                                 <th>UOM</th>
                                 <th>Status</th>
                                 <th>Options</th>
@@ -76,6 +77,7 @@
 
                                    <td><a href="{{ route('product.show', $d->id) }}">{{ $d->nombre }}</a></td>
                                    <td><a href="{{ route('product.show', $d->id) }}">{{ $d->categoria->nombre }}</a></td>
+                                   <td><a href="{{ route('product.show', $d->id) }}">{{ $d->subcategoria->nombre }}</a></td>
                                    <td><a href="{{ route('product.show', $d->id) }}">{{ $d->uom->uom }}</a></td>
                                     @if($d->status == 1)
                                         <td><a href="{{ route('product.show', $d->id) }}"><font color="green"><b>@lang('idioma.gral_activo')</b></font></a></td>

@@ -55,7 +55,8 @@ class ReporteController extends Controller
             $str_status = "REJECTED";
          }
          elseif($status == 2){
-            $str_status = "APPROVED";
+            // $str_status = "APPROVED";
+            $str_status = "PROCESSED";
          }
 
         //TODAS
@@ -137,7 +138,8 @@ class ReporteController extends Controller
             $str_status = "REJECTED";
          }
          elseif($status == 2){
-            $str_status = "APPROVED";
+            // $str_status = "APPROVED";
+            $str_status = "PROCESSED";
          }
 
 
@@ -224,7 +226,8 @@ class ReporteController extends Controller
             $str_status = "REJECTED";
          }
          elseif($status == 2){
-            $str_status = "APPROVED";
+            // $str_status = "APPROVED";
+            $str_status = "PROCESSED";
          }
 
         $headers = array(
@@ -360,7 +363,8 @@ class ReporteController extends Controller
                $str_status = "REJECTED";
          }
          elseif($status == 2){
-               $str_status = "APPROVED";
+               // $str_status = "APPROVED";
+               $str_status = "PROCESSED";
          }
 
         //TODAS

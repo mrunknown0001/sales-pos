@@ -203,7 +203,8 @@
                     </td>
                 @elseif($d->status == 2)
                     <td>
-                     @lang('idioma.nav_aprobadas')
+                     {{-- @lang('idioma.nav_aprobadas') --}}
+                     PROCESSED
                     </td>
                 @else
                     <td>
