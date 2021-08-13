@@ -51,23 +51,22 @@ class DatabaseBackUp extends Command
         
         $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " | gzip > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
 
-        // $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
-  
-        $returnVar = NULL;
+        $this->info($command);
+        // $returnVar = NULL;
 
-        $output  = NULL;
-        if(PHP_OS_FAMILY == "Linux") {
-            exec($command, $output, $returnVar);
+        // $output  = NULL;
+        // if(PHP_OS_FAMILY == "Linux") {
+        //     exec($command, $output, $returnVar);
 
-            $db = new DBBackup();
-            $db->filename = $filename;
-            $db->url = public_path() . "/bak/" . $filename;
-            $db->save();
+        //     $db = new DBBackup();
+        //     $db->filename = $filename;
+        //     $db->url = public_path() . "/bak/" . $filename;
+        //     $db->save();
 
-            $this->info("Database " . $dbname . " Successfully Backed Up!");
-        }
-        else {
-            $this->info("Database " . $dbname . " is Unable to Backup on this OS!");
-        }
+        //     $this->info("Database " . $dbname . " Successfully Backed Up!");
+        // }
+        // else {
+        //     $this->info("Database " . $dbname . " is Unable to Backup on this OS!");
+        // }
     }
 }
