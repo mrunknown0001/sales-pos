@@ -204,7 +204,7 @@ class ReporteController extends Controller
 
         //Variables para imprimir PDF
 
-        $pdf = PDF::loadView('Back.reporte.ventas.pdf_reporte_venta', compact('sistema','datos','gran_total','total_impuestos','registros_total','desde','hasta','total_sd', 'total_descuentos', 'str_status', 'total_bruto'));
+        $pdf = PDF::loadView('Back.reporte.ventas.pdf_reporte_venta', compact('sistema','datos','gran_total','total_impuestos','registros_total','desde','hasta','total_sd', 'total_descuentos', 'str_status', 'total_bruto'))->setPaper('a4', 'portrait');
         
         return $pdf->download('Sales Report '.$desde.' - '.$hasta.'.pdf');
         
