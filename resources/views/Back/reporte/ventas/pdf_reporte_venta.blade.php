@@ -187,7 +187,7 @@
                 </td>
 
                 <td>
-                    {{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}
+                    {{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->id) }}
                 </td>
 
                 <td>
