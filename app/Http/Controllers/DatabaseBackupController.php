@@ -36,8 +36,7 @@ class DatabaseBackupController extends Controller
     // Run db backup now
     public function run()
     {
-        return base_path();
-    	$message = exec("sudo php " . base_path() . " artisan database:backup");
+    	$message = exec("sudo php " . base_path() . "/artisan database:backup");
 
     	return redirect()->route('db.backup')->with('info', $message);
     }
@@ -46,7 +45,7 @@ class DatabaseBackupController extends Controller
     // remove backup db
     public function remove($id)
     {
-    	$message = exec("sudo php " . base_path() . " artisan database:delete-backup " . $id);
+    	$message = exec("sudo php " . base_path() . "/artisan database:delete-backup " . $id);
     	return redirect()->route('db.backup')->with('info', $message);
     }
 }
