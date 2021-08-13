@@ -50,7 +50,7 @@ class DeleteDbBackup extends Command
             $this->info('Database Backup not found!');
         }
         else {
-            $command = "sudo rm -f " . stroge_path() . "/app/backup/" . $bak->filename . " && sudo rm -f " . public_path() . "/bak/" . $filename;
+            $command = "sudo rm -f " . storage_path() . "/app/backup/" . $bak->filename . " && sudo rm -f " . public_path() . "/bak/" . $filename;
             $output = NULL;
             $returnVar = NULL;
             if(PHP_OS_FAMILY == "Linux") {
