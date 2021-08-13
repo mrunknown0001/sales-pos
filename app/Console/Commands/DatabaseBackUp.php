@@ -64,10 +64,10 @@ class DatabaseBackUp extends Command
             $db->url = public_path() . "/bak/" . $filename;
             $db->save();
 
-            $this->info("Database " . $dbname . "Successfully Backed Up!");
+            $this->info("Database " . $dbname . " Successfully Backed Up!");
         }
         else {
-            $this->info("Database " . $dbname . "is Unable to Backup on this OS!");
+            $this->info("Database " . $dbname . " is Unable to Backup on this OS!");
         }
     }
 }
