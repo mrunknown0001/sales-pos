@@ -48,9 +48,9 @@
                                  <div class="form-group m-b-0">
                                     <label class="control-label">{{'Img'}} </label>
                                     @if($datos->imagen)
-                                       <img style="width:100%;height:auto" src="{{ url('storage/img_productos/'.$datos->imagen) }}" alt="{{$datos->nombre}}">
+                                       <img style="width:100%;height:auto" src="{{ asset('storage/img_productos/'.$datos->imagen) }}" alt="{{$datos->nombre}}">
                                     @else
-                                       <img style="width:100%;height:auto" src="{{ url('storage/img_productos/default_producto.png') }}" alt="{{$datos->nombre}}">
+                                       <img style="width:100%;height:auto" src="{{ asset('storage/img_productos/default_product.png') }}" alt="{{$datos->nombre}}">
                                     @endif
                                 </div>
                               </div>
