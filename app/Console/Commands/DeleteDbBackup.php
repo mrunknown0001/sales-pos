@@ -55,7 +55,7 @@ class DeleteDbBackup extends Command
             $returnVar = NULL;
             if(PHP_OS_FAMILY == "Linux") {
                 exec($command, $output, $returnVar);
-                $ba->delete();
+                $bak->delete();
                 $this->info("Database Backup Removed!");
             }
             else {
