@@ -243,7 +243,7 @@ class ProductoController extends Controller {
 
         if($dato_consulta > 0){
 
-            return redirect("/show_producto/$id")->with('error',  __('idioma.alert_ya_uso'));
+            return redirect()->route('products')->with('error',  __('idioma.alert_ya_uso'));
            
         }else{
             
@@ -261,7 +261,7 @@ class ProductoController extends Controller {
             $datos = Producto::whereId($id)->firstOrFail();
             $datos->delete();
 
-            return redirect("/productos")->with('status', __('idioma.alert_borrar'));
+            return redirect()->route('products')->with('status', __('idioma.alert_borrar'));
 
         }
     }

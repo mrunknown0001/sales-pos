@@ -100,7 +100,7 @@ class CategoriaController extends Controller
      */
     public function update(UpdateCategoriaFormRequest $request, $id)
     {
-        $datos  = Categoria::whereId($id)->firstOrFail();
+        $datos  = Categoria::findorfail($id);
         $nombre = strtoupper($request->get('nombre'));
 
         $datos->nombre = $nombre;
