@@ -540,7 +540,7 @@ class VentaController extends Controller
         $sistema  = Configuracion::where('id', '=', 1)->firstOrFail();
 
         $pdf = PDF::loadView('Back.pdf.ventas.lista_aprobadas', compact('datos', 'sistema'));
-        return $pdf->download(__('idioma.vent_aprob_titu').'.pdf');
+        return $pdf->download('List of Processed Sales'.'.pdf');
     }
 
 
