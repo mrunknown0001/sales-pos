@@ -58,6 +58,7 @@
                                  <th>#</th>
                                  <th>Filename</th>
                                  <th>Link</th>
+                                 <th>Option</th>
                             </tr>
                             </thead>
 
@@ -67,7 +68,26 @@
                                         <td><a href="{{ route('db.backup.download', $dato->id) }}">{{ ++$key }}</a></td>
                                         <td><a href="{{ route('db.backup.download', $dato->id) }}">{{ $dato->filename }}</a></td>
                                         <td><a href="{{ route('db.backup.download', $dato->id) }}">{{ $dato->url }}</a></td>
-                                    
+                                        <td><button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#backupDeleteModal"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                        <div class="modal fade" id="backupDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h2 class="modal-title text-center" id="ModalLongTitle"><span class="required">Delete DB Backup</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button></h2>
+                                              </div>
+                                              <div class="modal-body text-center">
+                                                <p>Database Backup to Delete: <b>{{ $dato->filename }}</b></p>
+                                                <a href="{{ route('db.backup.remove',$dato->id) }}"] class="btn btn-danger btn-lg">Click to Delete</a>
+                                              </div>
+                                              {{-- <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              </div> --}}
+                                            </div>
+                                          </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -77,5 +97,6 @@
             </div>
         </div> <!-- container -->
     </div> <!-- content -->
+
 
 @endsection

@@ -141,7 +141,7 @@
                            
                             @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->venta_i == 1)
                             {{--VENTAS PENDIENTES--}}
-                            <li class="@yield('active-ventas-pendientes')">
+                            {{-- <li class="@yield('active-ventas-pendientes')">
                                 <a href="{{ route('sales.pending') }}" class="waves-effect @yield('active-ventas-pendientes')">
                                     <span> 
                                         Pending
@@ -150,15 +150,15 @@
                                         <span class="badge badge-pill badge-warning color_letra_badge">{{$f_v_pen}}</span>
                                     @endif
                                 </a>
-                            </li>
+                            </li> --}}
                             
                             {{--VENTAS RECHAZADAS--}}
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('sales.reject') }}" class="waves-effect @yield('active-ventas-rechazadas')">
                                 <span> 
                                     Rejected
                                 </span></a>
-                            </li>
+                            </li> --}}
 
                             {{--VENTAS APROBADAS--}}
                             <li>

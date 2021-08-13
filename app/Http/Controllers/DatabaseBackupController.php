@@ -34,4 +34,12 @@ class DatabaseBackupController extends Controller
 
     	return redirect()->route('db.backup')->with('info', $message);
     }
+
+
+    // remove backup db
+    public function remove($id)
+    {
+    	$message = exec("php " . base_path() . "/" . "artisan database:delete-backup " . $id);
+    	return redirect()->route('db.backup')->with('info', $message);
+    }
 }

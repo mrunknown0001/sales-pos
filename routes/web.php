@@ -246,6 +246,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/db-backup/download/{id}', 'DatabaseBackupController@download')->name('db.backup.download');
 	// Run db backup
 	Route::get('/run/db-backup', 'DatabaseBackupController@run')->name('db.backup.run');
+	// remove db backup
+	Route::get('/run/db-backup/remove/{id}', 'DatabaseBackupController@remove')->name('db.backup.remove');
 
 });
 
