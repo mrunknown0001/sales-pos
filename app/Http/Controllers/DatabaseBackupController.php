@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Configuracion;
 use App\DatabaseBackup;
 use Response;
+use Artisan;
 
 class DatabaseBackupController extends Controller
 {
@@ -37,7 +38,7 @@ class DatabaseBackupController extends Controller
     public function run()
     {
     	$message = exec("sudo php " . base_path() . "/artisan database:backup");
-
+        // $message = Artisan::call('database:backup');
     	return redirect()->route('db.backup')->with('info', $message);
     }
 
