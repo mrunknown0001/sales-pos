@@ -41,7 +41,7 @@ class RestoreController extends Controller
 	        exec("sudo mysql -h " . $dbhost . " -u " . $rdbuser . " -p" . $rdbpass . " " . $dbname . " < " . $file_path);
 
 
-		    return 'ok';
+		    return redirect()->route('db.restore')->with('status', 'DB Restored!');
 		}
 
 		return abort(500);
