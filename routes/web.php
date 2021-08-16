@@ -249,6 +249,11 @@ Route::group(['middleware' => 'auth'], function () {
 	// remove db backup
 	Route::get('/run/db-backup/remove/{id}', 'DatabaseBackupController@remove')->name('db.backup.remove');
 
+
+	// Database Restore
+	Route::get('/db-restore', 'RestoreController@index')->name('db.restore');
+	Route::post('/db-restore', 'RestoreController@restore')->name('db.post.restore');
+
 });
 
 
