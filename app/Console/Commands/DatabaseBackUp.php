@@ -41,15 +41,17 @@ class DatabaseBackUp extends Command
      */
     public function handle()
     {
-        // $filename = "backup-" . Carbon::now()->format('Y-m-d-h-i-s') . ".gz";
-        $filename = "backup-" . Carbon::now()->format('Y-m-d-h-i-s') . ".sql";
+        // $filename = "backup-" . Carbon::now()->format('Y-m-d-h-i-s') . ".sql";
+        $filename = "backup-" . Carbon::now()->format('Y-m-d-h-i-s') . ".gz";
 
         $dbhost = Config::get('values.dbhost');
         $dbname = Config::get('values.dbname');
         $rdbuser = Config::get('values.rdbuser'); // sql root username
         $rdbpass = Config::get('values.rdbpass'); // sql root password
         
-        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . "  > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
+        // $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
+
+        $command = "sudo mysqldump -u " . $rdbuser ." -p" . $rdbpass . " " . $dbname . " | gzip > " . storage_path() . "/app/backup/" . $filename . " && sudo cp " . storage_path() . "/app/backup/" . $filename . " " . public_path() . "/bak/" . $filename;
 
 
         $returnVar = NULL;

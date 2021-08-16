@@ -40,7 +40,8 @@
 
                         <h4 class="m-t-0 header-title"><b>List of Database Backup</b></h4>
                         <p class="text-muted font-13 m-b-30">
-                            {{-- Automatic Backup is performed 3:00am Daily. --}}
+                            Automatic Backup is performed 3:00am Daily.<br>
+                            Run <code>php artisan database:backup</code> to backup manually.
                         </p>
                             @if (session('status'))
                                 <div class="alert alert-success">
