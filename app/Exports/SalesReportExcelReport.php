@@ -25,16 +25,23 @@ class SalesReportExcelReport implements FromArray, WithHeadings
     	$d = array();
 
     	foreach($this->data as $a) {
-    		array_push($d, [
-    			$a['id'],
-    			$a['codigo_proceso'],
-    			GC::getClientName($a['cliente_id']),
-    			(int)$a['total'],
-    			$a['tipo_pago'],
-    			$a['tipo_proceso'],
-    			GC::getSalesStatus($a['status']),
-    			date('F j, Y H:i A', strtotime($a['created_at']))
-    		]);
+            $details = GC::getSalesDetails($a['codigo_proceso']);
+            foreach($details as $detail) {
+        		array_push($d, [
+        			$a['id'],
+        			$a['codigo_proceso'],
+        			GC::getClientName($a['cliente_id']),
+                    $detail->producto->categoria->nombre,
+                    $detail->producto->subcategoria->nombre,
+                    $detail->cantidad,
+                    $detail->subtotal,
+                    $a['total'],
+        			$a['tipo_pago'],
+        			$a['tipo_proceso'],
+        			GC::getSalesStatus($a['status']),
+        			date('F j, Y H:i A', strtotime($a['created_at']))
+        		]);
+            }
     	}
 
     	return $d;
@@ -47,6 +54,10 @@ class SalesReportExcelReport implements FromArray, WithHeadings
             '#',
             'Invoice',
             'Customer',
+            'Category',
+            'Sub Category',
+            'Quantity',
+            'Sub Total',
             'Total',
             'Type of Payment',
             'Type of Process',

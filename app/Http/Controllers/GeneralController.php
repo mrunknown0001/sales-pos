@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Cliente;
+use App\Producto;
+use App\DetalleProceso;
 
 class GeneralController extends Controller
 {
@@ -28,4 +30,14 @@ class GeneralController extends Controller
         // return 'APPROVED';
         return 'PROCESSED';
     } 
+
+
+
+    // get deetails of sales
+    public static function getSalesDetails($code)
+    {
+        $details = DetalleProceso::where('codigo_proceso', $code)->get();
+
+        return $details;
+    }
 }
