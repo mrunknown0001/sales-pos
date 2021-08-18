@@ -68,7 +68,7 @@
                                    <td>{{ number_format($d->total,2) }}</td>
                                    <td>{{ $d->created_at }}</td>
                                    <td>
-                                       <a title="@lang('idioma.gral_descargar')" href="{{route('sales.pdf.download',$d->id)}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"></i></a>
+                                       <a title="@lang('idioma.gral_descargar')" href="{{route('sales.pdf.download',$d->id)}}" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
                                        
                                     </td>
                                 </tr>
