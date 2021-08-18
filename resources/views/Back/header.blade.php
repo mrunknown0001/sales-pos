@@ -320,7 +320,7 @@
                                 <li class="@yield('active-configuracion-locations')"><a href="{{ route('locations') }}">Locations</a></li>
                                 <li class="@yield('active-configuracion-uom')"><a href="{{ route('uom') }}">UoM</a></li>
                                 <li class="@yield('active-configuracion-db-backup')"><a href="{{ route('db.backup') }}">Database Backup</a></li>
-                                <li class="@yield('active-configuracion-db-restore')"><a href="{{ route('db.restore') }}">Database Restore</a></li>
+                                {{-- <li class="@yield('active-configuracion-db-restore')"><a href="{{ route('db.restore') }}">Database Restore</a></li> --}}
                                 <li class="@yield('active-configuracion-usuarios')">
                                     <a href="{{ route('users') }}">
                                             Users
