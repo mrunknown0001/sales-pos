@@ -32,6 +32,8 @@ class UpdateConfiguracionFormRequest extends FormRequest
             'correo'         => "required|email",
             'moneda'         => "required",
             'tributo'        => "required",
+            'branch'         => 'required',
+            'branch_code'    => 'required'
         ];
     }
 }

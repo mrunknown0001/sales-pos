@@ -25,11 +25,12 @@ class VentaController extends Controller
     
      //CALCULAR NUMERO DE FACTURA
     function numero_factura(){
+        $sistema = Configuracion::find(1);
 
         $anio        = date("Y");
         $mes         = date("m");
         $n_registros = Posproceso::count();
-        $n_factura   = $anio.$mes."-".($n_registros+1);
+        $n_factura   = $sistema->branch_code . "-" . $anio.$mes."-".($n_registros+1);
 
         return $n_factura;
 

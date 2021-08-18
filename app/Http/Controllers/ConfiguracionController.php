@@ -82,8 +82,9 @@ class ConfiguracionController extends Controller
         $r_u_login       = $configuracion->registro_usuario_login;
         $r_c_login       = $configuracion->recuperar_clave_login;
         $branch          = $configuracion->branch;   
+        $branch_code     = $configuracion->branch_code;
 
-        return view('Back.configuracion.configuracion.edit', compact('nombre_empresa','slogan','codigo_empresa','logo','r_u_login','r_c_login','sistema','telefono','correo','moneda','tributo', 'branch'));
+        return view('Back.configuracion.configuracion.edit', compact('nombre_empresa','slogan','codigo_empresa','logo','r_u_login','r_c_login','sistema','telefono','correo','moneda','tributo', 'branch', 'branch_code'));
    
 
     }
@@ -155,6 +156,8 @@ class ConfiguracionController extends Controller
         $update->recuperar_clave_login  = $recuperar_clave_login;
         $update->registro_usuario_login = $registro_usuario_login;
         $update->idioma                 = $_POST['idioma'];
+        $update->branch                 = $_POST['branch'];
+        $update->branch_code                 = $_POST['branch_code'];
         $update->save();
 
         return redirect()->route('config.edit')->with('status', __('idioma.alert_actua'));

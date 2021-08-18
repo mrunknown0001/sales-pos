@@ -36,7 +36,7 @@
                         {{session('status')}}
                     </div>
                 @endif
-               <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+               <form class="form-horizontal" method="POST" enctype="multipart/form-data" autocomplete="off">
                   <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <div class="col-sm-12 text-center">
                         <div class="card-box">
@@ -89,6 +89,15 @@
                                       <input type="text"  class="form-control {{ ($errors->first('branch')) ? 'error' : '' }}" maxlength="100" value="{{ $branch }}" id="branch" name="branch"/>
                                        @if($errors->first('branch'))
                                           <div class="alert alert-danger">{{ $errors->first('branch') }}</div>
+                                       @endif
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-md-4 control-label">Branch Code</label>
+                                  <div class="col-md-8">
+                                      <input type="text"  class="form-control {{ ($errors->first('branch_code')) ? 'error' : '' }}" maxlength="100" value="{{ $branch_code }}" id="branch_code" name="branch_code"/>
+                                       @if($errors->first('branch_code'))
+                                          <div class="alert alert-danger">{{ $errors->first('branch_code') }}</div>
                                        @endif
                                   </div>
                               </div>
