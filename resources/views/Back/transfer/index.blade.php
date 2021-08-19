@@ -64,12 +64,12 @@
                             <tbody>
                                 @foreach($datos as $key => $dato)
                                     <tr>
-                                        <td><a href="{{ route('location.show', $dato->id) }}">{{ ++$key }}</a></td>
-                                        <td><a href="{{ route('location.show', $dato->id) }}">{{ $dato->reference_id }}</a></td>
-                                        <td><a href="{{ route('location.show', $dato->id) }}">{{ $dato->product->nombre }}</a></td>
-                                        <td><a href="{{ route('location.show', $dato->id) }}">{{ $dato->quantity }}</a></td>
-                                        <td><a href="{{ route('location.show', $dato->id) }}">{{ $dato->location->location_code }}</a></td>
-                                        <td><a href="{{ route('location.show', $dato->id) }}">{{ $dato->created_at }}</a></td>
+                                        <td><a>{{ ++$key }}</a></td>
+                                        <td><a>{{ $dato->reference_id }}</a></td>
+                                        <td><a>{{ $dato->product->nombre }}</a></td>
+                                        <td><a>{{ $dato->quantity }}</a></td>
+                                        <td><a>{{ $dato->location->location_code }}</a></td>
+                                        <td><a>{{ $dato->created_at }}</a></td>
                                     
                                     </tr>
                                 @endforeach
