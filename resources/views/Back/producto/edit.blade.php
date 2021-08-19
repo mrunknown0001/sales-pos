@@ -84,16 +84,16 @@
                                    <div class="form-group">
                                         <label for="statusProducto">Status<span class="required">*</span></label>
                                         <select name="status" class="form-control">
-                                            <option class="dato_previo" value="1">@lang('idioma.gral_activo')</option>
-                                            <option value="0">@lang('idioma.gral_in_activo')</option>
+                                            <option class="dato_previo" value="1">ACTIVE</option>
+                                            <option value="0">INACTIVE</option>
                                         </select>
                                     </div>
                                 @else
                                     <div class="form-group">
                                         <label for="statusProducto">Status<span class="required">*</span></label>
                                         <select name="status" class="form-control">
-                                            <option class="dato_previo" value="0">"@lang('idioma.gral_in_activo')</option>
-                                            <option value="1">@lang('idioma.gral_in_activo')</option>
+                                            <option class="dato_previo" value="0">INACTIVE</option>
+                                            <option value="1">ACTIVE</option>
                                         </select>
                                     </div>
                                 @endif

@@ -4,11 +4,17 @@ namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+// use Maatwebsite\Excel\Concerns\WithEvents;
+// use Maatwebsite\Excel\Events\AfterSheet;
+
 use DB;
 use Maatwebsite\Excel\Concerns\FromArray;
 use App\Http\Controllers\GeneralController as GC;
 
-class SalesReportExcelReport implements FromArray, WithHeadings
+class SalesReportExcelReport implements FromArray, WithHeadings, WithStyles, ShouldAutoSize
 {
 
 	protected $data;
@@ -63,6 +69,14 @@ class SalesReportExcelReport implements FromArray, WithHeadings
             'Type of Process',
             'Status',
             'Date',
+        ];
+    }
+
+    // Styles
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            1    => ['font' => ['bold' => true]],
         ];
     }
 

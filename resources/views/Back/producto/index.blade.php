@@ -36,7 +36,7 @@
                             
                             @endif
                                 <h3 class="box-title"><a href="{{ route('products.pdf') }}" class="btn btn-danger pull-right"><i class="fa fa-file-pdf-o"></i> PDF</a></h3>
-                                {{-- <h3 class="box-title"><a href="{{ route('products.csv')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i>CSV</a></h3> --}}
+                                <h3 class="box-title"><a href="{{ route('products.csv')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i> Excel </a></h3>
                         @endif
                         <h4 class="m-t-0 header-title"><b> @lang('idioma.products_list') </b></h4>
                         <p class="text-muted font-13 m-b-30">

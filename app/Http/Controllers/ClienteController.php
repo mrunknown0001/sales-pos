@@ -10,6 +10,8 @@ use App\Posproceso;
 use App\Cliente;
 use App\Configuracion;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Exports\CustomerListExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClienteController extends Controller {
 
@@ -184,6 +186,8 @@ class ClienteController extends Controller {
     /*Impresiones CSV*/
     public function csv()
     {        
+        $export = new CustomerListExport();
+        return Excel::download($export, 'Customer Lists.xlsx');
 
         $headers = array(
             "Content-type" => "text/csv",

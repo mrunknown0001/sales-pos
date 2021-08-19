@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Cliente;
 use App\Producto;
 use App\DetalleProceso;
+use App\Categoria;
+use App\SubCategoria;
+use App\UnitOfMeasurement as UOM;
 
 class GeneralController extends Controller
 {
@@ -39,5 +42,56 @@ class GeneralController extends Controller
         $details = DetalleProceso::where('codigo_proceso', $code)->get();
 
         return $details;
+    }
+
+
+
+    // get category name
+    public static function getCategoryName($id)
+    {
+        $cat = Categoria::find($id);
+
+        if(empty($cat)) {
+            return "N/A";
+        }
+
+        return $cat->nombre;
+    }
+
+
+    // get sub category name
+    public static function getSubCategoryName($id)
+    {
+        $sub = SubCategoria::find($id);
+
+        if(empty($sub)) {
+            return "N/A";
+        }
+
+        return $sub->nombre;
+    }
+
+
+    // get unit of measurement
+    public static function getoum($id)
+    {
+        $uom = UOM::find($id);
+
+        if(empty($uom)) {
+            return "N/A";
+        }
+        return $uom->uom;
+    }
+
+
+    // get product status
+    public static function getstatus($id)
+    {
+        if($id == 1) {
+            return "ACTIVE";
+        }
+        else {
+            return "INACTIVE";
+        }
     }
 }

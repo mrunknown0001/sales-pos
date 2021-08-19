@@ -31,8 +31,8 @@
                     <div class="card-box">
 
                         @if(count($datos) != 0)
-                            <a href="{{url('/pdf_reporte_ventas',array('desde'=>$desde,'hasta'=>$hasta, 'status' => $status))}}" class="btn btn-danger"><i class="fa fa-print"></i>{{" PDF "}}</a>
-                            <a href="{{url('/csv_reporte_ventas',array('desde'=>$desde,'hasta'=>$hasta, 'status' => $status))}}" class="btn btn-success pull-left"><i class="fa fa-file-excel-o"></i> {{"CSV"}} </a>
+                            <a href="{{url('/pdf_reporte_ventas',array('desde'=>$desde,'hasta'=>$hasta, 'status' => $status))}}" class="btn btn-danger"><i class="fa fa-print"></i>PDF</a>
+                            <a href="{{url('/csv_reporte_ventas',array('desde'=>$desde,'hasta'=>$hasta, 'status' => $status))}}" class="btn btn-success pull-left"><i class="fa fa-file-excel-o"></i> Excel </a>
 
                         @else
 

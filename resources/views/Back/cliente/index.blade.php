@@ -33,8 +33,8 @@
                     <div class="card-box table-responsive">
                         @if(Session::get("rol_id"))
                             <h3 class="box-title"><a href="{{ route('client.new')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-plus-circle"></i> ADD </a></h3>
-                            <h3 class="box-title"><a href="{{route('clients.pdf')}}" class="btn btn-danger pull-right"><i class="fa fa-file-pdf-o"></i>{{" PDF "}}</a></h3>
-                            {{-- <h3 class="box-title"><a href="{{route('clients.csv')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i>{{" CSV "}}</a></h3> --}}
+                            <h3 class="box-title"><a href="{{route('clients.pdf')}}" class="btn btn-danger pull-right"><i class="fa fa-file-pdf-o"></i> PDF</a></h3>
+                            <h3 class="box-title"><a href="{{route('clients.csv')}}" class="btn btn-success pull-right"><i class="fa fa-file-excel-o"></i> Excel</a></h3>
                         @endif
 
                         <h4 class="m-t-0 header-title"><b>@lang('idioma.cliente_lista')</b></h4>

@@ -58,12 +58,12 @@ tbody td {
 </style>
 
 <!--Titulo-->
-<div class="titulo"><h3>@lang('idioma.products_list')</h3></div>
+<div class="titulo"><h3>List of Products</h3></div>
 <table>
   <thead>
     <tr>
-        <th>Cod.</th>
-        <th>Prod.</th>
+        <th>Code</th>
+        <th>Product</th>
         <th>@lang('idioma.products_pr_cos')</th>
         <th>@lang('idioma.products_pr_pub')</th>
         <th>Tax</th>

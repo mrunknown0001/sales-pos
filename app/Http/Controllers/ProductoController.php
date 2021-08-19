@@ -15,6 +15,8 @@ use App\Tributo;
 use App\DetalleProceso;
 use App\UnitOfMeasurement as UOM;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductListExport;
 
 class ProductoController extends Controller {
 
@@ -315,6 +317,8 @@ class ProductoController extends Controller {
 
     public function csv()
     {        
+      $export = new ProductListExport();
+      return Excel::download($export, 'List of Products.xlsx');
       $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
 
         $headers = array(
@@ -328,6 +332,8 @@ class ProductoController extends Controller {
         $columns = array("#","Name","Code","Category","Sub category","Quantity","Production price ($sistema->moneda)","Public price ($sistema->moneda)","Tax (%)","Status");
         
         $reviews = Producto::all();
+
+        return $reviews;
     
         $callback = function() use ($reviews, $columns)
         {
