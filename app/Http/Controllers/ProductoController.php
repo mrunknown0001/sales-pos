@@ -65,7 +65,8 @@ class ProductoController extends Controller {
         $codigo          = $request->get('codigo');
         $categoria       = $request->get('categoria');
         $sub_categoria   = $request->get('sub_categoria');
-        $cantidad        = $request->get('cantidad');
+        // $cantidad        = $request->get('cantidad');
+        $cantidad        = 0;
         $precio_costo    = $request->get('precio_costo');
         $precio_publico  = $request->get('precio_publico');
         $tributo         = $request->get('tributo');
@@ -217,7 +218,7 @@ class ProductoController extends Controller {
         $datos->codigo            = $codigo;
         $datos->categoria_id      = $categoria;
         $datos->subcategoria_id   = $subcategoria;
-        $datos->cantidad          = $cantidad;
+        // $datos->cantidad          = $cantidad;
         $datos->precio_costo      = $precio_costo;
         $datos->precio_publico    = $precio_publico;
         $datos->tributo_id        = $tributo;

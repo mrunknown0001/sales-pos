@@ -167,13 +167,13 @@
                                       <div class="alert alert-danger">{{ $errors->first('uom') }}</div>
                                     @endif
                                 </div>
-                               <div class="form-group">
+                               {{-- <div class="form-group">
                                     <label for="cantidadProducto">Quantity<span class="required">*</span></label>
                                     <input name="cantidad" type="text" value="{{ $datos->cantidad }}" class="form-control {{ ($errors->first('cantidad')) ? 'error' : '' }}" onkeypress="return valida(event)">
                                     @if($errors->first('cantidad'))
                                        <div class="alert alert-danger">{{ $errors->first('cantidad') }}</div>
                                     @endif
-                                </div>
+                                </div> --}}
                                <div class="form-group">
                                     <label for="preciocostoProducto"> Production Price<span class="required">*</span> {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
                                     <input type="text" name="precio_costo" value="{{ $datos->precio_costo }}" class="form-control {{ ($errors->first('precio_costo')) ? 'error' : '' }}" onkeypress="return filterFloat(event,this);">

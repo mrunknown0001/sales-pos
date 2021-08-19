@@ -106,13 +106,13 @@
                                           <div class="alert alert-danger">{{ $errors->first('uom') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="cantidadProducto">Quantity<span class="required">*</span></label>
                                         <input type="text" value="{{old('cantidad')}}" class="form-control {{ ($errors->first('cantidad')) ? 'error' : '' }}" id="cantidad" maxlength="6" name="cantidad" onkeypress="return valida(event)"/>
                                         @if($errors->first('cantidad'))
                                           <div class="alert alert-danger">{{ $errors->first('cantidad') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="PrecioCostoProducto">Production Price<span class="required">*</span> {{ '( '.$sistema->moneda.' )' }} <i class="fa fa-info-circle estilo_tool" data-toggle="tooltip" data-placement="right" title="" data-original-title="@lang('idioma.products_inf_cos')"></i></label>
                                         <input type="text" value="{{old('precio_costo')}}" class="form-control {{ ($errors->first('precio_costo')) ? 'error' : '' }}" id="precio_costo" maxlength="10" name="precio_costo" onkeypress="return filterFloat(event,this);"/>

@@ -28,7 +28,7 @@ class UpdateProductoFormRequest extends FormRequest
             'nombre'                => "required|min:3",
             'codigo'                => "required|min:3",
             'categoria'             => "required",
-            'cantidad'              => "required|numeric",
+            // 'cantidad'              => "required|numeric",
             'precio_costo'          => "required|numeric",
             'precio_publico'        => "required|numeric",
             'tributo'               => "required",

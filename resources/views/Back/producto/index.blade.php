@@ -70,7 +70,7 @@
                                    <td><a href="{{ route('product.show', $d->id) }}">{{ $d->codigo }}</a></td>
                                    
                                    @if($d->cantidad < 1)
-                                    <td><a href="{{ route('product.show', $d->id) }}">@lang('idioma.gral_agotado')</a></td>
+                                    <td><a href="{{ route('product.show', $d->id) }}">Out of Stock</a></td>
                                    @else
                                     <td><a href="{{ route('product.show', $d->id) }}">{{$d->cantidad}}</a></td>
                                    @endif

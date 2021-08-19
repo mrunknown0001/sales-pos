@@ -29,7 +29,7 @@ class ProductoFormRequest extends FormRequest
             'codigo'         => "required|unique:productos,codigo",
             'categoria'      => "required",
             'sub_categoria'  => "required",
-            'cantidad'       => "required|numeric",
+            // 'cantidad'       => "required|numeric",
             'precio_costo'   => "required|numeric",
             'precio_publico' => "required|numeric",
             'tributo'        => "required",
