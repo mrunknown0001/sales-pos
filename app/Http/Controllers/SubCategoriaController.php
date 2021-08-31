@@ -119,7 +119,7 @@ class SubCategoriaController extends Controller
         $datos->save();
 
 
-        return redirect()->action('SubCategoriaController@show', $datos->id)->with('status', __('idioma.alert_actua'));
+        return redirect()->route('subcat.show', $datos->id)->with('status', __('idioma.alert_actua'));
     }
 
     /**

@@ -37,7 +37,7 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                               <form action="{{ route('category.post.update', ['id' => 
+                               <form action="{{ route('subcat.post.update', ['id' => 
                                $datos->id]) }}" class="form-horizontal" method="POST" autocomplete="off">
 			                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 			                        <div class="box-body">
