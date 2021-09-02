@@ -391,15 +391,21 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
         -->
         <script>
             $(document).ready(function () {
-                product_receive = $('#product_receive').find(":selected").text();
+                var product_receive = $('#product_receive').find(":selected").text();
                 if(product_receive != null) {
-                    $('#uom_receive').val(product_receive);
+                    var str = product_receive;
+                    var n = str.lastIndexOf('-');
+                    var result = str.substring(n + 1);
+                    $('#uom_receive').val(result);
                 }
 
                 $('#product_receive').change(function () {
                     product_receive = $('#product_receive').find(":selected").text();
                     if(product_receive != null) {
-                        $('#uom_receive').val(product_receive.split("-")[2]);
+                        var str = product_receive;
+                        var n = str.lastIndexOf('-');
+                        var result = str.substring(n + 1);
+                        $('#uom_receive').val(result);
                     }
                 });
 
