@@ -242,6 +242,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// RECLASSIFY
 	Route::get('/reclassify', 'ReclassController@index')->name('reclass');
+	Route::get('/reclassify/product', 'ReclassController@reclass')->name('reclass.product');
+	Route::post('/reclassify/product', 'ReclassController@postReclass')->name('post.reclass.product');
 
 
 	// Database Backups

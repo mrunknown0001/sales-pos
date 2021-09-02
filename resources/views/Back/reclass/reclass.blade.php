@@ -1,6 +1,6 @@
 @extends('Back.master')
-@section('title', 'Receive Transfer')
-@section('active-transfer', 'active')
+@section('title', 'Reclass Product')
+@section('active-reclass', 'active')
 @section('content')
 
  <!-- ============================================================== -->
@@ -13,16 +13,16 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Receive Transfer</i> </h4>
+                        <h4 class="page-title">Reclass Product</i> </h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="{{ route('dash') }}">{{$sistema->nombre_empresa}}</a>
                             </li>
                             <li>
-                                <a href="{{ route('transfers') }}">Transfer</a>
+                                <a href="{{ route('reclass') }}">Reclassify</a>
                             </li>
                             <li class="active">
-                                Receive
+                                Reclass Product
                             </li>
                         </ol>
                         <div class="clearfix"></div>
@@ -45,41 +45,44 @@
                                         {{session('status')}}
                                     </div>
                                 @endif
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{session('error')}}
+                                    </div>
+                                @endif
                                 <p><i>All fields with <span class="required">*</span> are required fields.</i></p>
-                                <form method="POST" action="{{ route('transfer.store') }}" autocomplete="off">
+                                <form method="POST" action="{{ route('post.reclass.product') }}" autocomplete="off">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <div class="form-group">
-                                        <label for="reference_id">Reference ID<span class="required">*</span></label>
-                                        <input type="text" class="form-control {{ ($errors->first('reference_id')) ? 'error' : '' }}" id="reference_id" maxlength="100" name="reference_id" />
+                                        <label for="reference_id">Reference ID</label>
+                                        <input type="text" class="form-control {{ ($errors->first('reference_id')) ? 'error' : '' }}" id="reference_id" maxlength="100" name="reference_id" readonly="" />
                                         @if($errors->first('reference_id'))
                                           <div class="alert alert-danger">{{ $errors->first('reference_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="location">Location<span class="required">*</span></label>
-                                        <select name="location" id="location" class="form-control">
-                                            @foreach($locations as $key => $l)
-                                                <option value="{{ $l->id }}">{{ $l->location_name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->first('location'))
-                                          <div class="alert alert-danger">{{ $errors->first('location') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="product">Product<span class="required">*</span></label>
-                                        <select name="product" id="product_receive" class="form-control">
+                                        <label for="from_product">From Product<span class="required">*</span></label>
+                                        <select name="from_product" id="from_product" class="form-control" required>
+                                            <option value="">Select Product</option>
                                             @foreach($products as $key => $p)
                                                 <option value="{{ $p->id }}">{{ $p->codigo . ' - ' . $p->nombre . ' - ' . $p->uom->uom }}</option>
                                             @endforeach
                                         </select>
-                                        @if($errors->first('product'))
-                                          <div class="alert alert-danger">{{ $errors->first('product') }}</div>
+                                        @if($errors->first('from_product'))
+                                          <div class="alert alert-danger">{{ $errors->first('from_product') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="uom">Unit of Measurement</label>
-                                        <input type="text" id="uom_receive" name="uom" class="form-control" readonly="" value="">
+                                        <label for="to_product">To Product<span class="required">*</span></label>
+                                        <select name="to_product" id="to_product" class="form-control" required>
+                                            <option value="">Select Product</option>
+                                            @foreach($products as $key => $p)
+                                                <option value="{{ $p->id }}">{{ $p->codigo . ' - ' . $p->nombre . ' - ' . $p->uom->uom }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->first('to_product'))
+                                          <div class="alert alert-danger">{{ $errors->first('to_product') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="quantity">Quantity<span class="required">*</span></label>
@@ -95,14 +98,7 @@
                                           <div class="alert alert-danger">{{ $errors->first('date') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="remarks">Remarks</label>
-                                        <input type="text" class="form-control {{ ($errors->first('remarks')) ? 'error' : '' }}" id="remarks" name="remarks" />
-                                        @if($errors->first('remarks'))
-                                          <div class="alert alert-danger">{{ $errors->first('remarks') }}</div>
-                                        @endif
-                                    </div>
-                                     <a href="{{ route('transfers') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
+                                     <a href="{{ route('reclass') }}"><button type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> @lang('idioma.gral_btn_atras') </button></a>
                                     <button type="submit" class="btn btn-info pull-right"><i class="mdi mdi-content-save"></i> @lang('idioma.gral_btn_guar') </button>
                                 </form>
                             </div>
