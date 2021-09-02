@@ -61,8 +61,9 @@
                                     <table class="table m-t-30" id="lista_productos_temporal">
                                         <thead>
                                             <tr>
-                                                <th>@lang('idioma.pos_cod')</th>
+                                                <th>Code</th>
                                                 <th style="width:40px;">@lang('idioma.pos_pro')</th>
+                                                <th>UoM</th>
                                                 <th>@lang('idioma.pos_cnt')</th>
                                                 <th>@lang('idioma.pos_pre') U.</th>
                                                 <th>@lang('idioma.pos_imp')</th>
@@ -208,6 +209,7 @@
                                         <th>Code</th>
                                         <th>Name</th>
                                         <th>Stock</th>
+                                        <th>UoM</th>
                                         <th>Qty.</th>
                                         <th>Price U.({{$sistema->moneda}})</th>
                                         <th>Add</th>

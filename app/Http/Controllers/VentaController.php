@@ -108,13 +108,26 @@ class VentaController extends Controller
     //Lista de productos de la modal
     public function pos_cargar_lista_productos()
     {
-        
         $lista_productos = Producto::where('status','=',1)
                                     //->where('cantidad','>',0)
                                     ->limit(10)
                                     ->orderBy('id', 'desc')
                                     ->get();
-
+        # Added Code                 
+        $data = [];
+        foreach($lista_productos as $p) {
+            $data[] = [
+                'codigo' => $p->codigo,
+                'nombre' => $p->nombre,
+                'tributo_id' => $p->tributo_id,
+                'cantidad' => $p->cantidad,
+                'uom' => $p->uom->uom,
+                'precio_publico' => $p->precio_publico
+            ];
+        }
+        $data = collect($data);
+        // return json_encode($data);
+        # Added Code
         return json_encode($lista_productos);
 
     }
@@ -186,7 +199,8 @@ class VentaController extends Controller
                                     $codigo."|". // array 12
                                     number_format($subtotal_por_item,2)."|". // array 13
                                     number_format($total_impuestos,2)."|". // array 14
-                                    number_format($subtotal_sin_impuestos,2); // array 15
+                                    number_format($subtotal_sin_impuestos,2)."|". // array 15
+                                    $l->producto->uom->uom; // array 16
 
         }//cierre foreach
 
