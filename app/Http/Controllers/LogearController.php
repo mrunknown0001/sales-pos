@@ -91,7 +91,7 @@ class LogearController extends Controller {
         Auth::logout();
         //OLVIDAR VARIABLES DE LA SESSION
         Session::flush();
-        return redirect()->intended('/')->with('status', __('idioma.auth_gracias'));
+        return redirect()->intended('/')->with('status', 'Logout Successful!');
         
     }
 

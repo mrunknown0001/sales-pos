@@ -389,6 +389,22 @@ $usuario_id   = Session::get("usuario_id");//ID DEL USUARIO EN LA SESSIOn
             *******************************************************************
             *******************************************************************
         -->
+        <script>
+            $(document).ready(function () {
+                product_receive = $('#product_receive').find(":selected").text();
+                if(product_receive != null) {
+                    $('#uom_receive').val(product_receive);
+                }
+
+                $('#product_receive').change(function () {
+                    product_receive = $('#product_receive').find(":selected").text();
+                    if(product_receive != null) {
+                        $('#uom_receive').val(product_receive.split("-")[2]);
+                    }
+                });
+
+            });
+        </script>
 
         
 

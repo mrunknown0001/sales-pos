@@ -240,6 +240,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/transfer/receive', 'TransferController@store')->name('transfer.store');
 
 
+	// RECLASSIFY
+	Route::get('/reclassify', 'ReclassController@index')->name('reclass');
+
+
 	// Database Backups
 	Route::get('/db-backup', 'DatabaseBackupController@index')->name('db.backup');
 	// Download Database Backup

@@ -109,6 +109,10 @@
                     <a href="{{ route('transfers') }}" class="waves-effect @yield('active-transfer')"><i class="fa fa-exchange"></i><span>Transfers<span></a>
                 </li>
 
+                <li class="@yield('active-reclass')">
+                    <a href="{{ route('reclass') }}" class="waves-effect @yield('active-reclass')"><i class="fa fa-reorder"></i><span>Reclassify<span></a>
+                </li>
+
                 {{--GASTOS--}}
                 {{-- @if(Session::get("rol_id"))
                     @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->gasto_i == 1)

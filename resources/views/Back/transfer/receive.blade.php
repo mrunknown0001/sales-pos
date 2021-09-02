@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="product">Product</label>
-                                        <select name="product" id="product" class="form-control">
+                                        <select name="product" id="product_receive" class="form-control">
                                             @foreach($products as $key => $p)
                                                 <option value="{{ $p->id }}">{{ $p->codigo . ' - ' . $p->nombre . ' - ' . $p->uom->uom }}</option>
                                             @endforeach
@@ -75,6 +75,10 @@
                                         @if($errors->first('product'))
                                           <div class="alert alert-danger">{{ $errors->first('product') }}</div>
                                         @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="uom">Unit of Measurement</label>
+                                        <input type="text" id="uom_receive" name="uom" class="form-control" readonly="" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="quantity">Quantity</label>
@@ -85,7 +89,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="date">Date</label>
-                                        <input type="date" class="form-control {{ ($errors->first('date')) ? 'error' : '' }}" id="date"  name="date" />
+                                        <input type="date" class="form-control {{ ($errors->first('date')) ? 'error' : '' }}" id="date"  name="date"/>
                                         @if($errors->first('date'))
                                           <div class="alert alert-danger">{{ $errors->first('date') }}</div>
                                         @endif
@@ -110,5 +114,7 @@
 
     </div> <!-- content -->
 
+<script>
 
+</script>
 @endsection
