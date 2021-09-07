@@ -17,6 +17,7 @@ use App\UnitOfMeasurement as UOM;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductListExport;
+use Auth;
 
 class ProductoController extends Controller {
 
@@ -220,7 +221,9 @@ class ProductoController extends Controller {
         $datos->codigo            = $codigo;
         $datos->categoria_id      = $categoria;
         $datos->subcategoria_id   = $subcategoria;
-        // $datos->cantidad          = $cantidad;
+        if(Auth::user()->rol_id == 1) {
+            $datos->cantidad          = $cantidad;
+        }
         $datos->precio_costo      = $precio_costo;
         $datos->precio_publico    = $precio_publico;
         $datos->tributo_id        = $tributo;
