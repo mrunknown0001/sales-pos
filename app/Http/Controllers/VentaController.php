@@ -234,6 +234,22 @@ class VentaController extends Controller
                                         ->get();
         }
 
+        # Added Code                 
+        $data = [];
+        foreach($lista_productos as $p) {
+            $data[] = [
+                'codigo' => $p->codigo,
+                'nombre' => $p->nombre,
+                'tributo_id' => $p->tributo_id,
+                'cantidad' => $p->cantidad,
+                'uom' => $p->uom->uom,
+                'precio_publico' => $p->precio_publico
+            ];
+        }
+        $data = collect($data);
+        // return json_encode($data);
+        # Added Code
+
             return json_encode($lista_productos);
 
 
