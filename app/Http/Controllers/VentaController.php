@@ -360,9 +360,14 @@ class VentaController extends Controller
         //Si todo esta bien, calcular nuevo subtotal general
         else{
 
-            $valor_porcentual          = $descuento/100;
-            $valor_monto               = $subtotal_general_sf * $valor_porcentual;
-            $subtotal_calc             = $subtotal_general_sf - $valor_monto;
+            // $valor_porcentual          = $descuento/100;
+            // $valor_monto               = $subtotal_general_sf * $valor_porcentual;
+            // $subtotal_calc             = $subtotal_general_sf - $valor_monto;
+            // $data['total']             = "ok";
+
+            $valor_porcentual          = $descuento;
+            // $valor_monto               = $subtotal_general_sf * $valor_porcentual;
+            $subtotal_calc             = $subtotal_general_sf - $valor_porcentual;
             $data['total']             = "ok";
 
             if($subtotal_calc > 0){

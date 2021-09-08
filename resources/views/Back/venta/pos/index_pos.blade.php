@@ -123,7 +123,7 @@
                                     <input type="hidden" id="subtotal_general_sf" name="subtotal_general_sf" class="form-control" value="0.00">
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <label for="pagoPrevio">@lang('idioma.pos_descuento') (%)</label>
                                     <select class="form-control" id="descuento">
                                         @for($i = 0; $i <= 100; $i++)
@@ -132,6 +132,10 @@
                                             
                                         @endfor
                                     </select>
+                                </div> --}}
+                                <div class="col-md-12">
+                                    <label for="pagoPrevio">Discount (&#8369;)</label>
+                                    <input type="text" name="descuento" id="descuento" required class="form-control">
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="col-md-12">
@@ -267,7 +271,7 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="descuento" class="control-label">@lang('idioma.pos_descuento') (%)</label>
+                                        <label for="descuento" class="control-label">Discount (&#8369;)</label>
                                         <input type="text" readonly="readonly" class="form-control" id="modal_descuento">
                                     </div>
                                 </div>
