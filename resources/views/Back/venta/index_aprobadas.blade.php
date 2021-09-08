@@ -64,7 +64,7 @@
                                 <tr>
                                    <td>{{++$key}}</td>
                                    <td class="fac_aprobadas">{{ $d->codigo_proceso }}</td>
-                                   <td>{{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}</td>
+                                   <td>{{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->id) }}</td>
                                    <td>{{ number_format($d->total,2) }}</td>
                                    <td>{{ $d->created_at }}</td>
                                    <td>
