@@ -56,7 +56,7 @@ class VentaController extends Controller
     //Mostra listado de ventas
     public function index_aprobadas()
     {   
-        $datos     = Posproceso::where('tipo_proceso','=','Sales')->where('status','=',2)->orderBy('created_at', 'desc')->get();
+        $datos     = Posproceso::where('tipo_proceso','=','Sales')->where('status','=',2)->orderBy('created_at', 'asc')->get();
         $sistema   = Configuracion::where('id', '=', 1)->firstOrFail();
         return view('Back.venta.index_aprobadas', compact('sistema','datos'));
     }

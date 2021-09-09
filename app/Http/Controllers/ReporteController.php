@@ -61,19 +61,19 @@ class ReporteController extends Controller
 
         //TODAS
         if($status == "todas"){
-            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->orderBy('created_at', 'desc')->get();
+            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->orderBy('created_at', 'asc')->get();
         }
         //PENDIENTES
         elseif($status == 1){
-            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',1)->orderBy('created_at', 'desc')->get();
+            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',1)->orderBy('created_at', 'asc')->get();
         }
         //RECHAZADAS
         elseif($status == 0){
-            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',0)->orderBy('created_at', 'desc')->get();
+            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',0)->orderBy('created_at', 'asc')->get();
         }
         //APROBADAS
         elseif($status == 2){
-            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',2)->orderBy('created_at', 'desc')->get();
+            $datos = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',2)->orderBy('created_at', 'asc')->get();
         }
         $gran_total       = 0;// Totales sumados con impuestos y descuentos 
         $total_sd         = 0;// Totales sin descuento, tomado de los subtotales en detalles
@@ -241,19 +241,19 @@ class ReporteController extends Controller
 
         //TODAS
         if($status == "todas"){
-            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->orderBy('created_at', 'desc')->get();
+            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->orderBy('created_at', 'asc')->get();
         }
         //PENDIENTES
         elseif($status == 1){
-            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',1)->orderBy('created_at', 'desc')->get();
+            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',1)->orderBy('created_at', 'asc')->get();
         }
         //RECHAZADAS
         elseif($status == 0){
-            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',0)->orderBy('created_at', 'desc')->get();
+            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',0)->orderBy('created_at', 'asc')->get();
         }
         //APROBADAS
         elseif($status == 2){
-            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',2)->orderBy('created_at', 'desc')->get();
+            $reviews = Posproceso::where('created_at', '>=', $desde." 00:00:00")->where('created_at', '<=', $hasta." 23:59:59")->where('tipo_proceso','=','Sales')->where('status','=',2)->orderBy('created_at', 'asc')->get();
         }
 
         $sistema = Configuracion::where('id', '=', 1)->firstOrFail();
