@@ -94,4 +94,22 @@ class GeneralController extends Controller
             return "INACTIVE";
         }
     }
+
+
+
+
+    // get if trays/case then return the number of trays
+    public static function getNumberOfTrays($product_id, $quantity)
+    {
+        $product = Producto::find($product_id);
+
+        $total_trays = 0;
+
+        if($product->uom->uom == 'TRAY') {
+            return $quantity;
+        }
+        if($product->uom->uom == 'CASE') {
+            return $quantity * 12;
+        }
+    }
 }

@@ -286,6 +286,7 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
+
                 /*
                      
                 *******************************************************************
@@ -409,7 +410,8 @@
                                                          $('#success'+i).css('display', '');//Mostrar elemento                   
                                                          $('#success'+i+' td').empty();//Vaciar
                                                          $('#success'+i+' td').append("@lang('idioma.pos_agregado')");//Mostrar texto mensaje
-
+                                                         // new code added value to discount
+                                                         
                                                          //Esperar medio segundos y ocultar elemento
                                                          setTimeout(function(){
                                                             $('#success'+i).css('display', 'none');
@@ -422,7 +424,8 @@
 
                                                     $('#boton_insertar'+i).empty();//Vaciar 
                                                     $('#boton_insertar'+i).append('<i class="fa fa-check"></i>');//Mostrar un check
-                                                    
+                                                    // when adding item on card
+                                                    posdiscount();
                                                     //Esperar 3 segundos y mostrar elemento con plus (+)
                                                     setTimeout(function(){
                                                         $('#boton_insertar'+i).empty();//Vaciar 
@@ -702,7 +705,7 @@
 
                            //Si el Input Descuento estÃ¡ vacio o es cero, muestra el valor subtotal en el total
                            if(data['total'] == "vacio"){
-
+                                $('#descuento').val(0);
                                 $('#div_total').empty();//Vaciar
                                 $('#total').val();//Vaciar
                                 $('#div_total').append(data['total_con_formato']);
@@ -717,13 +720,19 @@
                                 $('#div_total').append(data['total_con_formato']);
                                 $('#total').val(data['total_sin_formato']);
 
+                                // add discount here
+                                $('#descuento').val(data['discount']);
+
                            }//Final Else
+
 
                         },//Final Success
 
                     });//Final Ajax
 
                 });//Final Input "DESCUENTO"
+
+                // custom discountfunction
 
                 /*
                 *******************************************************************
@@ -941,7 +950,7 @@
                             $('#lista_productos_temporal tbody').empty();//VARIAR LOS ELEMENTOS
 
                             var  productos    = $.parseJSON(data);
-                            console.log(productos);
+                            // console.log(productos);
                             if(productos){
                                 $.each(productos, function(i, d) {//d = valor - i = indice
                                     //separador de elementos en un array
@@ -957,6 +966,7 @@
                                     //Limpiar y mostrar cantidades
 
                                     $('#descuento').val(0);//Vaciar inpur descuento
+
 
                                     if(datos[10] > 0){
                                         $('#cantidad_total').val();
@@ -996,6 +1006,8 @@
 
                                     //Cargar funcion reload_total
                                     $().load(reload_total());
+                                    // on load of page
+                                    posdiscount();
 
                                     //6- FunciÃ³n: BotÃ³n Eliminar producto.
                                     $('#boton_eliminar'+datos[5]).on('click', function(e) {
@@ -1045,7 +1057,8 @@
                                                      $('#lista_productos_temporal tbody').load(reload());
 
                                                 }//Final If
-
+                                                // remove item on cart
+                                                posdiscount();
                                             }//Final Success
 
                                         });//Final Ajax
@@ -1056,10 +1069,12 @@
 
                             }//Final IF existencia productos en la lista
 
+
+
                         },//Final Success
 
                     });//Final Ajax
-
+                    
                 });//Final "DOCUMENT READY"
 
             }//Final funcion REALOAD
@@ -1154,6 +1169,69 @@
             }//Cierre funcion vaciar_elementos
         </script>
 
+
+        <script>
+            function posdiscount() {
+                // alert();
+                // e.preventDefault();
+
+                var descuento  = 1;
+                var usuario_id = {{Session::get("usuario_id")}};
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+
+                    type: 'get',
+                    url: "{{url('/venta_descuento')}}",
+                    data: {
+                        'descuento'           : descuento,
+                        'usuario_id'          : usuario_id
+                    },
+
+                    beforeSend: function(){  
+                       
+                        $('#div_total').empty();//Vaciar
+                        $('#div_total').append('@lang("idioma.pos_calculando")');//Mostrar texto en el Total
+                        $('#total').val();//Vaciar valor del input
+
+                    },
+
+                    success: function(data) {
+
+                       //Si el Input Descuento estÃ¡ vacio o es cero, muestra el valor subtotal en el total
+                       if(data['total'] == "vacio"){
+                            $('#descuento').val(0);
+                            $('#div_total').empty();//Vaciar
+                            $('#total').val();//Vaciar
+                            $('#div_total').append(data['total_con_formato']);
+                            $('#total').val(data['total_sin_formato']);
+
+                       }
+                       //Si el Input Descuento es correcto, mostrar calculo en el total
+                       else if(data['total'] == "ok"){
+
+                            $('#div_total').empty();//Vaciar
+                            $('#total').val();//Vaciar
+                            $('#div_total').append(data['total_con_formato']);
+                            $('#total').val(data['total_sin_formato']);
+
+                            // add discount here
+                            $('#descuento').val(data['discount']);
+
+                       }//Final Else
+
+
+                    },//Final Success
+
+                });//Final Ajax
+
+            }//end custom discount function
+        </script>
 
 
         <!--

@@ -12,6 +12,7 @@ use App\Configuracion;
 use App\Producto;
 use App\Temporales;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Http\Controllers\GeneralController as GC;
 
 class VentaController extends Controller
 {
@@ -333,19 +334,34 @@ class VentaController extends Controller
     public function pos_descuento(Request $request)
     {
 
-        $descuento           = $request->get("descuento");
+        // $descuento           = $request->get("descuento");
+        $descuento = 1;
         $usuario_id          = $request->get("usuario_id");
         $subtotal_general_sf = 0;
+        # added code as of 9/9/2021
+        $total_trays = 0;
 
         //Datos de usuario en Temporales
         $datos = Temporales::where('usuario_id','=',$usuario_id)->where('tipo_proceso','=','Sales')->get();
+
 
         //Sumar todos los subtotales de los productos de este usuario
         foreach ($datos as $key => $d) {
 
             $subtotal_general_sf += $d->subtotal;
+            $total_trays += GC::getNumberOfTrays($d->producto_id, $d->cantidad);
 
         }
+
+        # added code as of 9/9/21
+        # discount per 12 trays 
+        if($total_trays > 11) {
+            $descuento = $total_trays * 5;
+        }
+        else {
+            $descuento = 0;
+        }
+        # end of discount
 
         //Si estÃ¡ vacio o es cero
         if($descuento == 0 or $descuento == ""){
@@ -381,6 +397,8 @@ class VentaController extends Controller
                 $data['total_sin_formato'] = 0.00;
 
             }
+
+            $data['discount'] = $descuento;
 
         }
 
