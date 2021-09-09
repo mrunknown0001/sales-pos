@@ -10,6 +10,10 @@ use App\Configuracion;
 use App\Producto;
 use App\Location;
 
+use Excel;
+
+use App\Exports\TransferExport;
+
 class TransferController extends Controller
 {
     /**
@@ -122,5 +126,16 @@ class TransferController extends Controller
     public function destroy(Transfer $transfer)
     {
         //
+    }
+
+
+
+    /**
+     * Export Transfer
+     */
+    public function export()
+    {
+        $export = new TransferExport();
+        return Excel::download($export, 'Transfers.xlsx');
     }
 }

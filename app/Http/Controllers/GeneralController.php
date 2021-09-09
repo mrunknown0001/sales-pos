@@ -12,6 +12,7 @@ use App\Categoria;
 use App\SubCategoria;
 use App\UnitOfMeasurement as UOM;
 use App\Posproceso;
+use App\Location;
 
 class GeneralController extends Controller
 {
@@ -85,6 +86,15 @@ class GeneralController extends Controller
     }
 
 
+    // get uom using product id
+    public static function getoumusingproductid($id)
+    {
+        $product = Producto::find($id);
+
+        return $product->uom->uom;
+    }
+
+
     // get product status
     public static function getstatus($id)
     {
@@ -130,5 +140,24 @@ class GeneralController extends Controller
             }
         }
         return $dis;
+    }
+
+
+
+    // get product name
+    public static function getproductname($id)
+    {
+        $product = Producto::find($id);
+
+        return $product->nombre;
+    }
+
+
+    // get location name
+    public static function getlocationname($id)
+    {
+        $loc = Location::find($id);
+
+        return $loc->location_name;
     }
 }

@@ -239,6 +239,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer/receive', 'TransferController@receive')->name('transfer.receive');
 	Route::post('/transfer/receive', 'TransferController@store')->name('transfer.store');
 
+	// Export transfer
+	Route::get('/transfer/export', 'TransferController@export')->name('transfer.export');
+
 
 	// RECLASSIFY
 	Route::get('/reclassify', 'ReclassController@index')->name('reclass');

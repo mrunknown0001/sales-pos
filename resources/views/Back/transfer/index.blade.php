@@ -36,8 +36,8 @@
                     
                     <div class="card-box table-responsive">
                         @if(Session::get("rol_id"))
+                            <h3 class="box-title"><a href="{{route('transfer.export')}}" class="btn btn-success" style="float:right;"><i class="fa fa-file-excel-o"></i> Excel</a></h3>
                             <h3 class="box-title"><a href="{{ route('transfer.receive') }}" class="btn btn-primary" style="float:right;"><i class="fa fa-exchange"></i> Receive </a></h3>
-                            <!--<h3 class="box-title"><a href="{{url('/pdf_usuarios')}}" class="btn btn-default pull-right"><i class="mdi mdi-download"></i>{{"PDF"}}</a></h3>-->
                         @endif
 
                         <h4 class="m-t-0 header-title"><b>Received Transfers</b></h4>
@@ -55,6 +55,7 @@
                                  <th>#</th>
                                  <th>Reference #</th>
                                  <th>Product</th>
+                                 <th>UOM</th>
                                  <th>Quantity</th>
                                  <th>From</th>
                                  <th>Date</th>
@@ -67,9 +68,10 @@
                                         <td><a>{{ ++$key }}</a></td>
                                         <td><a>{{ $dato->reference_id }}</a></td>
                                         <td><a>{{ $dato->product->nombre }}</a></td>
+                                        <td><a>{{ $dato->product->uom->uom }}</a></td>
                                         <td><a>{{ $dato->quantity }}</a></td>
                                         <td><a>{{ $dato->location->location_code }}</a></td>
-                                        <td><a>{{ $dato->created_at }}</a></td>
+                                        <td><a>{{ $dato->date }}</a></td>
                                     
                                     </tr>
                                 @endforeach
