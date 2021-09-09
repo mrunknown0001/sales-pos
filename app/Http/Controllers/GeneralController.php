@@ -13,6 +13,7 @@ use App\SubCategoria;
 use App\UnitOfMeasurement as UOM;
 use App\Posproceso;
 use App\Location;
+use App\User;
 
 class GeneralController extends Controller
 {
@@ -25,6 +26,16 @@ class GeneralController extends Controller
     	}
     	return $c->nombre . ' ' . $c->apellido;
     }
+
+
+    // get user name
+    public static function getuser($id)
+    {
+        $user = User::find($id);
+        return strtoupper($user->nombre . ' ' . $user->apellido);
+    }
+
+
 
     // Get Sales Status
     public static function getSalesStatus($status)

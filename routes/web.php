@@ -248,6 +248,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/reclassify/product', 'ReclassController@reclass')->name('reclass.product');
 	Route::post('/reclassify/product', 'ReclassController@postReclass')->name('post.reclass.product');
 
+	// Export reclass
+	Route::get('/reclass/export', 'ReclassController@export')->name('reclass.export');
+
 
 	// Database Backups
 	Route::get('/db-backup', 'DatabaseBackupController@index')->name('db.backup');

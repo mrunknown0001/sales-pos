@@ -10,4 +10,10 @@ class Reclass extends Model
     {
     	return $this->belongsTo('App\User', 'reclass_by');
     }
+
+
+    public function fproduct()
+    {
+    	return $this->belongsTo('App\Producto', 'from_product_id');
+    }
 }

@@ -36,8 +36,8 @@
                     
                     <div class="card-box table-responsive">
                         @if(Session::get("rol_id"))
-                            <h3 class="box-title"><a href="{{route('transfer.export')}}" class="btn btn-success" style="float:right;"><i class="fa fa-file-excel-o"></i> Excel</a></h3>
                             <h3 class="box-title"><a href="{{ route('transfer.receive') }}" class="btn btn-primary" style="float:right;"><i class="fa fa-exchange"></i> Receive </a></h3>
+                            <h3 class="box-title"><a href="{{route('transfer.export')}}" class="btn btn-success" style="float:right;"><i class="fa fa-file-excel-o"></i> Excel</a></h3>
                         @endif
 
                         <h4 class="m-t-0 header-title"><b>Received Transfers</b></h4>

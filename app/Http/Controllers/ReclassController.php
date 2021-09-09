@@ -11,6 +11,9 @@ use App\Reclass;
 
 use Auth;
 
+use Excel;
+use App\Exports\ReclassExport;
+
 class ReclassController extends Controller
 {
     // Index
@@ -81,5 +84,13 @@ class ReclassController extends Controller
     	$to_product->save();
 
     	return redirect()->route('reclass.product')->with('status', 'Reclassification Successful!');
+    }
+
+
+
+    public function export()
+    {
+        $export = new ReclassExport();
+        return Excel::download($export, 'Reclassification.xlsx');
     }
 }

@@ -37,6 +37,7 @@
                     <div class="card-box table-responsive">
                         @if(Session::get("rol_id"))
                             <h3 class="box-title"><a href="{{ route('reclass.product') }}" class="btn btn-primary" style="float:right;"><i class="fa fa-reorder"></i> Reclass </a></h3>
+                            <h3 class="box-title"><a href="{{route('reclass.export')}}" class="btn btn-success" style="float:right;"><i class="fa fa-file-excel-o"></i> Excel</a></h3>
                         @endif
 
                         <h4 class="m-t-0 header-title"><b>Product Reclassification Transactions</b></h4>
@@ -55,6 +56,7 @@
                                  <th>Reference #</th>
                                  <th>From</th>
                                  <th>To</th>
+                                 <th>UOM</th>
                                  <th>Quantity</th>
                                  <th>Reclass By</th>
                                  <th>Date</th>
@@ -68,6 +70,7 @@
                                         <td><a>{{ $dato->reference_id }}</a></td>
                                         <td><a>{{ $dato->from_product }}</a></td>
                                         <td><a>{{ $dato->to_product }}</a></td>
+                                        <td><a>{{ $dato->fproduct->uom->uom }}</a></td>
                                         <td><a>{{ $dato->quantity }}</a></td>
                                         <td><a>{{ $dato->user->nombre . ' ' . $dato->user->apellido }}</a></td>
                                         <td><a>{{ $dato->created_at }}</a></td>
