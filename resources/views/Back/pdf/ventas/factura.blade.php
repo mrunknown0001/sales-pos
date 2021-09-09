@@ -147,7 +147,7 @@
                             
                             <td style="font-size: 9pt;">
                                 <label for=""><b>@lang('idioma.gral_info'):</b></label><br>
-                                @lang('idioma.gral_cliente'): {{ \App\Http\Controllers\GeneralController::getClientName($datos->cliente->cedula) }}<br>
+                                @lang('idioma.gral_cliente'): {{ \App\Http\Controllers\GeneralController::getClientName($datos->cliente->id) }}<br>
                                 @lang('idioma.gral_correo'): {{ $datos->cliente->correo }}<br>
                             </td>
                         </tr>
@@ -170,9 +170,11 @@
                 <td>
                     @lang('idioma.gral_precio') U.
                 </td>
-                
                 <td>
-                    @lang('idioma.gral_br_cant')
+                    UoM
+                </td>
+                <td>
+                    QTY
                 </td>
 
                 <td>
@@ -228,9 +230,11 @@
                     </td>
                     
                     <td>
+                        {{ $d->producto->uom->uom }}
+                    </td>
+                    <td>
                         {{$d->cantidad}}
                     </td>
-
                     @if($d->tributo->tipo=="PORCENTAJE")
                         <td>
                             {{$d->tributo->monto." %"}}
@@ -274,10 +278,10 @@
                             <td>Total ( @lang('idioma.gral_con_imp') ):</td>
                             <td>{{number_format($datos->subtotal,2)." ".$sistema->moneda}}</td>
                         </tr>
-                        <tr style="font-size: 11pt">
+                        {{-- <tr style="font-size: 11pt">
                             <td>@lang('idioma.gral_descuento'):</td>
                             <td>{{$datos->descuento." %"}}</td>
-                        </tr>
+                        </tr> --}}
                         <tr style="font-size: 11pt">
                             <td>@lang('idioma.gral_descontado'):</td>
                             <td>{{number_format($ahorro,2)." ".$sistema->moneda}}</td>

@@ -11,6 +11,7 @@ use App\DetalleProceso;
 use App\Categoria;
 use App\SubCategoria;
 use App\UnitOfMeasurement as UOM;
+use App\Posproceso;
 
 class GeneralController extends Controller
 {
@@ -111,5 +112,23 @@ class GeneralController extends Controller
         if($product->uom->uom == 'CASE') {
             return $quantity * 12;
         }
+    }
+
+
+
+    // get discount on sales
+    // applied for 12 trays | whole sale
+    public static function getSalesDiscount($detail, $discount)
+    {
+        $dis = 0;
+        if($discount > 0) {
+            if($detail->producto->uom->uom == "TRAY") {
+                $dis = $detail->cantidad * 5;
+            }
+            if($detail->producto->uom->uom == "CASE") {
+                $dis = (12 * $detail->cantidad) * 5;
+            }
+        }
+        return $dis;
     }
 }
