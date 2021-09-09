@@ -135,7 +135,7 @@
                                 </div> --}}
                                 <div class="col-md-12">
                                     <label for="pagoPrevio">Discount (&#8369;)</label>
-                                    <input type="text" name="descuento" id="descuento" required class="form-control">
+                                    <input type="text" name="descuento" id="descuento" required class="form-control" readonly="">
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="col-md-12">
