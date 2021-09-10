@@ -78,6 +78,8 @@
         <!--Limpiar todo al finalizar proceso-->
         <script type="text/javascript">
             $(document).ready(function() {
+
+                
                 $('#continuar').click(function (e) {
 
                     e.preventDefault();

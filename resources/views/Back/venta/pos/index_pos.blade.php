@@ -136,6 +136,7 @@
                                 <div class="col-md-12">
                                     <label for="pagoPrevio">Discount (&#8369;)</label>
                                     <input type="text" name="descuento" id="descuento" required class="form-control" readonly="">
+                                    <button id="compute_discount" class="btn btn-primary btn-xs" alt="If discount is not reflected. Click me.">Calculate Discount</button>
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="col-md-12">
