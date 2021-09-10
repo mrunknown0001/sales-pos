@@ -1231,6 +1231,8 @@
                 });//Final Ajax
 
             }//end custom discount function
+
+            $(document).ready(posdiscount());
         </script>
 
 
