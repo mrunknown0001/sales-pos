@@ -79,7 +79,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
 
-                
+                $('#compute_discount').click(posdiscount());
                 $('#continuar').click(function (e) {
 
                     e.preventDefault();
