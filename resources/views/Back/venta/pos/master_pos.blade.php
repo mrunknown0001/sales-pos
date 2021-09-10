@@ -411,7 +411,7 @@
                                                          $('#success'+i+' td').empty();//Vaciar
                                                          $('#success'+i+' td').append("@lang('idioma.pos_agregado')");//Mostrar texto mensaje
                                                          // new code added value to discount
-                                                         
+                                                         posdiscount();
                                                          //Esperar medio segundos y ocultar elemento
                                                          setTimeout(function(){
                                                             $('#success'+i).css('display', 'none');
