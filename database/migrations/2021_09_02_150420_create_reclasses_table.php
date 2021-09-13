@@ -21,6 +21,10 @@ class CreateReclassesTable extends Migration
             $table->string('from_product')->nullable();
             $table->string('to_product')->nullable();
             $table->integer('quantity')->nullable();
+            $table->integer('from_product_quantity_before_reclass')->nullable();
+            $table->integer('from_product_quantity_after_reclass')->nullable();
+            $table->integer('to_product_quantity_before_reclass')->nullable();
+            $table->integer('to_product_quantity_after_reclass')->nullable();
             $table->string('timestamp')->nullable();
             $table->bigInteger('reclass_by')->nullable();
             $table->timestamps();

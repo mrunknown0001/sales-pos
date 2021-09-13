@@ -50,7 +50,7 @@ class ConvertionController extends Controller
     	$product = Producto::findorfail($request->product);
 
     	if($product->uom->uom != "TRAY") {
-    		return redirect()->route('convert.product')->with('error', 'Please select prodct with a unit of TRAY.');
+    		return redirect()->route('convert.product')->with('error', 'Please select product with a unit of TRAY.');
     	}
 
     	// check if uom selected is pcs
@@ -85,6 +85,11 @@ class ConvertionController extends Controller
     		return redirect()->route('convert.product')->with('error', 'Cannot Convert Product with same UoM');
     	}
 
+
+        // record quantity before
+        $quantity_from_before_convert = $product->cantidad;
+        $quantity_to_before_convert = $to_product->cantidad;
+
     	// conversion part tray to pcs
     	$to_quantity = $request->quantity * 30;
     	$product->cantidad -= $request->quantity;
@@ -107,9 +112,16 @@ class ConvertionController extends Controller
     	$convert->quantity_to = $to_quantity;
     	$convert->multiplier = 30;
     	$convert->converted_by = Auth::user()->id;
+
+        $product->save();
+        $to_product->save();
+
+        $convert->quantity_from_after_convert = $product->cantidad;
+        $convert->quantity_to_after_convert = $to_product->cantidad;
+        $convert->quantity_from_before_convert = $quantity_from_before_convert;
+        $convert->quantity_to_before_convert = $quantity_to_before_convert;
+
     	$convert->save();
-    	$product->save();
-    	$to_product->save();
 
     	return redirect()->route('convert.product')->with('status', 'Product Converted');
     }

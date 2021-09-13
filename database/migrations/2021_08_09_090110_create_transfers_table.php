@@ -18,6 +18,8 @@ class CreateTransfersTable extends Migration
             $table->bigInteger('location_id')->nullable();
             $table->bigInteger('product_id')->nullable();
             $table->integer('quantity')->nullable();
+            $table->integer('quantity_before_transfer')->nullable();
+            $table->integer('quantity_after_transfer')->nullable();
             $table->string('reference_id')->nullable();
             $table->date('date')->nullable();
             $table->string('time', 10)->nullable();

@@ -26,6 +26,10 @@ class CreateConvertionsTable extends Migration
             $table->string('uom_to');
             $table->integer('quantity_from');
             $table->integer('quantity_to');
+            $table->integer('quantity_from_before_convert')->nullable();
+            $table->integer('quantity_from_after_convert')->nullable();
+            $table->integer('quantity_to_before_convert')->nullable();
+            $table->integer('quantity_to_after_convert')->nullable();
             $table->string('multiplier')->nullable();
             $table->string('divisor')->nullable();
             $table->date('date')->nullable();
