@@ -68,7 +68,7 @@ tbody td {
         <th>Subt.</small></th>
         <th>Tax</small></th>
         <th>Total</th>
-        <th>Disc. %</th>
+        <th>Disc.</th>
         <th>To Pay ({{$sistema->moneda}})</th>
         <th>Date</th>
     </tr>                            
@@ -106,7 +106,7 @@ tbody td {
             ?>
         <tr>
             <td><b>{{ $d->codigo_proceso }}</b></td>
-            <td><b>{{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->cedula) }}</b></td>
+            <td><b>{{ \App\Http\Controllers\GeneralController::getClientName($d->cliente->id) }}</b></td>
             <td>{{ $d->items_totales }}</td>
             <td>{{ number_format($total_sin_impuestos,2) }}</td>
             <td>{{ number_format($total_impuesto,2) }}</td>
