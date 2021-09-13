@@ -252,6 +252,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/reclass/export', 'ReclassController@export')->name('reclass.export');
 
 
+	// Convert
+	Route::get('/convert', 'ConvertionController@index')->name('convert');
+	Route::get('/convert/product', 'ConvertionController@convertProduct')->name('convert.product');
+	Route::post('/convert/product', 'ConvertionController@postConvertProduct')->name('post.convert.product');
+
+
 	// Database Backups
 	Route::get('/db-backup', 'DatabaseBackupController@index')->name('db.backup');
 	// Download Database Backup

@@ -113,6 +113,10 @@
                     <a href="{{ route('reclass') }}" class="waves-effect @yield('active-reclass')"><i class="fa fa-reorder"></i><span>Reclassify<span></a>
                 </li>
 
+                <li class="@yield('active-convert')">
+                    <a href="{{ route('convert') }}" class="waves-effect @yield('active-convert')"><i class="fa fa-reorder"></i><span>Convert<span></a>
+                </li>
+
                 {{--GASTOS--}}
                 {{-- @if(Session::get("rol_id"))
                     @if(Session::get("rol_id") == 1 or Session::get("rol_id") == 2 or $permisos->gasto_i == 1)
