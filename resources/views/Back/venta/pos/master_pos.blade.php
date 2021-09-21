@@ -80,7 +80,7 @@
             $(document).ready(function() {
 
                 $('#compute_discount').click(function () {
-                    posdiscount();
+                    //posdiscount();
                 });
                 $('#continuar').click(function (e) {
 
@@ -415,7 +415,7 @@
                                                          $('#success'+i+' td').empty();//Vaciar
                                                          $('#success'+i+' td').append("@lang('idioma.pos_agregado')");//Mostrar texto mensaje
                                                          // new code added value to discount
-                                                         posdiscount();
+                                                         //posdiscount();
                                                          //Esperar medio segundos y ocultar elemento
                                                          setTimeout(function(){
                                                             $('#success'+i).css('display', 'none');
@@ -429,7 +429,7 @@
                                                     $('#boton_insertar'+i).empty();//Vaciar 
                                                     $('#boton_insertar'+i).append('<i class="fa fa-check"></i>');//Mostrar un check
                                                     // when adding item on card
-                                                    posdiscount();
+                                                    //posdiscount();
                                                     //Esperar 3 segundos y mostrar elemento con plus (+)
                                                     setTimeout(function(){
                                                         $('#boton_insertar'+i).empty();//Vaciar 
@@ -725,7 +725,7 @@
                                 $('#total').val(data['total_sin_formato']);
 
                                 // add discount here
-                                $('#descuento').val(data['discount']);
+                               // $('#descuento').val(data['discount']);
 
                            }//Final Else
 
@@ -1011,7 +1011,7 @@
                                     //Cargar funcion reload_total
                                     $().load(reload_total());
                                     // on load of page
-                                    posdiscount();
+                                    //posdiscount();
 
                                     //6- FunciÃ³n: BotÃ³n Eliminar producto.
                                     $('#boton_eliminar'+datos[5]).on('click', function(e) {
@@ -1062,7 +1062,7 @@
 
                                                 }//Final If
                                                 // remove item on cart
-                                                posdiscount();
+                                                //posdiscount();
                                             }//Final Success
 
                                         });//Final Ajax
@@ -1236,7 +1236,7 @@
 
             }//end custom discount function
 
-            $(document).ready(posdiscount());
+            // $(document).ready(posdiscount());
         </script>
 
 

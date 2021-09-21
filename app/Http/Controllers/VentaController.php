@@ -334,8 +334,8 @@ class VentaController extends Controller
     public function pos_descuento(Request $request)
     {
 
-        // $descuento           = $request->get("descuento");
-        $descuento = 1;
+        $descuento           = $request->get("descuento");
+        // $descuento = 1;
         $usuario_id          = $request->get("usuario_id");
         $subtotal_general_sf = 0;
         # added code as of 9/9/2021
@@ -356,10 +356,10 @@ class VentaController extends Controller
         # added code as of 9/9/21
         # discount per 12 trays 
         if($total_trays > 11) {
-            $descuento = $total_trays * 5;
+            // $descuento = $total_trays * 5;
         }
         else {
-            $descuento = 0;
+            // $descuento = 0;
         }
         # end of discount
 
