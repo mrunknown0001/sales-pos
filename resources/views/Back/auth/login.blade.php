@@ -47,7 +47,7 @@
                                         <a href="{{ route('login') }}" class="text-success">
                                             <span>
                                                 @if($configuracion->logo)
-                                                    <img style="width:180px; height:100px" src="{{ asset('/storage/img_sistema/'.$configuracion->logo) }}">
+                                                    <img style="width:250px; height:100px" src="{{ asset('/storage/img_sistema/'.$configuracion->logo) }}">
                                                 @else
                                                     <img style="width:100px; height:100px" src="{{ asset('/storage/img_sistema/default_logo.jpg') }}">
                                                 @endif
