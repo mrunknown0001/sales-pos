@@ -1,5 +1,5 @@
 
-# Inventory System
+# Sales and Inventory System
 
 The INVENTORY system allows you to register PRODUCTS which are classified with CATEGORIES and SUB-CATEGORIES. In the purchase or sale processes, the products in the stock will be added or subtracted.
 
